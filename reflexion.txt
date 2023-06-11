@@ -1,0 +1,9 @@
+
+
+A faire cette semaine  = 
+	créer un tableau avec{id monture, name, instanceName, idInstance}
+
+A faire aujourd'hui = 
+	tableau avec wq legion, wq bfa, wq shadowland
+
+Reputation = avancement des reputations rapportant une monture

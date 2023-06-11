@@ -1,0 +1,16 @@
+{
+    "Lua.diagnostics.globals": [
+        "listmount",
+        "listmountId",
+        "mounts",
+        "mountsDonjonDaily",
+        "loginFrame",
+        "truc",
+        "whatIDoToday",
+        "lokedInstance",
+        "resultMountInstance",
+        "createFrameContainer",
+        "allMountByPerso",
+        "lala"
+    ]
+}
