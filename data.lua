@@ -4,6 +4,7 @@ core.WorldQuest = {};
 core.WorldQuest.BFA = {}
 core.WorlQuestPersoBFA = {}
 core.WorlQuestPersoLegion = {}
+core.FrameAddon = nil
 
 ----------------MOUNT BFA--------------------
 
@@ -85,9 +86,9 @@ local mountFrontArgusseen = {
 ----------------MOUNT DONJON DAILY--------------------
 core.Mounts.MountsDonjonDaily = { 
     --idMount,mountName, idInstance, iconMount, isDone, timeBeforeReset, numBoss, mode, nomDj, nomBoss, idDj
-    {410, nil, 859, nil, nil, nil, 2, "Heroic", "Zul'Gurub", nil, 334 }, -- raptor rouge
-    {264, nil, 575, nil, nil, nil,3, "Heroic", "Cime d'Utgarde", nil,205 }, -- proto drake bleu
-    {213, nil, 585, nil, nil, nil, 4, "Heroic", "Terrasse des magistères", nil, 1154}, -- faucon blanc peregrin
+    {410, nil, 859, nil, nil, nil, 2, "Héroïque", "Zul'Gurub", nil, 334 }, -- raptor rouge
+    {264, nil, 575, nil, nil, nil,3, "Héroïque", "Cime d'Utgarde", nil,205 }, -- proto drake bleu
+    {213, nil, 585, nil, nil, nil, 4, "Héroïque", "Terrasse des magistères", nil, 1154}, -- faucon blanc peregrin
     -- raptor rouge
     -- {264, nil, 575, nil, nil, nil,3, "Heroic", "Cime d'Utgarde", nil,205 }, -- proto drake bleu
 }
@@ -122,5 +123,25 @@ core.WorldQuest.Legion = {
     {48642, false, false, 0, "Interface\\Icons\\inv_legion_faction_argussianreach" , mountFrontArgusseen, "Argus", nil, "Front argusséen"} -- Argus front argusseen
 }
 
-core.test = {}
+core.Mounts.MountsDonjonWeeks = {
+    --idMount,mountName, idInstance, iconMount, isDone, timeBeforeReset, numBoss, mode, nomDj, nomBoss, idDj
+    --BFA
+    {995, nil, 1754, nil, nil, nil, 4, "Mythique", "Port-Liberté", nil, 1704 }, -- Jacasse
+    {1053, nil, 1841, nil, nil, nil, 4, "Mythique", "Tréfond putrides", nil, 1711 }, -- Crogg des tréfonds Putrides
+    {1040, nil, 1762, nil, nil, nil, 4, "Mythique", "ZulDazar", nil, 1785 }, -- Traqueur des tombes
+}
+
+core.Mounts.MountsDonjonWeeks.Perso = {}
+
+core.Mounts.WorldBoss = {
+    --idMount,mountName, questID, iconMount, isDone, timeBeforeReset, nomZone, nomBoss, idDj
+    --BFA
+    {473, nil, 32099, nil, nil, nil, "Sommet de Kun-lai", nil, 1704 }, -- sha
+    {515, nil, 32098, nil, nil, nil, "Vallée des quatre vents", nil, 1711 }, -- galion
+    {542, nil, 32518, nil, nil, nil, "Ile tonnerre", nil, 1785 }, -- nalak
+    {533, nil, 32519, nil, nil, nil, "Ile des géants", nil, 1785 }, -- Navrecorne Primordial cobalt
+    {634, nil, 37464, nil, nil, nil, "Flèches d’arak", nil, 1785 }, -- Faucon des flèches solaire
+}
+
+core.Mounts.WorldBoss.Perso = {}
 

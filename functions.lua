@@ -19,8 +19,6 @@ function core.Functions.getInstanceLoked()
                 encounterProgress, 
                 extendDisabled, 
                 instanceId = GetSavedInstanceInfo(i)
-                
-                
                 if locked then
                     local time
                     if reset < 86400 then
@@ -28,16 +26,16 @@ function core.Functions.getInstanceLoked()
                     else 
                         time = math.floor(reset/86400).."jours "
                     end
-                    table.insert(lokedInstance, {instanceId, time, name, i})
+                    table.insert(lokedInstance, {instanceId, time, name, i, difficultyName})
                 end
         end
         return lokedInstance
 end
 
-function core.Functions.getIconAndCheckIfMountIsAlreadyCollected()
-    core.Mounts.MountsDonjonDaily.Perso = {}
+function core.Functions.getIconAndCheckIfMountIsAlreadyCollected(liste)
+    liste.Perso = {}
     
-    for index, entry in ipairs(core.Mounts.MountsDonjonDaily) do
+    for index, entry in ipairs(liste) do
         
         local name,
         spellID,
@@ -56,18 +54,18 @@ function core.Functions.getIconAndCheckIfMountIsAlreadyCollected()
             entry[4]=spellID
             local bossName, texture, isKilled, unknown4 = GetLFGDungeonEncounterInfo(entry[11], entry[7])
             entry[10]= bossName
-            table.insert(core.Mounts.MountsDonjonDaily.Perso, entry)      
+            table.insert(liste.Perso, entry)      
         end
 
     end
-   return core.Mounts.MountsDonjonDaily.Perso
+   return liste.Perso
 end
 
-function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLockedInstance, position)
+function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLockedInstance, position, difficulty)
     for _, entry in ipairs(tableauLockedInstance) do
         local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry[4], position)
         local lockedInstanceID = entry[1]
-        if instance == lockedInstanceID and isKilled then
+        if instance == lockedInstanceID and isKilled  and difficulty == entry[5] then
             return {true, entry[2]}
         end
     end
@@ -75,24 +73,22 @@ function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLock
 end
 
 function core.Functions.getActiveBFAWorldQuest(zone)
-    -- local fonts = GetFonts()
-    -- for index, entry in ipairs(fonts) do
-    --     print(entry)
-    -- end
 
-
-    core.WorlQuestPersoBFA = {}
+   
+    
 
     local factionGroup = UnitFactionGroup("player")
 
     local listWorldQuest = {}
     if factionGroup == "Alliance" and zone == "BFA" then
-
+        core.WorlQuestPersoBFA = {}
         listWorldQuest = core.WorldQuest.BFA.Alliance
     
     elseif factionGroup == "Horde" and zone == "BFA" then
+        core.WorlQuestPersoBFA = {}
         listWorldQuest = core.WorldQuest.BFA.Horde
     elseif  zone == "legion" then
+        core.WorlQuestPersoLegion = {}
         listWorldQuest = core.WorldQuest.Legion
     else
 
@@ -128,11 +124,7 @@ function core.Functions.getActiveBFAWorldQuest(zone)
                         table.insert(mountTableau, mount)
                     end
                 end
-                local indexQuest = C_QuestLog.GetLogIndexForQuestID(entry[1])
-                print("l'index de la quete est : " .. indexQuest)
-
                local objectives =   C_QuestLog.GetQuestObjectives(entry[1])
-            --    print(objectives[1].text)
                 if string.find(objectives[1].text, "Accomplir 4") then
                     entry[8] = string.gsub(objectives[1].text, "Accomplir 4", "")
                 else
@@ -145,7 +137,6 @@ function core.Functions.getActiveBFAWorldQuest(zone)
                 local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry[1])
                 if isCompleted then
                     entry[3]= true
-                    print("Quete completée")
                 end
 
                 if not isCompleted and #entry[6] > 0 then
@@ -154,11 +145,8 @@ function core.Functions.getActiveBFAWorldQuest(zone)
                     elseif zone=="legion" then
                         table.insert(core.WorlQuestPersoLegion, entry)
                     end
-                    
-                    print("quete pas complétée")
                 end
             else
-                print("quete pas disponible")
             end
         end
     end
@@ -167,3 +155,67 @@ function core.Functions.getActiveBFAWorldQuest(zone)
 
 
 end
+
+function core.Functions.getPersonnalInfoMount(tableauMountDaily)
+
+    local instanceLock = core.Functions.getInstanceLoked()
+    tableauMountDaily.Perso = core.Functions.getIconAndCheckIfMountIsAlreadyCollected(tableauMountDaily)
+  
+    for _, entry in ipairs(tableauMountDaily.Perso) do
+     if next(instanceLock) ~= nil then
+         local isDone = core.Functions.checkIfMountIsAlreadyDone(entry[1], entry[3],instanceLock, entry[7], entry[8] )
+         entry[5] = isDone[1]
+         entry[6] = isDone[2]
+     else
+       entry[5]= false;
+       entry[6]= 0;
+
+     end
+    end
+    
+end
+
+
+function core.Functions.getContainerScrollFrame(parent)
+    local containerFrame = CreateFrame("Frame", "IconSelectorScrollChild2", parent)
+    containerFrame:SetSize(1100,0)
+    parent:SetScrollChild(containerFrame)
+    return containerFrame
+end
+
+   
+function core.Functions.getWorldBossLocked()
+    core.Mounts.WorldBoss.Perso = {}
+    for index, entry in ipairs(core.Mounts.WorldBoss) do
+        
+        local name,
+        spellID,
+        icon,
+        isActive,
+        isUsable,
+        sourceType,
+        isFavorite,
+        isFactionSpecific,
+        faction,
+        shouldHideOnChar,
+        isCollected,
+        mountID= C_MountJournal.GetMountInfoByID(entry[1])
+        if not isCollected then
+            entry[2]=name
+            entry[4]=spellID
+            table.insert(core.Mounts.WorldBoss.Perso, entry)      
+        end
+
+    end
+
+
+    for _, entry in ipairs(core.Mounts.WorldBoss.Perso) do
+    local isCompleted =    C_QuestLog.IsQuestFlaggedCompleted(entry[3])
+    entry[5] = isCompleted
+    end
+
+    return core.Mounts.WorldBoss.Perso
+    
+end
+
+

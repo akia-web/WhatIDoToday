@@ -10,7 +10,7 @@ local function CreateIconTexture(parent, iconName, isDown, typeIcone)
   button.texture = button:CreateTexture(nil, "ARTWORK")
   button.texture:SetAllPoints()
 
-    if typeIcone == "donjonDaily" then
+    if typeIcone == "donjonDaily"  or typeIcone == "worldboss" then
       local iconTexture = GetSpellTexture(iconName)
       button:SetNormalTexture(iconTexture)
     else if typeIcone == "emissaire" then
@@ -31,33 +31,40 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     etiquette:SetPoint("TOPLEFT", parent,"TOPLEFT",colIndex * (etiquetteL+30)+10, -rowIndex * (etiquetteH))
     
     etiquette:SetSize(300,100)
+   
     local backgroundTextureEtiquette = etiquette:CreateTexture(nil, "BACKGROUND")
+    
     backgroundTextureEtiquette:SetAllPoints()
-    backgroundTextureEtiquette:SetColorTexture(0.53, 0.81, 0.92, 0.4) 
+   
+    backgroundTextureEtiquette:SetColorTexture(0.53, 0.81, 0.92, 0.4)
+   
     
     local button
-    if typeEtiquette == "donjonDaily" then
+   
+    if typeEtiquette == "donjonDaily" or typeEtiquette == "worldboss" then
        button = CreateIconTexture(etiquette, item[4], item[5], typeEtiquette)
     else if typeEtiquette == "emissaire" then
         button = CreateIconTexture(etiquette, item[5], item[3], typeEtiquette)
 
     end
   end
-
+  
     button:SetPoint("TOPLEFT",10, -10)
      
     local text = etiquette:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med1")
     text:SetJustifyH("LEFT")
     text:SetPoint("LEFT", button, "RIGHT", textOffsetX, 0)
-    if typeEtiquette == 'donjonDaily' then
+
+    if typeEtiquette == "donjonDaily" then
       if item[5] then
-        text:SetText("|cff808080"..item[2] .."\ndonjon : ".. item[9].."\ndifficulté : ".. item[8].. "\nboss : ".. item[10])
+        text:SetText("|cff808080" .. item[2] .. "\ndonjon : " .. item[9] .. "\ndifficulté : " .. item[8] .. "\nboss : " .. item[10])
       else
-        text:SetText(item[2] .."\ndonjon : ".. item[9].."\ndifficulté : ".. item[8].. "\nboss : ".. item[10])
+        text:SetText(item[2] .. "\ndonjon : " .. item[9] .. "\ndifficulté : " .. item[8] .. "\nboss : " .. item[10])
       end
-    else if typeEtiquette == 'emissaire' then
-      text:SetText("Zone : "..item[7] .."\nRéputation : ".. item[9].."\n \n".. item[8])
-    end
+    elseif typeEtiquette == "emissaire" then
+      text:SetText("Zone : " .. item[7] .. "\nRéputation : " .. item[9] .. "\n \n" .. item[8])
+    elseif typeEtiquette == "worldboss" then
+      text:SetText(item[2] .. "\nZone : " .. item[7])
     end
        
 
@@ -109,11 +116,80 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
 end
 
 
-local function PopulateIconSelector(tableau, parent, etiquetteL, etiquetteH, numColumns)
-  local lastParent = parent;
+local function createCadre(nameContainer, parent, heightContainer, containerTiltleText, setPointHeight)
+  local container = CreateFrame("frame", nameContainer, parent);
+  container:SetPoint("TOP", parent, "TOP",0, setPointHeight)
+  container:SetSize(1100,heightContainer)
+
+  local backgroundContainer = container:CreateTexture(nil, "BACKGROUND")
+  backgroundContainer:SetAllPoints(container)
+  backgroundContainer:SetColorTexture(0.9, 0.9, 0.9, 0.2)
+
+  local containerTitle = container:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med2")
+  containerTitle:SetPoint("TOP", container, "TOP",0 , -10)
+  containerTitle:SetText(containerTiltleText)
+
+  return container
+end
+
+local function createDataCadre(nameContainer, heightContainer, elementBottom, tableau, etiquetteL, etiquetteH, type)
   local rowIndex, colIndex = 0, 0
   local textOffsetX = 5
 
+  local data= CreateFrame("frame", nameContainer, elementBottom)
+  data:SetPoint("TOP", elementBottom, "TOP", 0, -40)
+  data:SetSize(1100, heightContainer)
+  data:SetHeight(heightContainer)
+
+  for _, item in ipairs(tableau) do
+    createEtiquette(item, data ,etiquetteL, etiquetteH,textOffsetX , "color", rowIndex, colIndex,type )
+    colIndex = colIndex + 1
+    if colIndex >= 3 then
+      colIndex = 0
+      rowIndex = rowIndex + 1
+    end
+  end
+
+  return data
+end
+
+
+local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColumns)
+
+  local totalHeight = 0;
+
+ ----------------------------CADRE DONJON Weeks ------------------
+  local numRowsWeeks = math.ceil(#core.Mounts.MountsDonjonWeeks / numColumns)
+  local heightDonjonWeeks = numRowsWeeks * (etiquetteH);
+  local heightContainerDonjonWeeks = heightDonjonWeeks+50
+
+  local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "donjons", 0)
+  local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.Mounts.MountsDonjonWeeks, etiquetteL, etiquetteH, "donjonDaily")
+  totalHeight = totalHeight + heightContainerDonjonWeeks ;
+
+  parent:SetHeight(totalHeight)
+
+
+   -- ----------------------------CADRE World boss ------------------
+   local numRowWoldBoss = math.ceil(#core.WorlQuestPersoBFA / numColumns)
+   local heightWorldBoss =  numRowWoldBoss * (etiquetteH)
+   local heightContainerWorldBoss = heightWorldBoss+50
+ 
+   local containerWorldBoss = createCadre("containerWorldBoss", parent,heightContainerWorldBoss, "WorldBoss", -(totalHeight+20) )
+   heightContainerWorldBoss = heightContainerWorldBoss + 20
+   core.Functions.getWorldBossLocked()
+   local allWorldBoss = createDataCadre("containerDataWorldBoss", heightWorldBoss, containerWorldBoss, core.Mounts.WorldBoss.Perso, etiquetteL, etiquetteH, "worldboss")
+    
+   totalHeight = totalHeight + heightContainerWorldBoss
+
+
+
+end
+
+local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumns)
+  local lastParent = parent;
+  local rowIndex, colIndex = 0, 0
+  local textOffsetX = 5
   local totalHeight = 0;
 
 
@@ -122,32 +198,9 @@ local function PopulateIconSelector(tableau, parent, etiquetteL, etiquetteH, num
   local heightDonjonDaily = numRowsDaily * (etiquetteH);
   local heightContainerDonjonDaily = heightDonjonDaily+50
 
-  local donjonDaily = CreateFrame("frame", "donjonDaily", parent)
-  donjonDaily:SetPoint("TOP", parent, "TOP")
-  donjonDaily:SetSize(1100,0)
-  donjonDaily:SetHeight(heightContainerDonjonDaily)
+  local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "donjons", 0)
+  local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.Mounts.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
 
-  local backgroundDonjonDaily = donjonDaily:CreateTexture(nil, "BACKGROUND")
-  backgroundDonjonDaily:SetAllPoints(donjonDaily)
-  backgroundDonjonDaily:SetColorTexture(0.9, 0.9, 0.9, 0.2)
-
-  local donjonTitle = donjonDaily:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med2")
-  donjonTitle:SetPoint("TOP", donjonDaily, "TOP",0 , -10)
-  donjonTitle:SetText("Donjons")
-  
-  local allDailyDJ= CreateFrame("frame", "containerDJ", donjonDaily)
-  allDailyDJ:SetPoint("TOP", donjonDaily, "TOP", 0, -40)
-  allDailyDJ:SetSize(1100, heightDonjonDaily)
-  allDailyDJ:SetHeight(heightDonjonDaily)
-
-  for _, item in ipairs(core.Mounts.MountsDonjonDaily.Perso) do
-    createEtiquette(item, allDailyDJ,etiquetteL, etiquetteH,textOffsetX , "color", rowIndex, colIndex,"donjonDaily" )
-    colIndex = colIndex + 1
-    if colIndex >= numColumns then
-      colIndex = 0
-      rowIndex = rowIndex + 1
-    end
-  end
   totalHeight = totalHeight + heightContainerDonjonDaily ;
 
 
@@ -156,38 +209,11 @@ local function PopulateIconSelector(tableau, parent, etiquetteL, etiquetteH, num
   local heightBFAContainer =  numRowBFA * (etiquetteH)
   local heightContainerBFA = heightBFAContainer+50
 
-  local containerQuestBFA = CreateFrame("frame", "containerQuestBFA", parent)
-  containerQuestBFA:SetPoint("TOP", parent, "TOP", 0, -(totalHeight+20))
-  containerQuestBFA:SetSize(1100,0)
-  containerQuestBFA:SetHeight(heightContainerBFA)
-
+  local containerQuestBFA = createCadre("containerQuestBFA", parent,heightContainerBFA, "Emissaires BFA", -(totalHeight+20) )
   heightContainerBFA = heightContainerBFA + 20
-
-  local backgroundExpeBFA = containerQuestBFA:CreateTexture(nil, "BACKGROUND")
-  backgroundExpeBFA:SetAllPoints(containerQuestBFA)
-  backgroundExpeBFA:SetColorTexture(0.9, 0.9, 0.9, 0.2)
   
-  local textEmissaire = containerQuestBFA:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med2")
-  textEmissaire:SetPoint("TOP", containerQuestBFA, "TOP", 0, -10)
-  textEmissaire:SetText("Emissaires BFA")
+  local allQuestBFA = createDataCadre("containerQuest", heightBFAContainer, containerQuestBFA, core.WorlQuestPersoBFA, etiquetteL, etiquetteH, "emissaire")
    
-  local allQuestBFA = CreateFrame("frame", "containerQuest", containerQuestBFA)
-  allQuestBFA:SetPoint("TOP", containerQuestBFA, "TOP", 0, -40)
-  allQuestBFA:SetSize(1100,0)
-  allQuestBFA:SetHeight(heightBFAContainer)
-
-  rowIndex=0
-  colIndex = 0
-  
-  for _, item in ipairs(core.WorlQuestPersoBFA) do
-    createEtiquette(item, allQuestBFA,etiquetteL, etiquetteH,textOffsetX , "color", rowIndex, colIndex,"emissaire" )
-   
-    colIndex = colIndex + 1
-    if colIndex >= numColumns then
-      colIndex = 0
-      rowIndex = rowIndex + 1
-    end
-  end
   totalHeight = totalHeight + heightContainerBFA
 
   -- ----------------------------CADRE EXPE Legion ------------------
@@ -195,52 +221,17 @@ local function PopulateIconSelector(tableau, parent, etiquetteL, etiquetteH, num
   local heightLegionExpe =  numRowLegion * (etiquetteH)
   local heightContainerLegion = heightLegionExpe+50
 
-  local containerQuestLegion = CreateFrame("frame", "containerQuestLegion", parent)
-  containerQuestLegion:SetPoint("TOP", parent, "TOP", 0, -(totalHeight+20))
-  containerQuestLegion:SetSize(1100,0)
-  containerQuestLegion:SetHeight(heightContainerLegion)
-
+  local containerQuestLegion = createCadre("containerQuestLegion", parent, heightContainerLegion, "Emissaire Legion",-(totalHeight+20) )
   heightContainerLegion = heightContainerLegion + 20
 
-
-  local backgroundExpeLegion = containerQuestLegion:CreateTexture(nil, "BACKGROUND")
-  backgroundExpeLegion:SetAllPoints(containerQuestLegion)
-  backgroundExpeLegion:SetColorTexture(0.9, 0.9, 0.9, 0.2)
-   
-  local textEmissaireLegion = containerQuestLegion:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med2")
-  textEmissaireLegion:SetPoint("TOP", containerQuestLegion, "TOP", 0, -10)
-  textEmissaireLegion:SetText("Emissaires legion")
-   
-  local allQuestLegion = CreateFrame("frame", "containerQuest", containerQuestLegion)
-  allQuestLegion:SetPoint("TOP", containerQuestLegion, "TOP", 0, -40)
-  allQuestLegion:SetSize(1100,0)
-  allQuestLegion:SetHeight(heightLegionExpe)
-
-  rowIndex=0
-  colIndex = 0
-  
-  for _, item in ipairs(core.WorlQuestPersoLegion) do
-    createEtiquette(item, allQuestLegion,etiquetteL, etiquetteH,textOffsetX , "color", rowIndex, colIndex,"emissaire" )
-   
-    colIndex = colIndex + 1
-    if colIndex >= numColumns then
-      colIndex = 0
-      rowIndex = rowIndex + 1
-    end
-  end
+  local allQuestLegion = createDataCadre("containerLegionQuest", heightLegionExpe, containerQuestLegion,core.WorlQuestPersoLegion, etiquetteL, etiquetteH, "emissaire" )
   totalHeight = totalHeight + heightContainerLegion
 
-
-
-  -- Ajuster la hauteur du ScrollChild en fonction du nombre de lignes d'icônes
-  local numRows = math.ceil(#tableau / numColumns)
-  local scrollChildHeight = numRows * (etiquetteH + 4)
-  -- parent:SetHeight(scrollChildHeight+130)
   parent:SetHeight(totalHeight)
 
 end
 
-function core.Frame.createFrameContainer(tableau)
+function core.Frame.createFrameContainer()
   local frame = CreateFrame("Frame", "IconSelectorFrame", UIParent)
   frame:SetSize(1300, 800)
   frame:SetPoint("CENTER")
@@ -258,9 +249,23 @@ function core.Frame.createFrameContainer(tableau)
   frame:SetFrameStrata("HIGH")
   frame.closeButton = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
   frame.closeButton:SetPoint("TOPRIGHT", -8, -8)
+
+  ------------- CLOSE ADDON ------------------
+  frame:SetScript("OnKeyDown", function (self, key)
+    if key == "ESCAPE" then
+      core.FrameAddon = nil
+      frame:Hide()
+    else
+      self:SetPropagateKeyboardInput(true)
+    end
+  end)
+
   frame.closeButton:SetScript("OnClick", function()
+    core.FrameAddon = nil
     frame:Hide()
   end)
+
+
 
   local backgroundTextureFrame = frame:CreateTexture(nil, "BACKGROUND")
   backgroundTextureFrame:SetAllPoints(frame)
@@ -275,7 +280,9 @@ function core.Frame.createFrameContainer(tableau)
   local backgroundTextureLeftPanneau = LeftPanneau:CreateTexture(nil, "BACKGROUND")
   backgroundTextureLeftPanneau:SetAllPoints(LeftPanneau)
   backgroundTextureLeftPanneau:SetColorTexture(0.5, 1, 0.5, 0.5) 
-  
+
+
+
   local etiquetteL = 300
   local etiquetteH = 100
   local numColumns = 3
@@ -285,50 +292,52 @@ function core.Frame.createFrameContainer(tableau)
   scrollFrame:SetPoint("BOTTOMRIGHT", -32, 30)
 
   
-
-  local donjonContainer = CreateFrame("Frame", "IconSelectorScrollChild2", scrollFrame)
-  donjonContainer:SetSize(1100,0)
-  scrollFrame:SetScrollChild(donjonContainer)
-
+  local containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
 
 
   -- local backgroundDonjon = donjonContainer:CreateTexture(nil, "BACKGROUND")
   -- backgroundDonjon:SetAllPoints(donjonContainer)
   -- backgroundDonjon:SetColorTexture(0, 0, 1, 1)
   
-  PopulateIconSelector(tableau, donjonContainer, etiquetteL,etiquetteH,  numColumns)
+
+----------BOUTTON DAILY --------------------
+  local buttonDaily = CreateFrame("Button", nil, LeftPanneau, "UIPanelButtonTemplate")
+  buttonDaily:SetSize(80, 20)
+  buttonDaily:SetPoint("TOP", 0, -10)
+  buttonDaily:SetText("Aujourd'hui")
+  buttonDaily:SetScript("OnClick", function()
+
+  containerFrame:Hide()
+  containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
+
+  core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonDaily)
+  core.Functions.getActiveBFAWorldQuest("BFA")
+  core.Functions.getActiveBFAWorldQuest("legion")
+  PopulateDailyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
+
+  end)
+  
+----------BOUTTON WEEKLY --------------------
+  local weekly = CreateFrame("Button", nil, LeftPanneau, "UIPanelButtonTemplate")
+  weekly:SetSize(80, 20)
+  weekly:SetPoint("BOTTOM", buttonDaily ,0, -300)
+  weekly:SetText("Cette semaine")
+  weekly:SetScript("OnClick", function()
+
+  containerFrame:Hide()
+  containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
+  core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonWeeks)
+  populateWeeklyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
+   end)
+
+   --------------DONNEES DE DEPART---------------
+
+  core.Functions.getActiveBFAWorldQuest("BFA")
+  core.Functions.getActiveBFAWorldQuest("legion")
+  core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonDaily)
+  PopulateDailyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
 
 
+  core.FrameAddon = frame
   return frame
   end
-
- function core.Frame.show(frame)
-    frame:Show()
- end
-
-function  core.Frame.hide(frame)
-    frame:Hide()
-end
-
-function core.Frame.getAddonFrame()
-  local instanceLock =  core.Functions.getInstanceLoked()
-
-  local allMounts = core.Functions.getIconAndCheckIfMountIsAlreadyCollected()
-  for index, entry in ipairs(allMounts) do
-     if next(instanceLock) ~= nil then
-         local isDone = core.Functions.checkIfMountIsAlreadyDone(entry[1], entry[3],instanceLock, entry[7] )
-         allMounts[index][5] = isDone[1]
-         allMounts[index][6] = isDone[2]
-     else
-        allMounts[index][5]= false;
-        allMounts[index][6]= 0;
-
-     end
-    
- end
-
- core.Functions.getActiveBFAWorldQuest("BFA")
- 
-  core.Frame.createFrameContainer(allMounts)
-
-end

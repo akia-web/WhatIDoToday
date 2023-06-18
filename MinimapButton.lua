@@ -21,8 +21,13 @@ function whatIdoToday:OnInitialize()
     --    local active =  C_TaskQuest.GetQuestTimeLeftSeconds(50600)
         -- local active =  C_QuestLog.IsQuestFlaggedCompleted(50602)
    
-        
-       core.Frame.getAddonFrame()
+        if core.FrameAddon then
+            core.FrameAddon:Hide()
+            core.FrameAddon = nil
+        else
+            core.Frame.createFrameContainer()
+        end
+       
        
     end)
 end
