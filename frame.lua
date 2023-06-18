@@ -64,7 +64,11 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     elseif typeEtiquette == "emissaire" then
       text:SetText("Zone : " .. item[7] .. "\nRéputation : " .. item[9] .. "\n \n" .. item[8])
     elseif typeEtiquette == "worldboss" then
-      text:SetText(item[2] .. "\nZone : " .. item[7])
+      if item[5] then
+        text:SetText("|cff808080"..item[2] .. "\nZone : " .. item[7])
+      else
+        text:SetText(item[2] .. "\nZone : " .. item[7])
+      end
     end
        
 

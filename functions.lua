@@ -210,8 +210,8 @@ function core.Functions.getWorldBossLocked()
 
 
     for _, entry in ipairs(core.Mounts.WorldBoss.Perso) do
-    local isCompleted =    C_QuestLog.IsQuestFlaggedCompleted(entry[3])
-    entry[5] = isCompleted
+        local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry[3]);
+        entry[5] = isCompleted;
     end
 
     return core.Mounts.WorldBoss.Perso
