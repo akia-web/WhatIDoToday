@@ -217,5 +217,3 @@ function core.Functions.getWorldBossLocked()
     return core.Mounts.WorldBoss.Perso
     
 end
-
-

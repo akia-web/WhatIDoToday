@@ -141,6 +141,7 @@ core.Mounts.WorldBoss = {
     {542, nil, 32518, nil, nil, nil, "Ile tonnerre", nil, 1785 }, -- nalak
     {533, nil, 32519, nil, nil, nil, "Ile des géants", nil, 1785 }, -- Navrecorne Primordial cobalt
     {634, nil, 37464, nil, nil, nil, "Flèches d’arak", nil, 1785 }, -- Faucon des flèches solaire
+    
 }
 
 core.Mounts.WorldBoss.Perso = {}

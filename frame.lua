@@ -27,8 +27,14 @@ end
 
 local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,color,rowIndex, colIndex, typeEtiquette )
   local etiquette = CreateFrame("frame", "etiquette", parent)
- 
-    etiquette:SetPoint("TOPLEFT", parent,"TOPLEFT",colIndex * (etiquetteL+30)+10, -rowIndex * (etiquetteH))
+  local margeHauteur = 20
+    if rowIndex == 0 then
+      etiquette:SetPoint("TOPLEFT", parent,"TOPLEFT",colIndex * (etiquetteL+30)+10, -rowIndex * (etiquetteH))
+    else
+      etiquette:SetPoint("TOPLEFT", parent,"TOPLEFT",colIndex * (etiquetteL+30)+10, -rowIndex * (etiquetteH+margeHauteur))
+    end
+
+    
     
     etiquette:SetSize(300,100)
    
@@ -141,7 +147,8 @@ local function createDataCadre(nameContainer, heightContainer, elementBottom, ta
   local textOffsetX = 5
 
   local data= CreateFrame("frame", nameContainer, elementBottom)
-  data:SetPoint("TOP", elementBottom, "TOP", 0, -40)
+    data:SetPoint("TOP", elementBottom, "TOP", 0, -40)
+
   data:SetSize(1100, heightContainer)
   data:SetHeight(heightContainer)
 
@@ -165,9 +172,9 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
  ----------------------------CADRE DONJON Weeks ------------------
   local numRowsWeeks = math.ceil(#core.Mounts.MountsDonjonWeeks / numColumns)
   local heightDonjonWeeks = numRowsWeeks * (etiquetteH);
-  local heightContainerDonjonWeeks = heightDonjonWeeks+50
+  local heightContainerDonjonWeeks = heightDonjonWeeks+50+ numRowsWeeks*20 - 20
 
-  local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "donjons", 0)
+  local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "Donjons", 0)
   local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.Mounts.MountsDonjonWeeks, etiquetteL, etiquetteH, "donjonDaily")
   totalHeight = totalHeight + heightContainerDonjonWeeks ;
 
@@ -175,9 +182,9 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
 
 
    -- ----------------------------CADRE World boss ------------------
-   local numRowWoldBoss = math.ceil(#core.WorlQuestPersoBFA / numColumns)
+   local numRowWoldBoss = math.ceil(#core.Mounts.WorldBoss.Perso / numColumns)
    local heightWorldBoss =  numRowWoldBoss * (etiquetteH)
-   local heightContainerWorldBoss = heightWorldBoss+50
+   local heightContainerWorldBoss = heightWorldBoss+50 + numRowWoldBoss*20 - 20
  
    local containerWorldBoss = createCadre("containerWorldBoss", parent,heightContainerWorldBoss, "WorldBoss", -(totalHeight+20) )
    heightContainerWorldBoss = heightContainerWorldBoss + 20
@@ -191,6 +198,10 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
 end
 
 local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumns)
+  core.Functions.getActiveBFAWorldQuest("BFA")
+  core.Functions.getActiveBFAWorldQuest("legion")
+  core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonDaily)
+
   local lastParent = parent;
   local rowIndex, colIndex = 0, 0
   local textOffsetX = 5
@@ -200,30 +211,33 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   ----------------------------CADRE DONJON DAILY ------------------
   local numRowsDaily = math.ceil(#core.Mounts.MountsDonjonDaily.Perso / numColumns)
   local heightDonjonDaily = numRowsDaily * (etiquetteH);
-  local heightContainerDonjonDaily = heightDonjonDaily+50
+  local heightContainerDonjonDaily = heightDonjonDaily+50 + numRowsDaily*20 - 20
 
-  local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "donjons", 0)
+  local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", 0)
   local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.Mounts.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
 
   totalHeight = totalHeight + heightContainerDonjonDaily ;
 
 
   ----------------------------CADRE EXPE BFA ------------------
-  local numRowBFA = math.ceil(#core.WorlQuestPersoBFA / numColumns)
-  local heightBFAContainer =  numRowBFA * (etiquetteH)
-  local heightContainerBFA = heightBFAContainer+50
+  if next(core.WorlQuestPersoBFA) ~= nil then
+    local numRowBFA = math.ceil(#core.WorlQuestPersoBFA / numColumns)
+    local heightBFAContainer =  numRowBFA * (etiquetteH)
+    local heightContainerBFA = heightBFAContainer+50+ numRowBFA*20 - 20
 
-  local containerQuestBFA = createCadre("containerQuestBFA", parent,heightContainerBFA, "Emissaires BFA", -(totalHeight+20) )
-  heightContainerBFA = heightContainerBFA + 20
-  
-  local allQuestBFA = createDataCadre("containerQuest", heightBFAContainer, containerQuestBFA, core.WorlQuestPersoBFA, etiquetteL, etiquetteH, "emissaire")
-   
-  totalHeight = totalHeight + heightContainerBFA
 
+    local containerQuestBFA = createCadre("containerQuestBFA", parent,heightContainerBFA, "Emissaires BFA", -(totalHeight+20) )
+    heightContainerBFA = heightContainerBFA + 20
+    
+    local allQuestBFA = createDataCadre("containerQuest", heightBFAContainer, containerQuestBFA, core.WorlQuestPersoBFA, etiquetteL, etiquetteH, "emissaire")
+    
+    totalHeight = totalHeight + heightContainerBFA
+   end
   -- ----------------------------CADRE EXPE Legion ------------------
+  if next(core.WorlQuestPersoLegion) ~= nil then
   local numRowLegion = math.ceil(#core.WorlQuestPersoLegion / numColumns)
   local heightLegionExpe =  numRowLegion * (etiquetteH)
-  local heightContainerLegion = heightLegionExpe+50
+  local heightContainerLegion = heightLegionExpe+50 + numRowLegion*20 - 20
 
   local containerQuestLegion = createCadre("containerQuestLegion", parent, heightContainerLegion, "Emissaire Legion",-(totalHeight+20) )
   heightContainerLegion = heightContainerLegion + 20
@@ -231,8 +245,9 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   local allQuestLegion = createDataCadre("containerLegionQuest", heightLegionExpe, containerQuestLegion,core.WorlQuestPersoLegion, etiquetteL, etiquetteH, "emissaire" )
   totalHeight = totalHeight + heightContainerLegion
 
+  
+  end
   parent:SetHeight(totalHeight)
-
 end
 
 function core.Frame.createFrameContainer()
@@ -336,12 +351,9 @@ function core.Frame.createFrameContainer()
 
    --------------DONNEES DE DEPART---------------
 
-  core.Functions.getActiveBFAWorldQuest("BFA")
-  core.Functions.getActiveBFAWorldQuest("legion")
-  core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonDaily)
+ 
   PopulateDailyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
 
 
   core.FrameAddon = frame
-  return frame
   end
