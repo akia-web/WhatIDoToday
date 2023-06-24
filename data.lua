@@ -131,8 +131,8 @@ core.Mounts.MountsDonjonWeeks = {
     {1053, nil, 1841, nil, nil, nil, 4, "Mythique", "Tréfond putrides", nil, 1711 }, -- Crogg des tréfonds Putrides
     {1040, nil, 1762, nil, nil, nil, 4, "Mythique", "ZulDazar", nil, 1785 }, -- Traqueur des tombes
     {875, nil, 1651, nil, nil, nil, 4, "Mythique", "Defile de Deuillevent", nil, 1475 }, -- Minuit
-    -- {1252, nil, 2097, nil, nil, nil, 4, "Mythique", "Mecagone", nil, 2006 }, -- garde paix de mecagone
-    -- {1227, nil, 2097, nil, nil, nil, 8, "Mythique", "Mecagone", nil, 2006 }, -- Unité aérienne R-21/X
+    {1252, nil, 2097, nil, nil, nil, 4, "Mythique", "Mecagone", nil, 2006 }, -- garde paix de mecagone
+    {1227, nil, 2097, nil, nil, nil, 8, "Mythique", "Mecagone", nil, 2006 }, -- Unité aérienne R-21/X
 }
 
 core.Mounts.MountsDonjonWeeks.Perso = {}
