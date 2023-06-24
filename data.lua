@@ -49,11 +49,12 @@ local mountAnkoiens = {
 ----------------MOUNT LEGION--------------------
 
 local mountAzsuna = {
-    {942, false, "Interface\\Icons\\inv_horse2green"} -- Courserêve sauvage
+   
+    {943, false, "Interface\\Icons\\inv_hippogryph2azsuna"} --Hippogriffe nuelle
 }
 
 local mountValSharah = {
-    {943, false, "Interface\\Icons\\inv_hippogryph2azsuna"} --Hippogriffe nuelle
+    {942, false, "Interface\\Icons\\inv_horse2green"} -- Courserêve sauvage
 }
 
 local mountHautRoc = {
