@@ -89,6 +89,7 @@ core.Mounts.MountsDonjonDaily = {
     {410, nil, 859, nil, nil, nil, 2, "Héroïque", "Zul'Gurub", nil, 334 }, -- raptor rouge
     {264, nil, 575, nil, nil, nil,3, "Héroïque", "Cime d'Utgarde", nil,205 }, -- proto drake bleu
     {213, nil, 585, nil, nil, nil, 4, "Héroïque", "Terrasse des magistères", nil, 1154}, -- faucon blanc peregrin
+
     -- raptor rouge
     -- {264, nil, 575, nil, nil, nil,3, "Heroic", "Cime d'Utgarde", nil,205 }, -- proto drake bleu
 }
@@ -129,6 +130,9 @@ core.Mounts.MountsDonjonWeeks = {
     {995, nil, 1754, nil, nil, nil, 4, "Mythique", "Port-Liberté", nil, 1704 }, -- Jacasse
     {1053, nil, 1841, nil, nil, nil, 4, "Mythique", "Tréfond putrides", nil, 1711 }, -- Crogg des tréfonds Putrides
     {1040, nil, 1762, nil, nil, nil, 4, "Mythique", "ZulDazar", nil, 1785 }, -- Traqueur des tombes
+    {875, nil, 1651, nil, nil, nil, 4, "Mythique", "Defile de Deuillevent", nil, 1475 }, -- Minuit
+    -- {1252, nil, 2097, nil, nil, nil, 4, "Mythique", "Mecagone", nil, 2006 }, -- garde paix de mecagone
+    -- {1227, nil, 2097, nil, nil, nil, 8, "Mythique", "Mecagone", nil, 2006 }, -- Unité aérienne R-21/X
 }
 
 core.Mounts.MountsDonjonWeeks.Perso = {}

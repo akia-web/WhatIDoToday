@@ -26,6 +26,11 @@ return button
 end
 
 local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,color,rowIndex, colIndex, typeEtiquette )
+
+
+
+
+  
   local etiquette = CreateFrame("frame", "etiquette", parent)
   local margeHauteur = 20
     if rowIndex == 0 then
@@ -79,9 +84,23 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
        
 
     local actionButton = CreateFrame("Button", nil, etiquette, "UIPanelButtonTemplate")
-    actionButton:SetSize(80, 20)
+    actionButton:SetSize(25, 25)
     actionButton:SetPoint("BOTTOMLEFT", 10, 10)
-    actionButton:SetText("Trajet")
+    actionButton.texture = actionButton:CreateTexture(nil, "ARTWORK")
+    actionButton.texture:SetAllPoints()
+    actionButton.texture:SetTexture("Interface\\Icons\\inv_misc_map_01")
+
+
+
+   
+
+
+    -- if item[3] then
+    --   actionButton.texture:GetNormalTexture():SetDesaturated(true)
+    -- else
+    --   actionButton.texture:GetNormalTexture():SetDesaturated(false)
+    -- end
+   
     
     -- Fonction de gestionnaire d'événements pour le clic du bouton
     actionButton:SetScript("OnClick", function()
@@ -112,16 +131,6 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
 
     end)
 
-    local actionButton2 = CreateFrame("Button", nil, etiquette, "UIPanelButtonTemplate")
-    actionButton2:SetSize(80, 20)
-    actionButton2:SetPoint("LEFT", actionButton, "RIGHT", 10, 0)
-    actionButton2:SetText("Carte")
-    
-    -- Fonction de gestionnaire d'événements pour le clic du bouton
-    actionButton2:SetScript("OnClick", function()
-      -- Action à effectuer lors du clic du bouton
-      print("Le bouton a été cliqué !")
-    end)
   
 end
 
@@ -168,6 +177,7 @@ end
 local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColumns)
 
   local totalHeight = 0;
+ 
 
  ----------------------------CADRE DONJON Weeks ------------------
   local numRowsWeeks = math.ceil(#core.Mounts.MountsDonjonWeeks / numColumns)
@@ -175,11 +185,13 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
   local heightContainerDonjonWeeks = heightDonjonWeeks+50+ numRowsWeeks*20 - 20
 
   local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "Donjons", 0)
-  local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.Mounts.MountsDonjonWeeks, etiquetteL, etiquetteH, "donjonDaily")
+  print("coucou depuis weekly")
+  local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.Mounts.MountsDonjonWeeks.Perso, etiquetteL, etiquetteH, "donjonDaily")
+  
   totalHeight = totalHeight + heightContainerDonjonWeeks ;
-
+ 
   parent:SetHeight(totalHeight)
-
+ 
 
    -- ----------------------------CADRE World boss ------------------
    local numRowWoldBoss = math.ceil(#core.Mounts.WorldBoss.Perso / numColumns)
@@ -193,7 +205,7 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
     
    totalHeight = totalHeight + heightContainerWorldBoss
 
-
+   parent:SetHeight(totalHeight)
 
 end
 
@@ -342,11 +354,10 @@ function core.Frame.createFrameContainer()
   weekly:SetPoint("BOTTOM", buttonDaily ,0, -300)
   weekly:SetText("Cette semaine")
   weekly:SetScript("OnClick", function()
-
-  containerFrame:Hide()
-  containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
-  core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonWeeks)
-  populateWeeklyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
+    containerFrame:Hide()
+    containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
+    core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonWeeks)
+    populateWeeklyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
    end)
 
    --------------DONNEES DE DEPART---------------
