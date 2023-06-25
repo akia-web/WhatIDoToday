@@ -84,6 +84,10 @@ local mountFrontArgusseen = {
     {939, false, "Interface\\Icons\\inv_argustalbukmount_black"}, -- Foule-ruines sable
 }
 
+local mountMaldraxxus = {
+    {1350, false, "Interface\\Icons\\inv_rocmaldraxxusmountblack"} --Fauche-griffe colossal
+}
+
 ----------------MOUNT DONJON DAILY--------------------
 core.Mounts.MountsDonjonDaily = { 
     --idMount,mountName, idInstance, iconMount, isDone, timeBeforeReset, numBoss, mode, nomDj, nomBoss, idDj
@@ -116,6 +120,7 @@ core.WorldQuest.BFA.Horde={
 }
 
 core.WorldQuest.Legion = {
+     --idWorldQuest, isActive, completed, timer, icone, tableau monture, région, objectives, nomReput
     {42420, false, false, 0, "Interface\\Icons\\inv_legioncircle_faction_courtoffarnodis", mountAzsuna, "Aszuna", nil, "Farondis" }, --Aszuna
     {42421, false, false, 0, "Interface\\Icons\\inv_legion_faction_nightfallen", mountSuramar, "Suramar", nil, "Souffrenuit" }, -- Suramar
     {42233, false, false, 0, "Interface\\Icons\\inv_fish_highmountainsalmonred", mountHautRoc, "Haut-Roc", nil, "Tribus de Haut-Roc"}, -- HautRoc
@@ -151,3 +156,17 @@ core.Mounts.WorldBoss = {
 
 core.Mounts.WorldBoss.Perso = {}
 
+core.Mounts.worldQuestShadowLand = {
+   --idWorldQuest, isActive, completed, timer, icone, tableau monture, région, objectives, nomReput
+    -- {60434, false, false, 0, "", mountSylvarden, "Sylvarden", nil, "nigthFae"}, -- nightFae
+    {60395, false, false, 0, "Interface\\Icons\\inv_rocmaldraxxusmount", mountMaldraxxus, "Maldraxxus", nil, "l'armee immortelle"} -- maldraxxus
+}
+
+core.WorlQuestPersoShadowLand = {}
+
+core.Mounts.MountsRaidWeekly = {
+    --idMount,mountName, idInstance, iconMount, isDone, timeBeforeReset, numBoss, mode, nomDj, nomBoss, idDj
+    {304, nil, 	603, nil, nil, nil, 16, "Normal", "Pics-Foudroyers", nil, 244}
+}
+
+core.Mounts.MountsRaidWeekly.Perso = {}

@@ -65,6 +65,8 @@ function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLock
     for _, entry in ipairs(tableauLockedInstance) do
         local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry[4], position)
         local lockedInstanceID = entry[1]
+
+        print (instance .. " " ..lockedInstanceID.. " ".. difficulty .. entry[5])
         if instance == lockedInstanceID and isKilled  and difficulty == entry[5] then
             return {true, entry[2]}
         end
@@ -156,10 +158,56 @@ function core.Functions.getActiveBFAWorldQuest(zone)
 
 end
 
-function core.Functions.getPersonnalInfoMount(tableauMountDaily)
+function core.Functions.getActiveShadowlandWorldQuest()
+    core.WorlQuestPersoShadowLand = {}
+    for index, entry in ipairs(core.Mounts.worldQuestShadowLand) do
+        
+        local questHasTemps =  C_TaskQuest.GetQuestTimeLeftSeconds(entry[1])
+        local mountTableau = {}
+        
+        if questHasTemps  then
+            for index2, mount in ipairs(entry[6]) do
+                local name,
+                spellID,
+                icon,
+                isActive,
+                isUsable,
+                sourceType,
+                isFavorite,
+                isFactionSpecific,
+                faction,
+                shouldHideOnChar,
+                isCollected,
+                mountID= C_MountJournal.GetMountInfoByID(mount[1])
 
+                if not isCollected then
+                    table.insert(mountTableau, mount)
+                end
+            end          
+        
+            entry[6] = mountTableau
+            entry[2]= true
+            entry[4]= questHasTemps
+            local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry[1])
+            if isCompleted then
+                entry[3]= true
+            end
+
+            if not isCompleted and #entry[6] > 0 then
+                
+                    table.insert(core.WorlQuestPersoShadowLand, entry)
+            end
+        else
+        end
+    end
+
+end
+
+function core.Functions.getPersonnalInfoMount(tableauMountDaily)
+    print (tableauMountDaily[1][1])
     local instanceLock = core.Functions.getInstanceLoked()
     tableauMountDaily.Perso = core.Functions.getIconAndCheckIfMountIsAlreadyCollected(tableauMountDaily)
+    print('gnia')
   
     for _, entry in ipairs(tableauMountDaily.Perso) do
      if next(instanceLock) ~= nil then
