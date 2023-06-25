@@ -166,7 +166,18 @@ core.WorlQuestPersoShadowLand = {}
 
 core.Mounts.MountsRaidWeekly = {
     --idMount,mountName, idInstance, iconMount, isDone, timeBeforeReset, numBoss, mode, nomDj, nomBoss, idDj
-    {304, nil, 	603, nil, nil, nil, 16, "Normal", "Pics-Foudroyers", nil, 244}
+    {304, nil, 	603, nil, nil, nil, 16, "Normal", "Ulduar", nil, 244},
+    {791, nil, 	1530, nil, nil, nil, 10, "Mythique", "Palais Sacrenuit", nil, 1351}
 }
+
+-- idMount [1] = recherche google nom monture + wowhead -> enseigner par 
+-- idInstance [3] = https://wowpedia.fandom.com/wiki/InstanceID
+-- numBoss [7] = la position du boss dans l'instance (visible dans le infoRaid)
+-- mode[8] = Normal, Mythique, Héroïque 
+-- nomDJ [9] = nom du raid
+-- idDJ [11] = reprends le nom en anglais trouver lors de la recherche [3] puis prendre l'id tout a gauche en faisant a attention
+--             que l'id tout a droite corresponde bien au [3]
+--             https://wowpedia.fandom.com/wiki/LfgDungeonID
+
 
 core.Mounts.MountsRaidWeekly.Perso = {}
