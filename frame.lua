@@ -33,10 +33,6 @@ end
 
 local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,color,rowIndex, colIndex, typeEtiquette )
 
-
-
-
-  
   local etiquette = CreateFrame("frame", "etiquette", parent)
   local margeHauteur = 20
     if rowIndex == 0 then
@@ -95,18 +91,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     actionButton.texture = actionButton:CreateTexture(nil, "ARTWORK")
     actionButton.texture:SetAllPoints()
     actionButton.texture:SetTexture("Interface\\Icons\\inv_misc_map_01")
-
-
-
-   
-
-
-    -- if item[3] then
-    --   actionButton.texture:GetNormalTexture():SetDesaturated(true)
-    -- else
-    --   actionButton.texture:GetNormalTexture():SetDesaturated(false)
-    -- end
-   
+  
     
     -- Fonction de gestionnaire d'événements pour le clic du bouton
     actionButton:SetScript("OnClick", function()
@@ -242,17 +227,19 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
 
   ----------------------------CADRE DONJON DAILY ------------------
   local numRowsDaily = math.ceil(#core.Mounts.MountsDonjonDaily.Perso / numColumns)
+
   local heightDonjonDaily = numRowsDaily * (etiquetteH);
   local heightContainerDonjonDaily = heightDonjonDaily+50 + numRowsDaily*20 - 20
 
   local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", 0)
-  local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.Mounts.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
 
+  local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.Mounts.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
   totalHeight = totalHeight + heightContainerDonjonDaily ;
 
 
   ----------------------------CADRE EXPE BFA ------------------
   if next(core.WorlQuestPersoBFA) ~= nil then
+    
     local numRowBFA = math.ceil(#core.WorlQuestPersoBFA / numColumns)
     local heightBFAContainer =  numRowBFA * (etiquetteH)
     local heightContainerBFA = heightBFAContainer+50+ numRowBFA*20 - 20
@@ -283,13 +270,17 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   ------------------- Cadre expe ShadowLand --------------------------------
   if next(core.WorlQuestPersoShadowLand ) ~= nil then
     local numRowShadowLand = math.ceil(#core.WorlQuestPersoShadowLand  / numColumns)
+   print("la")
+    print(core.WorlQuestPersoShadowLand[1][1])
     local heightShadowLandExpe =  numRowShadowLand * (etiquetteH)
     local heightContainerShadowLand = heightShadowLandExpe+50 + numRowShadowLand*20 - 20
   
     local containerQuestLegion = createCadre("containerQuestShadowLand", parent, heightContainerShadowLand, "Emissaire ShadowLand",-(totalHeight+20) )
+  
     heightContainerShadowLand = heightContainerShadowLand + 20
   
     local allQuestLegion = createDataCadre("containerShadowlandQuest", heightShadowLandExpe, containerQuestLegion,core.WorlQuestPersoShadowLand, etiquetteL, etiquetteH, "emissaire" )
+   
     totalHeight = totalHeight + heightContainerShadowLand
   
     

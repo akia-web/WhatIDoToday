@@ -105,8 +105,8 @@ core.WorldQuest.BFA.Alliance = {
     {50600, false, false, 0, "Interface\\Icons\\inv_faction_orderofembers_round", mountOrdreBraise, "Drustvar", nil, "Ordre des braises" }, --ordre des braises
     {50601, false, false, 0, "Interface\\Icons\\inv_stormswake", mountChantorage, "Vallée Chantorage", nil, "Sillage des tempetes" }, -- sillage des tempete
     {50599, false, false, 0, "Interface\\Icons\\inv_proudmooreadmirality", mountPorvaillant, "Rade de Tiragarde", nil, "Amirauté Portvaillant"}, -- Portvaillant
-    {56119, false, false, 0, "Interface\\Icons\\inv_misc_enchantedpearlf" , mountAnkoiens, "Nazjatar", nil, "Ankoïens du brisant"} -- Nazjatar
-
+    {56119, false, false, 0, "Interface\\Icons\\inv_misc_enchantedpearlf" , mountAnkoiens, "Nazjatar", nil, "Ankoïens du brisant"}, -- Nazjatar
+    {52196, false, false, 0, "Interface\\Icons\\inv_alpacamount_brown" , {{1250, false, "Interface\\Icons\\inv_alpacamount_brown"}}, "Vol'dun", nil, "World boss"} -- Tas de fourrures légèrement humides
 }
 
 
@@ -115,8 +115,8 @@ core.WorldQuest.BFA.Horde={
       {50602, false, false, 0, "Interface\\Icons\\inv_talanjisexpedition", mountNazmir, "Nazmir", nil, "Talanji" }, -- talanji
       {50603, false, false, 0, "Interface\\Icons\\inv_voldun", mountVolDun, "Vol'Dun", nil, "Volduni" }, -- Vol'Dun
       {50598, false, false, 0, "Interface\\Icons\\inv_proudmooreadmirality", mountZulDazar, "ZulDazar", nil, "Empire Zandalari"}, -- ZulDazar
-      {56120, false, false, 0, "Interface\\Icons\\inv_misc_enchantedpearlf" , mountAnkoiens, "Nazjatar", nil, "Affranchis"} -- Nazjatar / affranchis
-    
+      {56120, false, false, 0, "Interface\\Icons\\inv_misc_enchantedpearlf" , mountAnkoiens, "Nazjatar", nil, "Affranchis"}, -- Nazjatar / affranchis
+      
 }
 
 core.WorldQuest.Legion = {
@@ -127,7 +127,8 @@ core.WorldQuest.Legion = {
     {42170, false, false, 0, "Interface\\Icons\\inv_legion_faction_dreamweavers" , mountValSharah, "Val'Sharah", nil, "Tisse-rêve"}, -- ValSharah
     {42234, false, false, 0, "Interface\\Icons\\inv_legion_faction_valarjar" , mountTornheim, "Tornheim", nil, "Valarjar"}, -- Tornheim
     {48639, false, false, 0, "Interface\\Icons\\inv_legion_faction_armyofthelight" , mountArmeeDeLaLumiere, "Argus", nil, "Armée de la lumière"}, -- Argus armée de la lumiere
-    {48642, false, false, 0, "Interface\\Icons\\inv_legion_faction_argussianreach" , mountFrontArgusseen, "Argus", nil, "Front argusséen"} -- Argus front argusseen
+    {48642, false, false, 0, "Interface\\Icons\\inv_legion_faction_argussianreach" , mountFrontArgusseen, "Argus", nil, "Front argusséen"}, -- Argus front argusseen
+    
 }
 
 core.Mounts.MountsDonjonWeeks = {
@@ -159,7 +160,8 @@ core.Mounts.WorldBoss.Perso = {}
 core.Mounts.worldQuestShadowLand = {
    --idWorldQuest, isActive, completed, timer, icone, tableau monture, région, objectives, nomReput
     -- {60434, false, false, 0, "", mountSylvarden, "Sylvarden", nil, "nigthFae"}, -- nightFae
-    {60395, false, false, 0, "Interface\\Icons\\inv_rocmaldraxxusmount", mountMaldraxxus, "Maldraxxus", nil, "l'armee immortelle"} -- maldraxxus
+        {60395, false, false, 0, "Interface\\Icons\\inv_rocmaldraxxusmount", mountMaldraxxus, "Maldraxxus", "nil", "l'armee immortelle"}, -- maldraxxus
+        {63543, false, false, 0, "Interface\\Icons\\inv_darkhoundmount_draka_orange",  {{1350, false, "Interface\\Icons\\inv_darkhoundmount_draka_orange"}}, " Antre", "nil", "Assaut NecroSeigneur"} -- Sombredogue immortel
 }
 
 core.WorlQuestPersoShadowLand = {}

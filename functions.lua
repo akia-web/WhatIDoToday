@@ -66,7 +66,7 @@ function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLock
         local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry[4], position)
         local lockedInstanceID = entry[1]
 
-        print (instance .. " " ..lockedInstanceID.. " ".. difficulty .. entry[5])
+        -- print (instance .. " " ..lockedInstanceID.. " ".. difficulty .. entry[5])
         if instance == lockedInstanceID and isKilled  and difficulty == entry[5] then
             return {true, entry[2]}
         end
@@ -130,9 +130,10 @@ function core.Functions.getActiveBFAWorldQuest(zone)
                 if string.find(objectives[1].text, "Accomplir 4") then
                     entry[8] = string.gsub(objectives[1].text, "Accomplir 4", "")
                 else
+                    -- if string.find(objectives[1].text, "Accomplir des") then
                     entry[8] = string.gsub(objectives[1].text, "Accomplir des", "") 
                 end
-            
+                    
                 entry[6] = mountTableau
                 entry[2]= true
                 entry[4]= questHasTemps
