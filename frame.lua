@@ -250,7 +250,7 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   totalHeight = totalHeight + heightContainerEvent ;
   ----------------------------CADRE DONJON DAILY ------------------
 
-
+  if next(core.Mounts.MountsDonjonDaily.Perso) ~= nil then
   local numRowsDaily = math.ceil(#core.Mounts.MountsDonjonDaily.Perso / numColumns)
   local heightDonjonDaily = numRowsDaily * (etiquetteH);
   local heightContainerDonjonDaily = heightDonjonDaily+50 + numRowsDaily*20 - 20
@@ -259,7 +259,7 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   heightContainerDonjonDaily = heightContainerDonjonDaily + 20
   local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.Mounts.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
   totalHeight = totalHeight + heightContainerDonjonDaily ;
-
+  end
 
   ----------------------------CADRE EXPE BFA ------------------
   if next(core.WorlQuestPersoBFA) ~= nil then
