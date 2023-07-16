@@ -19,10 +19,13 @@ local function CreateIconTexture(parent, iconName, isDown, typeIcone, idMount)
         end
       end)
 
-    else if typeIcone == "emissaire" then
+      
+    elseif typeIcone == "emissaire"  then
       button:SetNormalTexture(iconName)
+    elseif typeIcone == "events" then
+      button:SetNormalTexture(iconName)
+
     end
-  end
 
   if isDown then
       button:GetNormalTexture():SetDesaturated(true)
@@ -58,7 +61,8 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
        button = CreateIconTexture(etiquette, item[4], item[5], typeEtiquette, item[1])
     else if typeEtiquette == "emissaire" then
         button = CreateIconTexture(etiquette, item[5], item[3], typeEtiquette, nil)
-
+    elseif typeEtiquette == "events" then
+      button = CreateIconTexture(etiquette, 'Interface\\Icons\\inv_rocmaldraxxusmount',false, 'events', nil)
     end
   end
   
@@ -82,6 +86,8 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
       else
         text:SetText(item[2] .. "\nZone : " .. item[7])
       end
+    elseif typeEtiquette == 'events'then
+      text:SetText(item['title'])
     end
        
 
@@ -151,7 +157,7 @@ local function createDataCadre(nameContainer, heightContainer, elementBottom, ta
 
   data:SetSize(1100, heightContainer)
   data:SetHeight(heightContainer)
-
+print('blibli')
   for _, item in ipairs(tableau) do
     createEtiquette(item, data ,etiquetteL, etiquetteH,textOffsetX , "color", rowIndex, colIndex,type )
     colIndex = colIndex + 1
@@ -218,21 +224,39 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   core.Functions.getActiveBFAWorldQuest("legion")
   core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonDaily)
   core.Functions.getActiveShadowlandWorldQuest()
+  local events = core.Functions.getEventDay()
+
+  for _, event in ipairs(events) do
+    
+    print("Événement :".. event['title'])
+    
+  end
 
   local lastParent = parent;
   local rowIndex, colIndex = 0, 0
   local textOffsetX = 5
   local totalHeight = 0;
 
+  ------------------------- Cadre Events ------------------------
+  local numRowsEvents = math.ceil(#events / numColumns)
 
+  local heightEvents = numRowsEvents * (etiquetteH);
+  local heightContainerEvent = heightEvents+50 + numRowsEvents*20 - 20
+
+  local eventsDay = createCadre("eventsDaily", parent, heightContainerEvent, "Evenements en cours", 0)
+  print('lala')
+  local allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events")
+  print('coucou')
+  totalHeight = totalHeight + heightContainerEvent ;
   ----------------------------CADRE DONJON DAILY ------------------
-  local numRowsDaily = math.ceil(#core.Mounts.MountsDonjonDaily.Perso / numColumns)
 
+
+  local numRowsDaily = math.ceil(#core.Mounts.MountsDonjonDaily.Perso / numColumns)
   local heightDonjonDaily = numRowsDaily * (etiquetteH);
   local heightContainerDonjonDaily = heightDonjonDaily+50 + numRowsDaily*20 - 20
 
-  local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", 0)
-
+  local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", -(totalHeight+20))
+  heightContainerDonjonDaily = heightContainerDonjonDaily + 20
   local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.Mounts.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
   totalHeight = totalHeight + heightContainerDonjonDaily ;
 
@@ -270,7 +294,6 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   ------------------- Cadre expe ShadowLand --------------------------------
   if next(core.WorlQuestPersoShadowLand ) ~= nil then
     local numRowShadowLand = math.ceil(#core.WorlQuestPersoShadowLand  / numColumns)
-   print("la")
     print(core.WorlQuestPersoShadowLand[1][1])
     local heightShadowLandExpe =  numRowShadowLand * (etiquetteH)
     local heightContainerShadowLand = heightShadowLandExpe+50 + numRowShadowLand*20 - 20

@@ -33,7 +33,8 @@ function core.Functions.getInstanceLoked()
 end
 
 function core.Functions.getIconAndCheckIfMountIsAlreadyCollected(liste)
-    liste.Perso = {}
+    -- liste.Perso = {}
+    local result = {}
     
     for index, entry in ipairs(liste) do
         
@@ -49,16 +50,18 @@ function core.Functions.getIconAndCheckIfMountIsAlreadyCollected(liste)
         shouldHideOnChar,
         isCollected,
         mountID= C_MountJournal.GetMountInfoByID(entry[1])
+
         if not isCollected then
             entry[2]=name
             entry[4]=spellID
             local bossName, texture, isKilled, unknown4 = GetLFGDungeonEncounterInfo(entry[11], entry[7])
             entry[10]= bossName
-            table.insert(liste.Perso, entry)      
+            table.insert(result, entry)      
         end
 
     end
-   return liste.Perso
+--    return liste.Perso
+return result
 end
 
 function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLockedInstance, position, difficulty)
@@ -75,9 +78,6 @@ function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLock
 end
 
 function core.Functions.getActiveBFAWorldQuest(zone)
-
-   
-    
 
     local factionGroup = UnitFactionGroup("player")
 
@@ -205,22 +205,29 @@ function core.Functions.getActiveShadowlandWorldQuest()
 end
 
 function core.Functions.getPersonnalInfoMount(tableauMountDaily)
-    print (tableauMountDaily[1][1])
+    tableauMountDaily.Perso = {}
     local instanceLock = core.Functions.getInstanceLoked()
-    tableauMountDaily.Perso = core.Functions.getIconAndCheckIfMountIsAlreadyCollected(tableauMountDaily)
-    print('gnia')
+    local tableau = core.Functions.getIconAndCheckIfMountIsAlreadyCollected(tableauMountDaily)
   
-    for _, entry in ipairs(tableauMountDaily.Perso) do
+    for _, entry in ipairs(tableau) do
      if next(instanceLock) ~= nil then
          local isDone = core.Functions.checkIfMountIsAlreadyDone(entry[1], entry[3],instanceLock, entry[7], entry[8] )
          entry[5] = isDone[1]
          entry[6] = isDone[2]
+         if not isDone[1]  then
+            table.insert(tableauMountDaily.Perso, entry)
+         end
+         
+         
      else
        entry[5]= false;
        entry[6]= 0;
+       table.insert(tableauMountDaily.Perso, entry)
 
      end
     end
+
+    
     
 end
 
@@ -265,4 +272,26 @@ function core.Functions.getWorldBossLocked()
 
     return core.Mounts.WorldBoss.Perso
     
+end
+
+function core.Functions.getEventDay()
+    local result = {}
+    local currentDate = date("*t")
+    local day = currentDate.day
+    print(day)
+  
+    local numDayEvents =  C_Calendar.GetNumDayEvents(0, day)
+    print ('events : ',numDayEvents)
+  
+    for i = 1, numDayEvents do
+        local ligne = {}
+        local event = C_Calendar.GetDayEvent(0, day, i)
+        ligne['id'] = event['eventID']
+        ligne['title'] = event['title']
+        ligne['icon'] = event['iconTexture']
+
+        print(ligne['icon'])
+        table.insert(result, ligne)
+    end
+    return result
 end
