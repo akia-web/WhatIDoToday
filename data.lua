@@ -116,7 +116,7 @@ core.WorldQuest.BFA.Horde={
       {50603, false, false, 0, "Interface\\Icons\\inv_voldun", mountVolDun, "Vol'Dun", nil, "Volduni" }, -- Vol'Dun
       {50598, false, false, 0, "Interface\\Icons\\inv_proudmooreadmirality", mountZulDazar, "ZulDazar", nil, "Empire Zandalari"}, -- ZulDazar
       {56120, false, false, 0, "Interface\\Icons\\inv_misc_enchantedpearlf" , mountAnkoiens, "Nazjatar", nil, "Affranchis"}, -- Nazjatar / affranchis
-      
+      {52196, false, false, 0, "Interface\\Icons\\inv_alpacamount_brown" , {{1250, false, "Interface\\Icons\\inv_alpacamount_brown"}}, "Vol'dun", nil, "World boss"} -- Tas de fourrures légèrement humides
 }
 
 core.WorldQuest.Legion = {
@@ -146,7 +146,6 @@ core.Mounts.MountsDonjonWeeks.Perso = {}
 
 core.Mounts.WorldBoss = {
     --idMount,mountName, questID, iconMount, isDone, timeBeforeReset, nomZone, nomBoss, idDj
-    --BFA
     {473, nil, 32099, nil, nil, nil, "Sommet de Kun-lai", nil, 1704 }, -- sha
     {515, nil, 32098, nil, nil, nil, "Vallée des quatre vents", nil, 1711 }, -- galion
     {542, nil, 32518, nil, nil, nil, "Ile tonnerre", nil, 1785 }, -- nalak
@@ -161,7 +160,9 @@ core.Mounts.worldQuestShadowLand = {
    --idWorldQuest, isActive, completed, timer, icone, tableau monture, région, objectives, nomReput
     -- {60434, false, false, 0, "", mountSylvarden, "Sylvarden", nil, "nigthFae"}, -- nightFae
         {60395, false, false, 0, "Interface\\Icons\\inv_rocmaldraxxusmount", mountMaldraxxus, "Maldraxxus", "nil", "l'armee immortelle"}, -- maldraxxus
-        {63543, false, false, 0, "Interface\\Icons\\inv_darkhoundmount_draka_orange",  {{1350, false, "Interface\\Icons\\inv_darkhoundmount_draka_orange"}}, " Antre", "nil", "Assaut NecroSeigneur"} -- Sombredogue immortel
+        {63543, false, false, 0, "Interface\\Icons\\inv_darkhoundmount_draka_orange",  {{1350, false, "Interface\\Icons\\inv_darkhoundmount_draka_orange"}}, " Antre", "nil", "Assaut NecroSeigneur"}, -- Sombredogue immortel
+        {63823, false, false, 0, "Interface\\Icons\\inv_decomposermountgreen",  {{1476, false, "Interface\\Icons\\inv_decomposermountgreen"}}, " Antre", "nil", "Assaut Fae Nocture"} -- Sombredogue immortel
+        
 }
 
 core.WorlQuestPersoShadowLand = {}
@@ -169,7 +170,10 @@ core.WorlQuestPersoShadowLand = {}
 core.Mounts.MountsRaidWeekly = {
     --idMount,mountName, idInstance, iconMount, isDone, timeBeforeReset, numBoss, mode, nomDj, nomBoss, idDj
     {304, nil, 	603, nil, nil, nil, 16, "Normal", "Ulduar", nil, 244},
-    {791, nil, 	1530, nil, nil, nil, 10, "Mythique", "Palais Sacrenuit", nil, 1351}
+    {791, nil, 	1530, nil, nil, nil, 10, "Mythique", "Palais Sacrenuit", nil, 1351},
+    {168, nil, 	532, nil, nil, nil, 1, "10 joueurs", "Kharazan", nil, 175},
+    {559, nil, 	1136, nil, nil, nil, 14, "Mythique", "", nil, 766},
+    
 }
 
 -- idMount [1] = recherche google nom monture + wowhead -> enseigner par 

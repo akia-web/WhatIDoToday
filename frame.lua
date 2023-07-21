@@ -179,7 +179,8 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
  
 
  --------------------------CADRE DONJON Weeks ------------------
-  local numRowsWeeks = math.ceil(#core.Mounts.MountsDonjonWeeks / numColumns)
+
+  local numRowsWeeks = math.ceil(#core.Mounts.MountsDonjonWeeks.Perso / numColumns)
   local heightDonjonWeeks = numRowsWeeks * (etiquetteH);
   local heightContainerDonjonWeeks = heightDonjonWeeks+50+ numRowsWeeks*20 - 20
 
@@ -251,14 +252,14 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   ----------------------------CADRE DONJON DAILY ------------------
 
   if next(core.Mounts.MountsDonjonDaily.Perso) ~= nil then
-  local numRowsDaily = math.ceil(#core.Mounts.MountsDonjonDaily.Perso / numColumns)
-  local heightDonjonDaily = numRowsDaily * (etiquetteH);
-  local heightContainerDonjonDaily = heightDonjonDaily+50 + numRowsDaily*20 - 20
+    local numRowsDaily = math.ceil(#core.Mounts.MountsDonjonDaily.Perso / numColumns)
+    local heightDonjonDaily = numRowsDaily * (etiquetteH);
+    local heightContainerDonjonDaily = heightDonjonDaily+50 + numRowsDaily*20 - 20
 
-  local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", -(totalHeight+20))
-  heightContainerDonjonDaily = heightContainerDonjonDaily + 20
-  local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.Mounts.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
-  totalHeight = totalHeight + heightContainerDonjonDaily ;
+    local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", -(totalHeight+20))
+    heightContainerDonjonDaily = heightContainerDonjonDaily + 20
+    local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.Mounts.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
+    totalHeight = totalHeight + heightContainerDonjonDaily ;
   end
 
   ----------------------------CADRE EXPE BFA ------------------

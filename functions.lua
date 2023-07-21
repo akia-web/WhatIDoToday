@@ -227,8 +227,8 @@ function core.Functions.getPersonnalInfoMount(tableauMountDaily)
      end
     end
 
-    
-    
+    print('lala : '..#tableauMountDaily.Perso )
+   return tableauMountDaily.Perso 
 end
 
 
