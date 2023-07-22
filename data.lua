@@ -172,7 +172,7 @@ core.Mounts.MountsRaidWeekly = {
     {304, nil, 	603, nil, nil, nil, 16, "Normal", "Ulduar", nil, 244},
     {791, nil, 	1530, nil, nil, nil, 10, "Mythique", "Palais Sacrenuit", nil, 1351},
     {168, nil, 	532, nil, nil, nil, 1, "10 joueurs", "Kharazan", nil, 175},
-    {559, nil, 	1136, nil, nil, nil, 14, "Mythique", "", nil, 766},
+    {559, nil, 	1136, nil, nil, nil, 14, "Mythique", "Siège d'Orgrimmar", nil, 766},
     
 }
 
