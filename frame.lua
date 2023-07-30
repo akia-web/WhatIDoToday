@@ -326,7 +326,7 @@ function core.Frame.createFrameContainer()
   
   frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
   frame.title:SetPoint("TOPLEFT", 16, -10)
-  frame.title:SetText("Ce que je dois faire aujourd'hui")
+  frame.title:SetText("Ce que je dois faire blabla")
   frame:SetFrameStrata("HIGH")
   frame.closeButton = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
   frame.closeButton:SetPoint("TOPRIGHT", -8, -8)
