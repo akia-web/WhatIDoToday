@@ -161,7 +161,9 @@ core.Mounts.worldQuestShadowLand = {
     -- {60434, false, false, 0, "", mountSylvarden, "Sylvarden", nil, "nigthFae"}, -- nightFae
         {60395, false, false, 0, "Interface\\Icons\\inv_rocmaldraxxusmount", mountMaldraxxus, "Maldraxxus", "nil", "l'armee immortelle"}, -- maldraxxus
         {63543, false, false, 0, "Interface\\Icons\\inv_darkhoundmount_draka_orange",  {{1350, false, "Interface\\Icons\\inv_darkhoundmount_draka_orange"}}, " Antre", "nil", "Assaut NecroSeigneur"}, -- Sombredogue immortel
-        {63823, false, false, 0, "Interface\\Icons\\inv_decomposermountgreen",  {{1476, false, "Interface\\Icons\\inv_decomposermountgreen"}}, " Antre", "nil", "Assaut Fae Nocture"} -- Sombredogue immortel
+        {63823, false, false, 0, "Interface\\Icons\\inv_decomposermountgreen",  {{1476, false, "Interface\\Icons\\inv_decomposermountgreen"}}, " Antre", "nil", "Assaut Fae Nocture"}, -- Sombredogue immortel
+        {63822, false, false, 0, "Interface\\Icons\\inv_giantvampirebatmount_purple",  {{1378, false, "Interface\\Icons\\inv_giantvampirebatmount_purple"}}, " Antre", "nil", "Assaut Venthyr"} -- Aile de l’effroi du moissonneur
+        
         
 }
 
