@@ -8,8 +8,14 @@ local function buttonMountArmury(parent, iconName, idMount)
 
   button.texture = button:CreateTexture(nil, "ARTWORK")
   button.texture:SetAllPoints()
-  local iconTexture = GetSpellTexture(iconName)
-  button:SetNormalTexture(iconTexture)
+
+  if string.find(iconName, "Interface") then
+    button:SetNormalTexture(iconName)
+  else
+    local iconTexture = GetSpellTexture(iconName)
+    button:SetNormalTexture(iconTexture)
+  end
+
   button:SetScript("OnMouseDown", function(self, button)
     if IsControlKeyDown()then
       DressUpMount(idMount)
@@ -70,13 +76,12 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     print('au dessus du bouton')
     local button
    
-    if typeEtiquette == "donjonDaily" or typeEtiquette == "worldboss" then
+    if typeEtiquette == "donjon" or typeEtiquette == "worldboss" or typeEtiquette == "emissaire" then
       print('avant de creer le bouton')
        button =  buttonMountArmury(etiquette, item["Icon"], item["MountID"])
        print('bouton creer')
       --  button = CreateIconTexture(etiquette, item[4], item[5], typeEtiquette, item[1])
-    -- else if typeEtiquette == "emissaire" then
-    --     button = CreateIconTexture(etiquette, item[5], item[3], typeEtiquette, nil)
+  
     elseif typeEtiquette == "events" then
       button = CreateIconTexture(etiquette, 'Interface\\Icons\\inv_rocmaldraxxusmount',false, 'events', nil)
     end
@@ -88,10 +93,10 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     text:SetJustifyH("LEFT")
     text:SetPoint("LEFT", button, "RIGHT", textOffsetX, 0)
     print('avant le texte')
-    if typeEtiquette == "donjonDaily" then
-      text:SetText(item["MountName"] .. "\ndonjon : " .. item["DonjonName"] .. "\ndifficulté : " .. item["Mode"] .. "\nboss : " .. item["BossName"])
-    -- elseif typeEtiquette == "emissaire" then
-    --   text:SetText("Zone : " .. item[7] .. "\nRéputation : " .. item[9] .. "\n \n" .. item[8])
+    if typeEtiquette == "donjon" then
+      text:SetText(item["MountName"] .. "\nDonjon : " .. item["DonjonName"] .. "\nDifficulté : " .. item["Mode"] .. "\nBoss : " .. item["BossName"].."\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
+    elseif typeEtiquette == "emissaire" then
+      text:SetText(item["Title"].."\nZone : " .. item["Country"] .. "\nRéputation : " .. item["ReputName"] .. "\n \n" .. item["Objectives"])
     -- elseif typeEtiquette == "worldboss" then
     --   if item[5] then
     --     text:SetText("|cff808080"..item[2] .. "\nZone : " .. item[7])
@@ -186,25 +191,26 @@ local function createDataCadre(nameContainer, heightContainer, elementBottom, ta
 end
 
 
--- local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColumns)
---     core.Functions.getPersonnalInfoMount(core.Mounts.MountsDonjonWeeks)
---     core.Functions.getPersonnalInfoMount(core.Mounts.MountsRaidWeekly)
---     core.Functions.getWorldBossLocked()
---   local totalHeight = 0;
+local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColumns)
+  print('entre dans populate weekly activities')
+    core.Functions.getPersonnalInfoMount(core.MountsDonjonWeeks)
+    -- core.Functions.getPersonnalInfoMount(core.Mounts.MountsRaidWeekly)
+    -- core.Functions.getWorldBossLocked()
+  local totalHeight = 0;
  
 
 --  --------------------------CADRE DONJON Weeks ------------------
+  print('cadre donjonWeek')
+  local numRowsWeeks = math.ceil(#core.MountsDonjonWeeks.Perso / numColumns)
+  local heightDonjonWeeks = numRowsWeeks * (etiquetteH);
+  local heightContainerDonjonWeeks = heightDonjonWeeks+50+ numRowsWeeks*20 - 20
 
---   local numRowsWeeks = math.ceil(#core.Mounts.MountsDonjonWeeks.Perso / numColumns)
---   local heightDonjonWeeks = numRowsWeeks * (etiquetteH);
---   local heightContainerDonjonWeeks = heightDonjonWeeks+50+ numRowsWeeks*20 - 20
-
---   local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "Donjons", 0)
---   local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.Mounts.MountsDonjonWeeks.Perso, etiquetteL, etiquetteH, "donjonDaily")
+  local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "Donjons", 0)
+  local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.MountsDonjonWeeks.Perso, etiquetteL, etiquetteH, "donjon")
   
---   totalHeight = totalHeight + heightContainerDonjonWeeks ;
+  totalHeight = totalHeight + heightContainerDonjonWeeks ;
  
---   parent:SetHeight(totalHeight)
+  parent:SetHeight(totalHeight)
  
 
 --    ----------------------------CADRE World boss ------------------
@@ -219,7 +225,7 @@ end
     
 --    totalHeight = totalHeight + heightContainerWorldBoss
 
-
+      ----------------------------CADRE Raid ------------------
 --    local numRowRaid = math.ceil(#core.Mounts.MountsRaidWeekly.Perso / numColumns)
 --    local heightRaid =  numRowRaid * (etiquetteH)
 --    local heightContainerRaid = heightRaid+50 + numRowRaid*20 - 20
@@ -231,24 +237,24 @@ end
 --    totalHeight = totalHeight + heightContainerRaid
 
 
---    parent:SetHeight(totalHeight)
+   parent:SetHeight(totalHeight)
 
--- end
+end
 
 local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumns)
   print("je suis dans populate activities")
   -- core.Functions.getActiveBFAWorldQuest("BFA")
   -- core.Functions.getActiveBFAWorldQuest("legion")
   core.Functions.getPersonnalInfoMount(core.MountsDonjonDaily)
-  -- core.Functions.getActiveShadowlandWorldQuest()
+  core.Functions.getActiveShadowlandWorldQuest()
   local events = core.Functions.getEventDay()
 
 
-  for _, event in ipairs(events) do
+  -- for _, event in ipairs(events) do
     
-    print("Événement :".. event['title'])
+  --   print("Événement :".. event['title'])
     
-  end
+  -- end
 
   local lastParent = parent;
   local rowIndex, colIndex = 0, 0
@@ -264,7 +270,7 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   local eventsDay = createCadre("eventsDaily", parent, heightContainerEvent, "Evenements en cours", 0)
   local allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events")
   totalHeight = totalHeight + heightContainerEvent ;
-  ----------------------------CADRE DONJON DAILY ------------------
+  --------------------------CADRE DONJON DAILY ------------------
 
   if next(core.MountsDonjonDaily.Perso) ~= nil then
     local numRowsDaily = math.ceil(#core.MountsDonjonDaily.Perso / numColumns)
@@ -273,7 +279,7 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
 
     local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", -(totalHeight+20))
     heightContainerDonjonDaily = heightContainerDonjonDaily + 20
-    local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjonDaily")
+    local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjon")
     totalHeight = totalHeight + heightContainerDonjonDaily ;
     print('fini')
   end
@@ -309,22 +315,22 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   -- end
 
   ------------------- Cadre expe ShadowLand --------------------------------
-  -- if next(core.WorlQuestPersoShadowLand ) ~= nil then
-  --   local numRowShadowLand = math.ceil(#core.WorlQuestPersoShadowLand  / numColumns)
-  --   print(core.WorlQuestPersoShadowLand[1][1])
-  --   local heightShadowLandExpe =  numRowShadowLand * (etiquetteH)
-  --   local heightContainerShadowLand = heightShadowLandExpe+50 + numRowShadowLand*20 - 20
+  if next(core.worldQuestShadowLand.Perso ) ~= nil then
+    local numRowShadowLand = math.ceil(#core.worldQuestShadowLand.Perso  / numColumns)
+    local heightShadowLandExpe =  numRowShadowLand * (etiquetteH)
+    local heightContainerShadowLand = heightShadowLandExpe+50 + numRowShadowLand*20 - 20
   
-  --   local containerQuestLegion = createCadre("containerQuestShadowLand", parent, heightContainerShadowLand, "Emissaire ShadowLand",-(totalHeight+20) )
+    local containerQuestLegion = createCadre("containerQuestShadowLand", parent, heightContainerShadowLand, "Emissaire ShadowLand",-(totalHeight+20) )
   
-  --   heightContainerShadowLand = heightContainerShadowLand + 20
+    heightContainerShadowLand = heightContainerShadowLand + 20
+    print('Emissaires')
   
-  --   local allQuestLegion = createDataCadre("containerShadowlandQuest", heightShadowLandExpe, containerQuestLegion,core.WorlQuestPersoShadowLand, etiquetteL, etiquetteH, "emissaire" )
+    local allQuestLegion = createDataCadre("containerShadowlandQuest", heightShadowLandExpe, containerQuestLegion,core.worldQuestShadowLand.Perso, etiquetteL, etiquetteH, "emissaire" )
    
-  --   totalHeight = totalHeight + heightContainerShadowLand
+    totalHeight = totalHeight + heightContainerShadowLand
   
     
-  --   end
+    end
   parent:SetHeight(totalHeight)
 end
 
@@ -398,30 +404,30 @@ function core.Frame.createFrameContainer()
   
 
 ----------BOUTTON DAILY --------------------
---   local buttonDaily = CreateFrame("Button", nil, LeftPanneau, "UIPanelButtonTemplate")
---   buttonDaily:SetSize(80, 20)
---   buttonDaily:SetPoint("TOP", 0, -10)
---   buttonDaily:SetText("Aujourd'hui")
+  local buttonDaily = CreateFrame("Button", nil, LeftPanneau, "UIPanelButtonTemplate")
+  buttonDaily:SetSize(80, 20)
+  buttonDaily:SetPoint("TOP", 0, -10)
+  buttonDaily:SetText("Aujourd'hui")
 
---   ------Button daily Script-----------------
---   buttonDaily:SetScript("OnClick", function()
---     containerFrame:Hide()
---     containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
---     PopulateDailyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
---   end)
+  ------Button daily Script-----------------
+  buttonDaily:SetScript("OnClick", function()
+    containerFrame:Hide()
+    containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
+    PopulateDailyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
+  end)
   
--- ----------BOUTTON WEEKLY --------------------
---   local weekly = CreateFrame("Button", nil, LeftPanneau, "UIPanelButtonTemplate")
---   weekly:SetSize(80, 20)
---   weekly:SetPoint("BOTTOM", buttonDaily ,0, -300)
---   weekly:SetText("Cette semaine")
+----------BOUTTON WEEKLY --------------------
+  local weekly = CreateFrame("Button", nil, LeftPanneau, "UIPanelButtonTemplate")
+  weekly:SetSize(80, 20)
+  weekly:SetPoint("BOTTOM", buttonDaily ,0, -300)
+  weekly:SetText("Cette semaine")
 
-  ------Button weekly Script-----------------
-  -- weekly:SetScript("OnClick", function()
-  --   containerFrame:Hide()
-  --   containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
-  --   populateWeeklyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
-  --  end)
+  ----Button weekly Script-----------------
+  weekly:SetScript("OnClick", function()
+    containerFrame:Hide()
+    containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
+    populateWeeklyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
+   end)
 
    --------------DONNEES DE DEPART---------------
 

@@ -158,14 +158,14 @@ function core.Functions.getActiveBFAWorldQuest(zone)
 end
 
 function core.Functions.getActiveShadowlandWorldQuest()
-    core.WorlQuestPersoShadowLand = {}
-    for index, entry in ipairs(core.Mounts.worldQuestShadowLand) do
+    core.worldQuestShadowLand.Perso = {}
+    for index, entry in ipairs(core.worldQuestShadowLand) do
         
-        local questHasTemps =  C_TaskQuest.GetQuestTimeLeftSeconds(entry[1])
+        local questHasTemps =  C_TaskQuest.GetQuestTimeLeftSeconds(entry["IdQuest"])
         local mountTableau = {}
         
         if questHasTemps  then
-            for index2, mount in ipairs(entry[6]) do
+            for index2, mount in ipairs(entry["TableauMount"]) do
                 local name,
                 spellID,
                 icon,
@@ -184,17 +184,17 @@ function core.Functions.getActiveShadowlandWorldQuest()
                 end
             end          
         
-            entry[6] = mountTableau
-            entry[2]= true
-            entry[4]= questHasTemps
-            local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry[1])
+            entry["TableauMount"] = mountTableau
+            entry["IsActive"]= true
+            entry["Timer"]= questHasTemps
+            local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry["IdQuest"])
             if isCompleted then
-                entry[3]= true
+                entry["IsCompleted"]= true
             end
 
-            if not isCompleted and #entry[6] > 0 then
+            if not isCompleted and #entry["TableauMount"] > 0 then
                 
-                    table.insert(core.WorlQuestPersoShadowLand, entry)
+                    table.insert(core.worldQuestShadowLand.Perso, entry)
             end
         else
         end
