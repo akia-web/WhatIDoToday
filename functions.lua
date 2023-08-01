@@ -33,7 +33,6 @@ function core.Functions.getInstanceLoked()
 end
 
 function core.Functions.getIconAndCheckIfMountIsAlreadyCollected(liste)
-    -- liste.Perso = {}
     local result = {}
     
     for index, entry in ipairs(liste) do
@@ -49,18 +48,17 @@ function core.Functions.getIconAndCheckIfMountIsAlreadyCollected(liste)
         faction,
         shouldHideOnChar,
         isCollected,
-        mountID= C_MountJournal.GetMountInfoByID(entry[1])
+        mountID= C_MountJournal.GetMountInfoByID(entry["MountID"])
 
         if not isCollected then
-            entry[2]=name
-            entry[4]=spellID
-            local bossName, texture, isKilled, unknown4 = GetLFGDungeonEncounterInfo(entry[11], entry[7])
-            entry[10]= bossName
+            entry["MountName"]=name
+            entry["Icon"]=spellID
+            local bossName, texture, isKilled, unknown4 = GetLFGDungeonEncounterInfo(entry["IdDonjon"], entry["BossPosition"])
+            entry["BossName"]= bossName
             table.insert(result, entry)      
         end
 
     end
---    return liste.Perso
 return result
 end
 
@@ -74,7 +72,7 @@ function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLock
             return {true, entry[2]}
         end
     end
-        return {false, 0, }
+        return {false, 0}
 end
 
 function core.Functions.getActiveBFAWorldQuest(zone)
@@ -206,29 +204,24 @@ end
 
 function core.Functions.getPersonnalInfoMount(tableauMountDaily)
     tableauMountDaily.Perso = {}
+    -- tableauMountDaily.Perso = {MountID = nil, MountName = nil, IdInstance = nil, Icon = nil, IsDone = nil, TimeBeforeReset = nil, BossPosition = nil, Mode = nil, DonjonName = nil, BossName = nil, IdDonjon = nil}
     local instanceLock = core.Functions.getInstanceLoked()
     local tableau = core.Functions.getIconAndCheckIfMountIsAlreadyCollected(tableauMountDaily)
-  
     for _, entry in ipairs(tableau) do
      if next(instanceLock) ~= nil then
-         local isDone = core.Functions.checkIfMountIsAlreadyDone(entry[1], entry[3],instanceLock, entry[7], entry[8] )
-         entry[5] = isDone[1]
-         entry[6] = isDone[2]
+         local isDone = core.Functions.checkIfMountIsAlreadyDone(entry["MountID"], entry["IdInstance"],instanceLock, entry["BossPosition"], entry["Mode"] )
          if not isDone[1]  then
             table.insert(tableauMountDaily.Perso, entry)
          end
          
          
      else
-       entry[5]= false;
-       entry[6]= 0;
+       entry["IsDone"]= false;
+       entry["TimeBeforeReset"]= 0;
        table.insert(tableauMountDaily.Perso, entry)
-
      end
     end
-
-    print('lala : '..#tableauMountDaily.Perso )
-   return tableauMountDaily.Perso 
+   return tableauMountDaily.Perso
 end
 
 

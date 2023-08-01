@@ -1,5 +1,5 @@
 local _,core = ...;
-core.Mounts = {};
+-- core.Mounts = {};
 core.WorldQuest = {};
 core.WorldQuest.BFA = {}
 core.WorlQuestPersoBFA = {}
@@ -88,17 +88,7 @@ local mountMaldraxxus = {
     {1350, false, "Interface\\Icons\\inv_rocmaldraxxusmountblack"} --Fauche-griffe colossal
 }
 
-----------------MOUNT DONJON DAILY--------------------
-core.Mounts.MountsDonjonDaily = { 
-    --idMount,mountName, idInstance, iconMount, isDone, timeBeforeReset, numBoss, mode, nomDj, nomBoss, idDj
-    {410, nil, 859, nil, nil, nil, 2, "Héroïque", "Zul'Gurub", nil, 334 }, -- raptor rouge
-    {264, nil, 575, nil, nil, nil,3, "Héroïque", "Cime d'Utgarde", nil,205 }, -- proto drake bleu
-    {213, nil, 585, nil, nil, nil, 4, "Héroïque", "Terrasse des magistères", nil, 1154}, -- faucon blanc peregrin
 
-    -- raptor rouge
-    -- {264, nil, 575, nil, nil, nil,3, "Heroic", "Cime d'Utgarde", nil,205 }, -- proto drake bleu
-}
-core.Mounts.MountsDonjonDaily.Perso = {}
 
 core.WorldQuest.BFA.Alliance = { 
     --idWorldQuest, isActive, completed, timer, icone, tableau monture, région, objectives, NomRéput

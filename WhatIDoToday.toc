@@ -8,6 +8,9 @@
 
 
 gnia.lua
+data\donjon-daily.lua
+data\emissaire-shadowland.lua
+data\perso.lua
 data.lua
 
 functions.lua
