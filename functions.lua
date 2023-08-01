@@ -1,6 +1,13 @@
 local _,core = ...;
 core.Functions = {};
-
+function core.Functions.contient(tableau, element)
+    for _, valeur in ipairs(tableau) do
+        if valeur == element then
+            return true
+        end
+    end
+    return false
+end
 function core.Functions.getInstanceLoked()
         local numberInstance = GetNumSavedInstances()
         local lokedInstance = {}
@@ -240,7 +247,6 @@ end
 function core.Functions.getWorldBossLocked()
     core.WorldBoss.Perso = {}
     for index, entry in ipairs(core.WorldBoss) do
-        print(entry["MountID"])
         local name,
         spellID,
         icon,
@@ -275,11 +281,31 @@ function core.Functions.getWorldBossLocked()
 end
 
 function core.Functions.getEventDay()
+    C_Calendar.OpenCalendar()
+    local numberInstance = GetNumSavedInstances()
+    local lokedInstance = {}
+    for i = 1, numberInstance do        
+            local name,
+            lockoutId,
+            reset, 
+            difficultyId, 
+            locked, 
+            extended, 
+            instanceIDMostSig, 
+            isRaid, 
+            maxPlayers, 
+            difficultyName, 
+            numEncounters, 
+            encounterProgress, 
+            extendDisabled, 
+            instanceId = GetSavedInstanceInfo(i)
+            table.insert(lokedInstance, name)
+    end
+
+
     local result = {}
     local currentDate = date("*t")
     local day = currentDate.day
-    print(day)
-  
     local numDayEvents =  C_Calendar.GetNumDayEvents(0, day)
     print ('events : ',numDayEvents)
   
@@ -289,9 +315,13 @@ function core.Functions.getEventDay()
         ligne['id'] = event['eventID']
         ligne['title'] = event['title']
         ligne['icon'] = event['iconTexture']
-
         print(ligne['icon'])
-        table.insert(result, ligne)
+        local isDonjonResetEvent = core.Functions.contient(lokedInstance, ligne['title'])
+        
+        if not isDonjonResetEvent then
+            table.insert(result, ligne) 
+        end
+        
     end
     return result
 end

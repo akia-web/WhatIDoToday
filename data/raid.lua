@@ -1,6 +1,6 @@
 local _,core = ...;
 
-core.MountsRaidWeekly = 
+core.MountsRaidWeekly =
 {
 
    {-- tete de mimiron

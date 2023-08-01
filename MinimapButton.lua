@@ -45,16 +45,7 @@ end
 function whatIdoToday:OnDisable()
     self.minimapButton:Hide()
 end
--- local frame = CreateFrame("Frame")
--- frame:RegisterEvent("GROUP_ROSTER_UPDATE")
--- frame:SetScript("OnEvent", function(self, event, ...)
---     local inRaid = IsInRaid()
---     if inRaid then
---         print("Vous êtes maintenant dans un raid.")
---     else
---         print("Vous avez quitté le raid.")
---     end
--- end)
+
 
 
 whatIdoToday:OnEnable()
