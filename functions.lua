@@ -68,7 +68,7 @@ function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLock
     for _, entry in ipairs(tableauLockedInstance) do
         local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry[4], position)
         local lockedInstanceID = entry[1]
-        if bossName == "Gul'dan" then
+        if bossName == "Gul'dan" and isKilled then
             isPalaisSacrenuit = true
         end
         -- print (instance .. " " ..lockedInstanceID.. " ".. difficulty .. entry[5])
