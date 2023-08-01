@@ -134,17 +134,17 @@ core.WorldQuest.Legion = {
 
 -- core.Mounts.MountsDonjonWeeks.Perso = {}
 
-core.Mounts.WorldBoss = {
-    --idMount,mountName, questID, iconMount, isDone, timeBeforeReset, nomZone, nomBoss, idDj
-    {473, nil, 32099, nil, nil, nil, "Sommet de Kun-lai", nil, 1704 }, -- sha
-    {515, nil, 32098, nil, nil, nil, "Vallée des quatre vents", nil, 1711 }, -- galion
-    {542, nil, 32518, nil, nil, nil, "Ile tonnerre", nil, 1785 }, -- nalak
-    {533, nil, 32519, nil, nil, nil, "Ile des géants", nil, 1785 }, -- Navrecorne Primordial cobalt
-    {634, nil, 37464, nil, nil, nil, "Flèches d’arak", nil, 1785 }, -- Faucon des flèches solaire
+-- core.Mounts.WorldBoss = {
+--     --idMount,mountName, questID, iconMount, isDone, timeBeforeReset, nomZone, nomBoss, idDj
+--     {473, nil, 32099, nil, nil, nil, "Sommet de Kun-lai", nil, 1704 }, -- sha
+--     {515, nil, 32098, nil, nil, nil, "Vallée des quatre vents", nil, 1711 }, -- galion
+--     {542, nil, 32518, nil, nil, nil, "Ile tonnerre", nil, 1785 }, -- nalak
+--     {533, nil, 32519, nil, nil, nil, "Ile des géants", nil, 1785 }, -- Navrecorne Primordial cobalt
+--     {634, nil, 37464, nil, nil, nil, "Flèches d’arak", nil, 1785 }, -- Faucon des flèches solaire
     
-}
+-- }
 
-core.Mounts.WorldBoss.Perso = {}
+-- core.Mounts.WorldBoss.Perso = {}
 
 -- core.Mounts.worldQuestShadowLand = {
 --    --idWorldQuest, isActive, completed, timer, icone, tableau monture, région, objectives, nomReput

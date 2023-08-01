@@ -79,7 +79,7 @@ core.MountsDonjonWeeks = {
     {-- Minuit
         MountID = 875, 
         MountName = nil,
-        IdInstance = 1762,
+        IdInstance = 1651,
         Icon = nil,
         IsDone = nil,
         TimeBeforeReset = nil,

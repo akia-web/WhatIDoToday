@@ -11,6 +11,8 @@ gnia.lua
 data\donjon-daily.lua
 data\emissaire-shadowland.lua
 data\donjon-weekly.lua
+data\worlBoss.lua
+data\raid.lua
 data\perso.lua
 data.lua
 

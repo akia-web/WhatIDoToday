@@ -94,15 +94,14 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     text:SetPoint("LEFT", button, "RIGHT", textOffsetX, 0)
     print('avant le texte')
     if typeEtiquette == "donjon" then
+      print(item["MountName"])
+      print(item["MountName"].." "..item["DonjonName"].." "..  item["Mode"].." ".. item["BossName"].." "..item["Continent"].." "..item["Country"])
       text:SetText(item["MountName"] .. "\nDonjon : " .. item["DonjonName"] .. "\nDifficulté : " .. item["Mode"] .. "\nBoss : " .. item["BossName"].."\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
     elseif typeEtiquette == "emissaire" then
       text:SetText(item["Title"].."\nZone : " .. item["Country"] .. "\nRéputation : " .. item["ReputName"] .. "\n \n" .. item["Objectives"])
-    -- elseif typeEtiquette == "worldboss" then
-    --   if item[5] then
-    --     text:SetText("|cff808080"..item[2] .. "\nZone : " .. item[7])
-    --   else
-    --     text:SetText(item[2] .. "\nZone : " .. item[7])
-    --   end
+    elseif typeEtiquette == "worldboss" then
+      text:SetText(item["MountName"] .. "\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
+
     elseif typeEtiquette == 'events'then
       text:SetText(item['title'])
     end
@@ -194,49 +193,53 @@ end
 local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColumns)
   print('entre dans populate weekly activities')
     core.Functions.getPersonnalInfoMount(core.MountsDonjonWeeks)
-    -- core.Functions.getPersonnalInfoMount(core.Mounts.MountsRaidWeekly)
-    -- core.Functions.getWorldBossLocked()
+    core.Functions.getPersonnalInfoMount(core.MountsRaidWeekly)
+    core.Functions.getWorldBossLocked()
   local totalHeight = 0;
  
 
 --  --------------------------CADRE DONJON Weeks ------------------
   print('cadre donjonWeek')
-  local numRowsWeeks = math.ceil(#core.MountsDonjonWeeks.Perso / numColumns)
-  local heightDonjonWeeks = numRowsWeeks * (etiquetteH);
-  local heightContainerDonjonWeeks = heightDonjonWeeks+50+ numRowsWeeks*20 - 20
+  if next(core.MountsDonjonWeeks.Perso) ~= nil then
+    local numRowsWeeks = math.ceil(#core.MountsDonjonWeeks.Perso / numColumns)
+    local heightDonjonWeeks = numRowsWeeks * (etiquetteH);
+    local heightContainerDonjonWeeks = heightDonjonWeeks+50+ numRowsWeeks*20 - 20
 
-  local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "Donjons", 0)
-  local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.MountsDonjonWeeks.Perso, etiquetteL, etiquetteH, "donjon")
+    local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "Donjons", 0)
+    local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.MountsDonjonWeeks.Perso, etiquetteL, etiquetteH, "donjon")
+    
+    totalHeight = totalHeight + heightContainerDonjonWeeks ;
+ 
+  end
+
+   ----------------------------CADRE World boss ------------------
+   print('cadre worldBoss')
+   if next(core.WorldBoss.Perso) ~= nil then
+    local numRowWoldBoss = math.ceil(#core.WorldBoss.Perso / numColumns)
+    local heightWorldBoss =  numRowWoldBoss * (etiquetteH)
+    local heightContainerWorldBoss = heightWorldBoss+50 + numRowWoldBoss*20 - 20
   
-  totalHeight = totalHeight + heightContainerDonjonWeeks ;
- 
-  parent:SetHeight(totalHeight)
- 
-
---    ----------------------------CADRE World boss ------------------
---    local numRowWoldBoss = math.ceil(#core.Mounts.WorldBoss.Perso / numColumns)
---    local heightWorldBoss =  numRowWoldBoss * (etiquetteH)
---    local heightContainerWorldBoss = heightWorldBoss+50 + numRowWoldBoss*20 - 20
- 
---    local containerWorldBoss = createCadre("containerWorldBoss", parent,heightContainerWorldBoss, "WorldBoss", -(totalHeight+20) )
---    heightContainerWorldBoss = heightContainerWorldBoss + 20
-   
---    local allWorldBoss = createDataCadre("containerDataWorldBoss", heightWorldBoss, containerWorldBoss, core.Mounts.WorldBoss.Perso, etiquetteL, etiquetteH, "worldboss")
+    local containerWorldBoss = createCadre("containerWorldBoss", parent,heightContainerWorldBoss, "WorldBoss", -(totalHeight+20) )
+    heightContainerWorldBoss = heightContainerWorldBoss + 20
     
---    totalHeight = totalHeight + heightContainerWorldBoss
-
+    local allWorldBoss = createDataCadre("containerDataWorldBoss", heightWorldBoss, containerWorldBoss, core.WorldBoss.Perso, etiquetteL, etiquetteH, "worldboss")
+      
+    totalHeight = totalHeight + heightContainerWorldBoss
+   end
       ----------------------------CADRE Raid ------------------
---    local numRowRaid = math.ceil(#core.Mounts.MountsRaidWeekly.Perso / numColumns)
---    local heightRaid =  numRowRaid * (etiquetteH)
---    local heightContainerRaid = heightRaid+50 + numRowRaid*20 - 20
- 
---    local containerWorldBoss = createCadre("containerRaid", parent,heightContainerRaid, "Raid", -(totalHeight+20) )
---    heightContainerRaid = heightContainerRaid + 20
---    local allRaid = createDataCadre("containerDataRaid", heightRaid, containerWorldBoss, core.Mounts.MountsRaidWeekly.Perso, etiquetteL, etiquetteH, "donjonDaily")
+    if next(core.WorldBoss.Perso) ~= nil then
+      print('dans raid')
+      local numRowRaid = math.ceil(#core.MountsRaidWeekly.Perso / numColumns)
+      local heightRaid =  numRowRaid * (etiquetteH)
+      local heightContainerRaid = heightRaid+50 + numRowRaid*20 - 20
     
---    totalHeight = totalHeight + heightContainerRaid
+      local containerWorldBoss = createCadre("containerRaid", parent,heightContainerRaid, "Raid", -(totalHeight+20) )
+      heightContainerRaid = heightContainerRaid + 20
+      local allRaid = createDataCadre("containerDataRaid", heightRaid, containerWorldBoss, core.MountsRaidWeekly.Perso, etiquetteL, etiquetteH, "donjon")
+        
+      totalHeight = totalHeight + heightContainerRaid
 
-
+      end
    parent:SetHeight(totalHeight)
 
 end

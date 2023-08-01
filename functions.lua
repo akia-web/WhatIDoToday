@@ -63,12 +63,16 @@ return result
 end
 
 function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLockedInstance, position, difficulty)
+    local isPalaisSacrenuit = false;
+    
     for _, entry in ipairs(tableauLockedInstance) do
         local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry[4], position)
         local lockedInstanceID = entry[1]
-
+        if bossName == "Gul'dan" then
+            isPalaisSacrenuit = true
+        end
         -- print (instance .. " " ..lockedInstanceID.. " ".. difficulty .. entry[5])
-        if instance == lockedInstanceID and isKilled  and difficulty == entry[5] then
+        if instance == lockedInstanceID and isKilled  and difficulty == entry[5] or isPalaisSacrenuit then
             return {true, entry[2]}
         end
     end
@@ -234,9 +238,9 @@ end
 
    
 function core.Functions.getWorldBossLocked()
-    core.Mounts.WorldBoss.Perso = {}
-    for index, entry in ipairs(core.Mounts.WorldBoss) do
-        
+    core.WorldBoss.Perso = {}
+    for index, entry in ipairs(core.WorldBoss) do
+        print(entry["MountID"])
         local name,
         spellID,
         icon,
@@ -248,22 +252,25 @@ function core.Functions.getWorldBossLocked()
         faction,
         shouldHideOnChar,
         isCollected,
-        mountID= C_MountJournal.GetMountInfoByID(entry[1])
+        mountID= C_MountJournal.GetMountInfoByID(entry["MountID"])
         if not isCollected then
-            entry[2]=name
-            entry[4]=spellID
-            table.insert(core.Mounts.WorldBoss.Perso, entry)      
+            entry["MountName"]=name
+            entry["Icon"]=spellID
+            if not C_QuestLog.IsQuestFlaggedCompleted(entry["IdQuest"]) then
+                table.insert(core.WorldBoss.Perso, entry)  
+            end
+                 
         end
 
     end
 
 
-    for _, entry in ipairs(core.Mounts.WorldBoss.Perso) do
-        local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry[3]);
-        entry[5] = isCompleted;
-    end
+    -- for _, entry in ipairs(core.WorldBoss.Perso) do
+    --     local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry[3]);
+    --     entry[5] = isCompleted;
+    -- end
 
-    return core.Mounts.WorldBoss.Perso
+    return core.WorldBoss.Perso
     
 end
 
