@@ -311,11 +311,20 @@ function core.Functions.getEventDay()
   
     for i = 1, numDayEvents do
         local ligne = {}
-        local event = C_Calendar.GetDayEvent(0, day, i)
-        ligne['id'] = event['eventID']
-        ligne['title'] = event['title']
-        ligne['icon'] = event['iconTexture']
-        print(ligne['icon'])
+        -- local event = C_Calendar.GetDayEvent(0, day, i)
+    --    local event =  C_Calendar.GetHolidayInfo
+        local event = C_Calendar.GetHolidayInfo(0, day, i)
+        -- ligne['id'] = event['eventID']
+        ligne['title'] = event['name']
+        ligne['description'] = event['description']
+        ligne['icon'] = event['texture']
+        ligne['start'] = event["startTime"]
+
+        if ligne['start']['monthDay'] ~= day then
+            local startevent = C_Calendar.GetHolidayInfo(0, ligne['start']['monthDay'], i)
+            ligne['icon'] = startevent['texture']
+        end
+
         local isDonjonResetEvent = core.Functions.contient(lokedInstance, ligne['title'])
         
         if not isDonjonResetEvent then

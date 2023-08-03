@@ -25,34 +25,15 @@ local function buttonMountArmury(parent, iconName, idMount)
 end
  local function CreateIconTexture(parent, iconName, isDown, typeIcone, idMount)
    local button = CreateFrame("Button", nil, parent)
-   button:SetSize(50, 50)
+   button:SetSize(100, 100)
 
    button.texture = button:CreateTexture(nil, "ARTWORK")
    button.texture:SetAllPoints()
 
-     if typeIcone == "donjonDaily"  or typeIcone == "worldboss" then
-       local iconTexture = GetSpellTexture(iconName)
-       button:SetNormalTexture(iconTexture)
-       button:SetScript("OnMouseDown", function(self, button)
-         if IsControlKeyDown()then
-           DressUpMount(idMount)
-         end
-       end)
-      
-      
-    --  elseif typeIcone == "emissaire"  then
-    --    button:SetNormalTexture(iconName)
-    elseif typeIcone == "events" then
+
+   if typeIcone == "events" then
        button:SetNormalTexture(iconName)
-      -- local iconTexture = GetSpellTexture(iconName)
-      -- button:SetNormalTexture(iconTexture)
      end
-     
-
-  --  if isDown then
-  --      button:GetNormalTexture():SetDesaturated(true)
-  --  end
-
  return button
  end
 
@@ -82,7 +63,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
        button =  buttonMountArmury(etiquette, item["Icon"], item["MountID"])
   
     elseif typeEtiquette == "events" then
-      button = CreateIconTexture(etiquette, 'item[icon]',false, 'events', nil)
+      button = CreateIconTexture(etiquette, item["icon"],false, 'events', nil)
     end
   
   
@@ -94,6 +75,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     text:SetNonSpaceWrap(true)
     text:SetPoint("LEFT", button, "RIGHT", textOffsetX, 0)
     if typeEtiquette == "donjon" then
+
       text:SetText("\n\n"..item["MountName"] .. "\nDonjon : " .. item["DonjonName"] .. "\nDifficulté : " .. item["Mode"] .. "\nBoss : " .. item["BossName"].."\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
     elseif typeEtiquette == "emissaire" then
       text:SetText(item["Title"].."\nZone : " .. item["Country"] .. "\nRéputation : " .. item["ReputName"] .. "\n \n" .. item["Objectives"])
@@ -101,10 +83,16 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
       text:SetText(item["MountName"] .. "\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
 
     elseif typeEtiquette == 'events'then
+      text:SetWidth(200)
+      text:SetPoint("LEFT", button, "RIGHT", -20, 30)
+      -- text:SetWidth(500)
+      -- text:SetNonSpaceWrap(false)
+      
       text:SetText(item['title'])
+    
     end
     
-    etiquette:SetClipsChildren(true)
+    -- etiquette:SetClipsChildren(true)
 
     -- local actionButton = CreateFrame("Button", nil, etiquette, "UIPanelButtonTemplate")
     -- actionButton:SetSize(25, 25)
