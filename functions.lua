@@ -70,20 +70,33 @@ return result
 end
 
 function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLockedInstance, position, difficulty)
-    local isPalaisSacrenuit = false;
+    -- local isPalaisSacrenuit = false;
     
     for _, entry in ipairs(tableauLockedInstance) do
         local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry[4], position)
         local lockedInstanceID = entry[1]
         if bossName == "Gul'dan" and isKilled then
-            isPalaisSacrenuit = true
+            -- isPalaisSacrenuit = true
         end
         -- print (instance .. " " ..lockedInstanceID.. " ".. difficulty .. entry[5])
-        if instance == lockedInstanceID and isKilled  and difficulty == entry[5] or isPalaisSacrenuit then
-            return {true, entry[2]}
+        print('avant comparaison check')
+        if type(difficulty)=="string" then
+            print('si string')
+            if instance == lockedInstanceID and isKilled  and difficulty == entry[5] then
+                return {true, entry[2]}
+            end
+        else
+            print('si tableau')
+            if instance == lockedInstanceID and isKilled  and core.Functions.contient(difficulty, entry[5]) then
+                return {true, entry[2]}
+            end
         end
-    end
+        print('print')
         return {false, 0}
+   
+        
+    end
+  
 end
 
 function core.Functions.getActiveBFAWorldQuest(zone)
@@ -218,11 +231,25 @@ function core.Functions.getPersonnalInfoMount(tableauMountDaily)
     -- tableauMountDaily.Perso = {MountID = nil, MountName = nil, IdInstance = nil, Icon = nil, IsDone = nil, TimeBeforeReset = nil, BossPosition = nil, Mode = nil, DonjonName = nil, BossName = nil, IdDonjon = nil}
     local instanceLock = core.Functions.getInstanceLoked()
     local tableau = core.Functions.getIconAndCheckIfMountIsAlreadyCollected(tableauMountDaily)
+    local isPalaisSacrenuit = false
+    local palaisSacrenuit = nil
+    local message = nil
     for _, entry in ipairs(tableau) do
      if next(instanceLock) ~= nil then
          local isDone = core.Functions.checkIfMountIsAlreadyDone(entry["MountID"], entry["IdInstance"],instanceLock, entry["BossPosition"], entry["Mode"] )
-         if not isDone[1]  then
+            -- print(isDone[1].." "..entry["DonjonName"])
+        --  print(entry["DonjonName"]=="Palais Sacrenuit"..message )
+         if isDone[1] and entry["DonjonName"]=="Palais Sacrenuit" then
+            print("j'ai deja tuer sacrenuit")
+            isPalaisSacrenuit = true
+         end
+         
+         if not isDone[1] and entry["DonjonName"]~="Palais Sacrenuit" then
             table.insert(tableauMountDaily.Perso, entry)
+         end
+
+         if not isDone[1] and entry["DonjonName"]=="Palais Sacrenuit" then
+            palaisSacrenuit = entry
          end
          
          
@@ -231,6 +258,10 @@ function core.Functions.getPersonnalInfoMount(tableauMountDaily)
        entry["TimeBeforeReset"]= 0;
        table.insert(tableauMountDaily.Perso, entry)
      end
+    end
+
+    if not isPalaisSacrenuit then
+        table.insert(tableauMountDaily.Perso, palaisSacrenuit)
     end
    return tableauMountDaily.Perso
 end

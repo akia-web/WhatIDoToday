@@ -75,8 +75,22 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     text:SetNonSpaceWrap(true)
     text:SetPoint("LEFT", button, "RIGHT", textOffsetX, 0)
     if typeEtiquette == "donjon" then
-
-      text:SetText("\n\n"..item["MountName"] .. "\nDonjon : " .. item["DonjonName"] .. "\nDifficulté : " .. item["Mode"] .. "\nBoss : " .. item["BossName"].."\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
+      print('avant texte etiquette')
+      local mode = ""
+      if type(item["Mode"]) == "string" then
+        print('mode = string')
+        mode = item["Mode"]
+      else
+        for i, str in ipairs(item["Mode"]) do
+          print('mode = string')
+          mode = mode .. str
+          if i < #item["Mode"] then
+            mode = mode .. ", "
+          end
+        end
+      end
+      print(mode)
+      text:SetText("\n\n"..item["MountName"] .. "\nDonjon : " .. item["DonjonName"] .. "\nDifficulté : " .. mode .. "\nBoss : " .. item["BossName"].."\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
     elseif typeEtiquette == "emissaire" then
       text:SetText(item["Title"].."\nZone : " .. item["Country"] .. "\nRéputation : " .. item["ReputName"] .. "\n \n" .. item["Objectives"])
     elseif typeEtiquette == "worldboss" then
@@ -89,47 +103,52 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
       -- text:SetNonSpaceWrap(false)
       
       text:SetText(item['title'])
+
+      local actionButton = CreateFrame("Button", nil, button, "UIPanelButtonTemplate")
+    actionButton:SetSize(25, 25)
+    actionButton:SetPoint("BOTTOMRIGHT",button, "BOTTOMRIGHT", 0 , 20)
+    actionButton.texture = actionButton:CreateTexture(nil, "ARTWORK")
+    actionButton.texture:SetAllPoints()
+    actionButton.texture:SetTexture("Interface\\Icons\\inv_misc_map_01")
+  
+    
+    -- Fonction de gestionnaire d'événements pour le clic du bouton
+    actionButton:SetScript("OnClick", function()
+      print('lala')
+      local mapFrame = CreateFrame("Frame", "StranglethornMapFrame",UIParent )
+      mapFrame:SetSize(500, 500)
+      mapFrame:SetPoint("CENTER")
+      mapFrame:SetClampedToScreen(true)
+      mapFrame:SetMovable(true)
+      mapFrame:EnableMouse(true)
+      mapFrame:RegisterForDrag("LeftButton")
+      mapFrame:SetScript("OnDragStart", mapFrame.StartMoving)
+      mapFrame:SetScript("OnDragStop", mapFrame.StopMovingOrSizing)
+      mapFrame:SetScript("OnHide", mapFrame.StopMovingOrSizing)
+      mapFrame:SetFrameStrata("DIALOG")
+
+ 
+      local mapTexture = mapFrame:CreateTexture(nil, "BACKGROUND")
+      mapTexture:SetAllPoints(mapFrame)
+      mapTexture:SetColorTexture(1, 0.4, 0.6, 0.8) 
+      -- mapTexture:SetAtlas(C_Map.GetMapArtID(50))
+   
+    
+      mapFrame.closeButton = CreateFrame("Button", nil, mapFrame, "UIPanelCloseButton")
+      mapFrame.closeButton:SetPoint("TOPRIGHT", -8, -8)
+      mapFrame.closeButton:SetScript("OnClick", function()
+      mapFrame:Hide()
+      end)
+     
+      mapFrame:Show()
+
+    end)
     
     end
     
     -- etiquette:SetClipsChildren(true)
 
-    -- local actionButton = CreateFrame("Button", nil, etiquette, "UIPanelButtonTemplate")
-    -- actionButton:SetSize(25, 25)
-    -- actionButton:SetPoint("BOTTOMLEFT", 10, 10)
-    -- actionButton.texture = actionButton:CreateTexture(nil, "ARTWORK")
-    -- actionButton.texture:SetAllPoints()
-    -- actionButton.texture:SetTexture("Interface\\Icons\\inv_misc_map_01")
-  
     
-    -- -- Fonction de gestionnaire d'événements pour le clic du bouton
-    -- actionButton:SetScript("OnClick", function()
-    --   local mapFrame = CreateFrame("Frame", "StranglethornMapFrame",UIParent )
-    --   mapFrame:SetSize(500, 500)
-    --   mapFrame:SetPoint("CENTER")
-    --   mapFrame:SetClampedToScreen(true)
-    --   mapFrame:SetMovable(true)
-    --   mapFrame:EnableMouse(true)
-    --   mapFrame:RegisterForDrag("LeftButton")
-    --   mapFrame:SetScript("OnDragStart", mapFrame.StartMoving)
-    --   mapFrame:SetScript("OnDragStop", mapFrame.StopMovingOrSizing)
-    --   mapFrame:SetScript("OnHide", mapFrame.StopMovingOrSizing)
-    --   mapFrame:SetFrameStrata("DIALOG")
- 
-    --   local mapTexture = mapFrame:CreateTexture(nil, "BACKGROUND")
-    --   mapTexture:SetAllPoints(mapFrame)
-    --   -- mapTexture:SetAtlas(C_Map.GetMapArtID(50))
-   
-    
-    --   mapFrame.closeButton = CreateFrame("Button", nil, mapFrame, "UIPanelCloseButton")
-    --   mapFrame.closeButton:SetPoint("TOPRIGHT", -8, -8)
-    --   mapFrame.closeButton:SetScript("OnClick", function()
-    --   mapFrame:Hide()
-    --   end)
-     
-    --   -- mapFrame:Show()
-
-    -- end)
 
   
 end
