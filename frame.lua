@@ -2,6 +2,65 @@ local _,core = ...;
 core.Frame = {};
 
 
+local function CreateIconTexture(parent, iconName, isDown, typeIcone, idMount)
+  local button = CreateFrame("Button", nil, parent)
+  button:SetSize(100, 100)
+
+  button.texture = button:CreateTexture(nil, "ARTWORK")
+  button.texture:SetAllPoints()
+
+
+  if typeIcone == "events" then
+      button:SetNormalTexture(iconName)
+    end
+return button
+end
+
+local function createDetailEventFrame( title, text, endDate, icone, type)
+  local detailFrame = CreateFrame("Frame", "StranglethorndetailFrame",UIParent )
+        detailFrame:SetSize(500, 300)
+        detailFrame:SetPoint("CENTER")
+        detailFrame:SetClampedToScreen(true)
+        detailFrame:SetMovable(true)
+        detailFrame:EnableMouse(true)
+        detailFrame:RegisterForDrag("LeftButton")
+        detailFrame:SetScript("OnDragStart", detailFrame.StartMoving)
+        detailFrame:SetScript("OnDragStop", detailFrame.StopMovingOrSizing)
+        detailFrame:SetScript("OnHide", detailFrame.StopMovingOrSizing)
+        detailFrame:SetFrameStrata("DIALOG")
+        local detailTexture = detailFrame:CreateTexture(nil, "BACKGROUND")
+        detailTexture:SetAllPoints(detailFrame)
+        detailTexture:SetColorTexture(0.5, 0.5, 0.5, 1)
+        detailFrame.closeButton = CreateFrame("Button", nil, detailFrame, "UIPanelCloseButton")
+        detailFrame.closeButton:SetPoint("TOPRIGHT", -8, -8)
+        
+        local button = CreateIconTexture(detailFrame, icone, false, type, nil)
+        button:SetPoint("TOPLEFT",10, -15)
+
+        local texteTitle = detailFrame:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med2")
+        texteTitle:SetPoint("TOP", detailFrame, "TOP", 30, -10)
+        texteTitle:SetJustifyH("LEFT")
+        texteTitle:SetText(title)
+        texteTitle:SetWidth(300)
+        texteTitle:SetNonSpaceWrap(true)
+
+        local textDescription = detailFrame:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med1")
+        textDescription:SetPoint("TOP", texteTitle, "TOP", 0 , -40)
+        textDescription:SetJustifyH("LEFT")
+        textDescription:SetText(text.."\n\n |cFFFFFF00date de fin|r : "..endDate)
+        textDescription:SetWidth(300)
+        textDescription:SetNonSpaceWrap(true)
+        -- textDescription:
+
+        detailFrame.closeButton:SetScript("OnClick", function()
+          core.detailEventFrame = nil
+          detailFrame:Hide()
+        end) 
+          core.detailEventFrame = detailFrame
+      end
+
+
+
 local function buttonMountArmury(parent, iconName, idMount)
   local button = CreateFrame("Button", nil, parent)
   button:SetSize(50, 50)
@@ -23,22 +82,9 @@ local function buttonMountArmury(parent, iconName, idMount)
   end)
   return button
 end
- local function CreateIconTexture(parent, iconName, isDown, typeIcone, idMount)
-   local button = CreateFrame("Button", nil, parent)
-   button:SetSize(100, 100)
 
-   button.texture = button:CreateTexture(nil, "ARTWORK")
-   button.texture:SetAllPoints()
-
-
-   if typeIcone == "events" then
-       button:SetNormalTexture(iconName)
-     end
- return button
- end
 
 local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,color,rowIndex, colIndex, typeEtiquette )
-
   local etiquette = CreateFrame("frame", "etiquette", parent)
   local margeHauteur = 20
     if rowIndex == 0 then
@@ -67,44 +113,43 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     end
   
   
-    button:SetPoint("TOPLEFT",10, -10)
-     
+    button:SetPoint("TOPLEFT",10, -15)
+    local textTitre = etiquette:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med2")
+    textTitre:SetJustifyH("LEFT")
+    textTitre:SetPoint("TOP", etiquette, "TOP", 30, -5)
     local text = etiquette:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med1")
     text:SetJustifyH("LEFT")
-    text:SetWidth(250)
+    text:SetWidth(230)
     text:SetNonSpaceWrap(true)
-    text:SetPoint("LEFT", button, "RIGHT", textOffsetX, 0)
+    textTitre:SetNonSpaceWrap(true)
+    text:SetPoint("TOP", etiquette, "TOP", 30, 0)
     if typeEtiquette == "donjon" then
-      print('avant texte etiquette')
       local mode = ""
       if type(item["Mode"]) == "string" then
-        print('mode = string')
         mode = item["Mode"]
       else
         for i, str in ipairs(item["Mode"]) do
-          print('mode = tableau')
           mode = mode .. str
           if i < #item["Mode"] then
             mode = mode .. ", "
           end
         end
       end
-      print(mode)
-      text:SetText("\n\n"..item["MountName"] .. "\nDonjon : " .. item["DonjonName"] .. "\nDifficulté : " .. mode .. "\nBoss : " .. item["BossName"].."\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
+      textTitre:SetText(item["MountName"])
+      text:SetText("\n\n|cFFFFFF00Donjon|r : " .. item["DonjonName"] .. "\n|cFFFFFF00Difficulté|r : " .. mode .. "\n|cFFFFFF00Boss|r : " .. item["BossName"].."\n|cFFFFFF00Continent|r : ".. item["Continent"] .. "\n|cFFFFFF00Région|r : " .. item["Country"])
     elseif typeEtiquette == "emissaire" then
       text:SetText(item["Title"].."\nZone : " .. item["Country"] .. "\nRéputation : " .. item["ReputName"] .. "\n \n" .. item["Objectives"])
     elseif typeEtiquette == "worldboss" then
-      text:SetText(item["MountName"] .. "\nContinent : ".. item["Continent"] .. "\nRégion : " .. item["Country"])
+      textTitre:SetText(item["MountName"])
+      text:SetText("\n\n|cFFFFFF00Continent|r : ".. item["Continent"] .. "\n|cFFFFFF00Région|r : " .. item["Country"])
 
     elseif typeEtiquette == 'events'then
+      button:SetPoint("TOPLEFT",10, -10)
       text:SetWidth(200)
-      text:SetPoint("LEFT", button, "RIGHT", -20, 30)
-      -- text:SetWidth(500)
-      -- text:SetNonSpaceWrap(false)
-      
+      text:SetPoint("TOP", etiquette, "TOP", 40, -10)      
       text:SetText(item['title'])
 
-      local actionButton = CreateFrame("Button", nil, button, "UIPanelButtonTemplate")
+    local actionButton = CreateFrame("Button", nil, button, "UIPanelButtonTemplate")
     actionButton:SetSize(25, 25)
     actionButton:SetPoint("BOTTOMRIGHT",button, "BOTTOMRIGHT", 0 , 20)
     actionButton.texture = actionButton:CreateTexture(nil, "ARTWORK")
@@ -114,33 +159,17 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     
     -- Fonction de gestionnaire d'événements pour le clic du bouton
     actionButton:SetScript("OnClick", function()
-      print('lala')
-      local mapFrame = CreateFrame("Frame", "StranglethornMapFrame",UIParent )
-      mapFrame:SetSize(500, 500)
-      mapFrame:SetPoint("CENTER")
-      mapFrame:SetClampedToScreen(true)
-      mapFrame:SetMovable(true)
-      mapFrame:EnableMouse(true)
-      mapFrame:RegisterForDrag("LeftButton")
-      mapFrame:SetScript("OnDragStart", mapFrame.StartMoving)
-      mapFrame:SetScript("OnDragStop", mapFrame.StopMovingOrSizing)
-      mapFrame:SetScript("OnHide", mapFrame.StopMovingOrSizing)
-      mapFrame:SetFrameStrata("DIALOG")
-
- 
-      local mapTexture = mapFrame:CreateTexture(nil, "BACKGROUND")
-      mapTexture:SetAllPoints(mapFrame)
-      mapTexture:SetColorTexture(1, 0.4, 0.6, 0.8) 
-      -- mapTexture:SetAtlas(C_Map.GetMapArtID(50))
-   
-    
-      mapFrame.closeButton = CreateFrame("Button", nil, mapFrame, "UIPanelCloseButton")
-      mapFrame.closeButton:SetPoint("TOPRIGHT", -8, -8)
-      mapFrame.closeButton:SetScript("OnClick", function()
-      mapFrame:Hide()
-      end)
+      if core.detailEventFrame then
+        core.detailEventFrame:Hide()
+        -- createDetailEventFrame(item["description"], item["icon"], "events")
+        -- core.detailEventFrame:Show()
+      else
+        -- createDetailEventFrame(item["description"], item["icon"], "events")
+        -- core.detailEventFrame:Show()
+      end
+      createDetailEventFrame(item["title"],item["description"],item["dateFin"], item["icon"], "events")
+      core.detailEventFrame:Show()
      
-      mapFrame:Show()
 
     end)
     
@@ -268,8 +297,10 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
 
   local heightEvents = numRowsEvents * (etiquetteH);
   local heightContainerEvent = heightEvents+50 + numRowsEvents*20 - 20
-
+  
+  print("avant events day cadre")
   local eventsDay = createCadre("eventsDaily", parent, heightContainerEvent, "Evenements en cours", 0)
+  print("avant events day cadre data")
   local allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events")
   totalHeight = totalHeight + heightContainerEvent ;
   --------------------------CADRE DONJON DAILY ------------------

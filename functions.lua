@@ -340,28 +340,42 @@ function core.Functions.getEventDay()
     local numDayEvents =  C_Calendar.GetNumDayEvents(0, day)
     print ('events : ',numDayEvents)
   
-    for i = 1, numDayEvents do
+    for i = 1, 6 do
         local ligne = {}
         -- local event = C_Calendar.GetDayEvent(0, day, i)
     --    local event =  C_Calendar.GetHolidayInfo
         local event = C_Calendar.GetHolidayInfo(0, day, i)
         -- ligne['id'] = event['eventID']
-        ligne['title'] = event['name']
-        ligne['description'] = event['description']
-        ligne['icon'] = event['texture']
-        ligne['start'] = event["startTime"]
+        if event then           
+            ligne['title'] = event['name']
+            ligne['description'] = event['description']
+            ligne['icon'] = event['texture']
+            if event["endTime"] then
+                ligne['dateFin']=event["endTime"]["monthDay"].."/"..event["endTime"]["month"] 
+            else
+                ligne['dateFin'] = "Seulement aujourd'hui"
+            end
+            
+            print(ligne['dateFin'])
+            if event["startTime"] then
+                ligne['start'] = event["startTime"] 
+                if ligne['start']['monthDay'] ~= day then
 
-        if ligne['start']['monthDay'] ~= day then
-            local startevent = C_Calendar.GetHolidayInfo(0, ligne['start']['monthDay'], i)
-            ligne['icon'] = startevent['texture']
-        end
+                    local startevent = C_Calendar.GetHolidayInfo(0, ligne['start']['monthDay'], i)
+                    if startevent then
+                        ligne['icon'] = startevent['texture']
+                    end
+                    
+                    
+                end
+            end
+            
+    
+            
+                table.insert(result, ligne) 
 
-        local isDonjonResetEvent = core.Functions.contient(lokedInstance, ligne['title'])
-        
-        if not isDonjonResetEvent then
-            table.insert(result, ligne) 
         end
-        
     end
+    print("fin getEvents")
     return result
 end
