@@ -82,7 +82,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
         mode = item["Mode"]
       else
         for i, str in ipairs(item["Mode"]) do
-          print('mode = string')
+          print('mode = tableau')
           mode = mode .. str
           if i < #item["Mode"] then
             mode = mode .. ", "
