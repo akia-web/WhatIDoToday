@@ -298,9 +298,7 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   local heightEvents = numRowsEvents * (etiquetteH);
   local heightContainerEvent = heightEvents+50 + numRowsEvents*20 - 20
   
-  print("avant events day cadre")
   local eventsDay = createCadre("eventsDaily", parent, heightContainerEvent, "Evenements en cours", 0)
-  print("avant events day cadre data")
   local allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events")
   totalHeight = totalHeight + heightContainerEvent ;
   --------------------------CADRE DONJON DAILY ------------------

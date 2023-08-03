@@ -79,7 +79,6 @@ function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLock
             -- isPalaisSacrenuit = true
         end
         -- print (instance .. " " ..lockedInstanceID.. " ".. difficulty .. entry[5])
-        print('avant comparaison check')
         if type(difficulty)=="string" then
             print('si string')
             if instance == lockedInstanceID and isKilled  and difficulty == entry[5] then
