@@ -41,6 +41,7 @@ core.MountsRaidWeekly =
         IsDone = nil,
         TimeBeforeReset = nil,
         BossPosition = 10,
+        -- Mode = {"Normal", "Héroïque", "Mythique"},
         Mode = {"Normal", "Héroïque", "Mythique"},
         DonjonName = "Palais Sacrenuit",
         BossName = nil, 

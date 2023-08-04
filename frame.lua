@@ -92,8 +92,6 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     else
       etiquette:SetPoint("TOPLEFT", parent,"TOPLEFT",colIndex * (etiquetteL+30)+10, -rowIndex * (etiquetteH+margeHauteur))
     end
-
-    
     
     etiquette:SetSize(300,100)
    
@@ -154,7 +152,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     actionButton:SetPoint("BOTTOMRIGHT",button, "BOTTOMRIGHT", 0 , 20)
     actionButton.texture = actionButton:CreateTexture(nil, "ARTWORK")
     actionButton.texture:SetAllPoints()
-    actionButton.texture:SetTexture("Interface\\Icons\\inv_misc_map_01")
+    actionButton.texture:SetTexture("Interface\\Icons\\inv_letter_13")
   
     
     -- Fonction de gestionnaire d'événements pour le clic du bouton
@@ -257,7 +255,7 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
     totalHeight = totalHeight + heightContainerWorldBoss
    end
       ----------------------------CADRE Raid ------------------
-    if next(core.WorldBoss.Perso) ~= nil then
+    if next(core.MountsRaidWeekly.Perso) ~= nil then
       local numRowRaid = math.ceil(#core.MountsRaidWeekly.Perso / numColumns)
       local heightRaid =  numRowRaid * (etiquetteH)
       local heightContainerRaid = heightRaid+50 + numRowRaid*20 - 20
