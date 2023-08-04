@@ -4,14 +4,17 @@ core.Frame = {};
 
 local function CreateIconTexture(parent, iconName, isDown, typeIcone, idMount)
   local button = CreateFrame("Button", nil, parent)
-  button:SetSize(100, 100)
-
-  button.texture = button:CreateTexture(nil, "ARTWORK")
-  button.texture:SetAllPoints()
-
-
   if typeIcone == "events" then
+      button:SetSize(100, 100)
+
+      button.texture = button:CreateTexture(nil, "ARTWORK")
+      button.texture:SetAllPoints()
       button:SetNormalTexture(iconName)
+  elseif typeIcone == "emissaire-4-quest" then
+    button:SetSize(50, 50)
+    button.texture = button:CreateTexture(nil, "ARTWORK")
+    button.texture:SetAllPoints()
+    button:SetNormalTexture(iconName)
     end
 return button
 end
@@ -107,7 +110,9 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
        button =  buttonMountArmury(etiquette, item["Icon"], item["MountID"])
   
     elseif typeEtiquette == "events" then
-      button = CreateIconTexture(etiquette, item["icon"],false, 'events', nil)
+      button = CreateIconTexture(etiquette, item["icon"],false, typeEtiquette, nil)
+    elseif typeEtiquette == "emissaire-4-quest" then
+      button = CreateIconTexture(etiquette, item["Icon"],false, typeEtiquette, nil)
     end
   
   
@@ -135,8 +140,9 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
       end
       textTitre:SetText(item["MountName"])
       text:SetText("\n\n|cFFFFFF00Donjon|r : " .. item["DonjonName"] .. "\n|cFFFFFF00Difficulté|r : " .. mode .. "\n|cFFFFFF00Boss|r : " .. item["BossName"].."\n|cFFFFFF00Continent|r : ".. item["Continent"] .. "\n|cFFFFFF00Région|r : " .. item["Country"])
-    elseif typeEtiquette == "emissaire" then
-      text:SetText(item["Title"].."\nZone : " .. item["Country"] .. "\nRéputation : " .. item["ReputName"] .. "\n \n" .. item["Objectives"])
+    elseif typeEtiquette == "emissaire" or typeEtiquette=="emissaire-4-quest" then
+      textTitre:SetText(item["Title"])
+      text:SetText("\n\n|cFFFFFF00Zone|r : " .. item["Country"] .. "\n|cFFFFFF00Réputation|r : " .. item["ReputName"] .. "\n \n" .. item["Objectives"])
     elseif typeEtiquette == "worldboss" then
       textTitre:SetText(item["MountName"])
       text:SetText("\n\n|cFFFFFF00Continent|r : ".. item["Continent"] .. "\n|cFFFFFF00Région|r : " .. item["Country"])
@@ -209,7 +215,6 @@ local function createDataCadre(nameContainer, heightContainer, elementBottom, ta
   
   for _, item in ipairs(tableau) do
     createEtiquette(item, data ,etiquetteL, etiquetteH,textOffsetX , "color", rowIndex, colIndex, type )
-
     colIndex = colIndex + 1
     if colIndex >= 3 then
       colIndex = 0
@@ -273,7 +278,7 @@ end
 
 local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumns)
   -- core.Functions.getActiveBFAWorldQuest("BFA")
-  -- core.Functions.getActiveBFAWorldQuest("legion")
+  core.Functions.getActiveBFAWorldQuest("legion")
   core.Functions.getPersonnalInfoMount(core.MountsDonjonDaily)
   core.Functions.getActiveShadowlandWorldQuest()
   local events = core.Functions.getEventDay()
@@ -328,19 +333,18 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   --   totalHeight = totalHeight + heightContainerBFA
   --  end
   -- ----------------------------CADRE EXPE Legion ------------------
-  -- if next(core.WorlQuestPersoLegion) ~= nil then
-  -- local numRowLegion = math.ceil(#core.WorlQuestPersoLegion / numColumns)
-  -- local heightLegionExpe =  numRowLegion * (etiquetteH)
-  -- local heightContainerLegion = heightLegionExpe+50 + numRowLegion*20 - 20
+  if next(core.WorldQuestLegion.Perso) ~= nil then
+  local numRowLegion = math.ceil(#core.WorldQuestLegion.Perso / numColumns)
+  local heightLegionExpe =  numRowLegion * (etiquetteH)
+  local heightContainerLegion = heightLegionExpe+50 + numRowLegion*20 - 20
 
-  -- local containerQuestLegion = createCadre("containerQuestLegion", parent, heightContainerLegion, "Emissaire Legion",-(totalHeight+20) )
-  -- heightContainerLegion = heightContainerLegion + 20
-
-  -- local allQuestLegion = createDataCadre("containerLegionQuest", heightLegionExpe, containerQuestLegion,core.WorlQuestPersoLegion, etiquetteL, etiquetteH, "emissaire" )
-  -- totalHeight = totalHeight + heightContainerLegion
+  local containerQuestLegion = createCadre("containerQuestLegion", parent, heightContainerLegion, "Emissaire Legion",-(totalHeight+20) )
+  heightContainerLegion = heightContainerLegion + 20
+  local allQuestLegion = createDataCadre("containerLegionQuest", heightLegionExpe, containerQuestLegion,core.WorldQuestLegion.Perso, etiquetteL, etiquetteH, "emissaire-4-quest" )
+  totalHeight = totalHeight + heightContainerLegion
 
   
-  -- end
+  end
 
   ------------------- Cadre expe ShadowLand --------------------------------
   if next(core.worldQuestShadowLand.Perso ) ~= nil then

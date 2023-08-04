@@ -88,7 +88,6 @@ function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLock
 end
 
 function core.Functions.getActiveBFAWorldQuest(zone)
-
     local factionGroup = UnitFactionGroup("player")
 
     local listWorldQuest = {}
@@ -100,8 +99,8 @@ function core.Functions.getActiveBFAWorldQuest(zone)
         core.WorlQuestPersoBFA = {}
         listWorldQuest = core.WorldQuest.BFA.Horde
     elseif  zone == "legion" then
-        core.WorlQuestPersoLegion = {}
-        listWorldQuest = core.WorldQuest.Legion
+        core.WorldQuestLegion.Perso = {}
+        listWorldQuest = core.WorldQuestLegion
     else
 
     end
@@ -114,11 +113,11 @@ function core.Functions.getActiveBFAWorldQuest(zone)
     if isCompletedAllianceBFA or isCompletedHordeBFA or isCompletedLegion then
         
         for index, entry in ipairs(listWorldQuest) do
-            local questHasTemps =  C_TaskQuest.GetQuestTimeLeftSeconds(entry[1])
+            local questHasTemps =  C_TaskQuest.GetQuestTimeLeftSeconds(entry["IdQuest"])
             local mountTableau = {}
             
             if questHasTemps  then
-                for index2, mount in ipairs(entry[6]) do
+                for index2, mount in ipairs(entry["TableauMount"]) do
                     local name,
                     spellID,
                     icon,
@@ -136,36 +135,35 @@ function core.Functions.getActiveBFAWorldQuest(zone)
                         table.insert(mountTableau, mount)
                     end
                 end
-               local objectives =   C_QuestLog.GetQuestObjectives(entry[1])
+               local objectives =   C_QuestLog.GetQuestObjectives(entry["IdQuest"])
                 if string.find(objectives[1].text, "Accomplir 4") then
-                    entry[8] = string.gsub(objectives[1].text, "Accomplir 4", "")
+                    entry["Objectives"] = string.gsub(objectives[1].text, "Accomplir 4", "")
+                elseif  string.find(objectives[1].text, "Achever 4") then
+                    entry["Objectives"] = string.gsub(objectives[1].text, "Achever 4", "")
                 else
                     -- if string.find(objectives[1].text, "Accomplir des") then
-                    entry[8] = string.gsub(objectives[1].text, "Accomplir des", "") 
+                    entry["Objectives"] = string.gsub(objectives[1].text, "Accomplir des", "") 
                 end
                     
-                entry[6] = mountTableau
-                entry[2]= true
-                entry[4]= questHasTemps
-                local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry[1])
+                entry["TableauMount"] = mountTableau
+                entry["IsActive"]= true
+                entry["Timer"]= questHasTemps
+                local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry["IdQuest"])
                 if isCompleted then
-                    entry[3]= true
+                    entry["IsCompleted"]= true
                 end
 
-                if not isCompleted and #entry[6] > 0 then
+                if not isCompleted and #entry["TableauMount"] > 0 then
                     if zone=="BFA" then
                         table.insert(core.WorlQuestPersoBFA, entry)
                     elseif zone=="legion" then
-                        table.insert(core.WorlQuestPersoLegion, entry)
+                        table.insert(core.WorldQuestLegion.Perso, entry)
                     end
                 end
             else
             end
         end
     end
-
-
-
 
 end
 
