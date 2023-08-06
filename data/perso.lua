@@ -5,3 +5,4 @@ core.MountsDonjonWeeks.Perso = {}
 core.WorldBoss.Perso = {}
 core.MountsRaidWeekly.Perso = {}
 core.WorldQuestLegion.Perso = {}
+core.WorlQuestPersoBFA = {}

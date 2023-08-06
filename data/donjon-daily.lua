@@ -1,6 +1,4 @@
 local _,core = ...;
-core.Mounts = {};
-
 core.MountsDonjonDaily = {
     {   -- raptor rouge
         MountID = 410, 
@@ -10,7 +8,8 @@ core.MountsDonjonDaily = {
         IsDone = nil,
         TimeBeforeReset = nil,
         BossPosition = 2,
-        Mode = "Héroïque",
+        Mode = 2,
+        ModeName=nil,
         DonjonName = "Zul'Gurub",
         BossName = nil, 
         IdDonjon =334,
@@ -25,7 +24,8 @@ core.MountsDonjonDaily = {
         IsDone = nil,
         TimeBeforeReset= nil,
         BossPosition = 3,
-        Mode = "Héroïque",
+        Mode = 2,
+        ModeName=nil,
         DonjonName = "Cime d'Utgarde",
         BossName = nil,
         IdDonjon = 205,
@@ -40,7 +40,8 @@ core.MountsDonjonDaily = {
         IsDone = nil,
         TimeBeforeReset = nil,
         BossPosition = 4, 
-        Mode = "Héroïque",
+        Mode = 2,
+        ModeName=nil,
         DonjonName = "Terrasse des magistères",
         BossName = nil,
         IdDonjon = 1154,

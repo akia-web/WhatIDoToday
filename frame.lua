@@ -127,19 +127,8 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     textTitre:SetNonSpaceWrap(true)
     text:SetPoint("TOP", etiquette, "TOP", 30, 0)
     if typeEtiquette == "donjon" then
-      local mode = ""
-      if type(item["Mode"]) == "string" then
-        mode = item["Mode"]
-      else
-        for i, str in ipairs(item["Mode"]) do
-          mode = mode .. str
-          if i < #item["Mode"] then
-            mode = mode .. ", "
-          end
-        end
-      end
       textTitre:SetText(item["MountName"])
-      text:SetText("\n\n|cFFFFFF00Donjon|r : " .. item["DonjonName"] .. "\n|cFFFFFF00Difficulté|r : " .. mode .. "\n|cFFFFFF00Boss|r : " .. item["BossName"].."\n|cFFFFFF00Continent|r : ".. item["Continent"] .. "\n|cFFFFFF00Région|r : " .. item["Country"])
+      text:SetText("\n\n|cFFFFFF00Donjon|r : " .. item["DonjonName"] .. "\n|cFFFFFF00Difficulté|r : " .. item["ModeName"] .. "\n|cFFFFFF00Boss|r : " .. item["BossName"].."\n|cFFFFFF00Continent|r : ".. item["Continent"] .. "\n|cFFFFFF00Région|r : " .. item["Country"])
     elseif typeEtiquette == "emissaire" or typeEtiquette=="emissaire-4-quest" then
       textTitre:SetText(item["Title"])
       text:SetText("\n\n|cFFFFFF00Zone|r : " .. item["Country"] .. "\n|cFFFFFF00Réputation|r : " .. item["ReputName"] .. "\n \n" .. item["Objectives"])
@@ -277,7 +266,7 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
 end
 
 local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumns)
-  -- core.Functions.getActiveBFAWorldQuest("BFA")
+  core.Functions.getActiveBFAWorldQuest("BFA")
   core.Functions.getActiveBFAWorldQuest("legion")
   core.Functions.getPersonnalInfoMount(core.MountsDonjonDaily)
   core.Functions.getActiveShadowlandWorldQuest()
@@ -318,20 +307,20 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   end
 
   ----------------------------CADRE EXPE BFA ------------------
-  -- if next(core.WorlQuestPersoBFA) ~= nil then
+  if next(core.WorlQuestPersoBFA) ~= nil then
     
-  --   local numRowBFA = math.ceil(#core.WorlQuestPersoBFA / numColumns)
-  --   local heightBFAContainer =  numRowBFA * (etiquetteH)
-  --   local heightContainerBFA = heightBFAContainer+50+ numRowBFA*20 - 20
+    local numRowBFA = math.ceil(#core.WorlQuestPersoBFA / numColumns)
+    local heightBFAContainer =  numRowBFA * (etiquetteH)
+    local heightContainerBFA = heightBFAContainer+50+ numRowBFA*20 - 20
 
 
-  --   local containerQuestBFA = createCadre("containerQuestBFA", parent,heightContainerBFA, "Emissaires BFA", -(totalHeight+20) )
-  --   heightContainerBFA = heightContainerBFA + 20
+    local containerQuestBFA = createCadre("containerQuestBFA", parent,heightContainerBFA, "Emissaires BFA", -(totalHeight+20) )
+    heightContainerBFA = heightContainerBFA + 20
     
-  --   local allQuestBFA = createDataCadre("containerQuest", heightBFAContainer, containerQuestBFA, core.WorlQuestPersoBFA, etiquetteL, etiquetteH, "emissaire")
+    local allQuestBFA = createDataCadre("containerQuest", heightBFAContainer, containerQuestBFA, core.WorlQuestPersoBFA, etiquetteL, etiquetteH, "emissaire-4-quest")
     
-  --   totalHeight = totalHeight + heightContainerBFA
-  --  end
+    totalHeight = totalHeight + heightContainerBFA
+   end
   -- ----------------------------CADRE EXPE Legion ------------------
   if next(core.WorldQuestLegion.Perso) ~= nil then
   local numRowLegion = math.ceil(#core.WorldQuestLegion.Perso / numColumns)

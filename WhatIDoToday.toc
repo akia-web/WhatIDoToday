@@ -11,6 +11,8 @@ gnia.lua
 data\donjon-daily.lua
 data\emissaire-shadowland.lua
 data\emissaire-legion.lua
+data\emissaire-bfa-ally.lua
+data\emissaire-bfa-horde.lua
 data\donjon-weekly.lua
 data\worlBoss.lua
 data\raid.lua

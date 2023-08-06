@@ -21,11 +21,11 @@ local _,core = ...;
         IsCompleted = false,
         Timer = 0, 
         Icon = "Interface\\Icons\\inv_darkhoundmount_draka_orange",
-        MountID = 1350,
-        TableauMount = {{1350, false, "Interface\\Icons\\inv_darkhoundmount_draka_orange"}}, 
+        MountID = 1477,
+        TableauMount = {{1477, false, "Interface\\Icons\\inv_darkhoundmount_draka_orange"}}, 
         Country = "Antre",
         Objectives = "nil",
-        ReputName = "Assaut NecroSeigneur",
+        ReputName = "Assaut Necro Seigneur",
         Title = "Assaut"
     },
     {-- Sombredogue immortel

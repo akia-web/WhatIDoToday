@@ -1,5 +1,4 @@
 local _,core = ...;
-core.WorldQuestLegion = {};
 local mountAzsuna = {
    
     {943, false, "Interface\\Icons\\inv_hippogryph2azsuna"} --Hippogriffe nuelle
@@ -42,7 +41,6 @@ core.WorldQuestLegion = {
         IsActive = false,
         IsCompleted = false,
         Timer = 0,
-        -- MountID = 1378,
         Icon = "Interface\\Icons\\inv_legion_faction_nightfallen",
         TableauMount = mountAzsuna,
         Country = "Aszuna",
@@ -55,7 +53,6 @@ core.WorldQuestLegion = {
         IsActive = false,
         IsCompleted = false,
         Timer = 0,
-        -- MountID = 1378,
         Icon = "Interface\\Icons\\inv_legion_faction_nightfallen",
         TableauMount = mountSuramar,
         Country = "Suramar",
@@ -68,7 +65,6 @@ core.WorldQuestLegion = {
         IsActive = false,
         IsCompleted = false,
         Timer = 0,
-        -- MountID = 1378,
         Icon = "Interface\\Icons\\inv_fish_highmountainsalmonred",
         TableauMount = mountHautRoc,
         Country = "Haut-Roc",
@@ -81,7 +77,6 @@ core.WorldQuestLegion = {
         IsActive = false,
         IsCompleted = false,
         Timer = 0,
-        -- MountID = 1378,
         Icon = "Interface\\Icons\\inv_legion_faction_dreamweavers",
         TableauMount = mountValSharah,
         Country = "Val'Sharah",
@@ -94,7 +89,6 @@ core.WorldQuestLegion = {
         IsActive = false,
         IsCompleted = false,
         Timer = 0,
-        -- MountID = 1378,
         Icon = "Interface\\Icons\\inv_legion_faction_valarjar",
         TableauMount = mountTornheim,
         Country = "Tornheim",
@@ -107,7 +101,6 @@ core.WorldQuestLegion = {
         IsActive = false,
         IsCompleted = false,
         Timer = 0,
-        -- MountID = 1378,
         Icon = "Interface\\Icons\\inv_legion_faction_armyofthelight",
         TableauMount = mountArmeeDeLaLumiere,
         Country = "Argus",
@@ -120,7 +113,6 @@ core.WorldQuestLegion = {
      IsActive = false,
      IsCompleted = false,
      Timer = 0,
-     -- MountID = 1378,
      Icon = "Interface\\Icons\\inv_legion_faction_argussianreach",
      TableauMount = mountFrontArgusseen,
      Country = "Argus",
@@ -129,14 +121,3 @@ core.WorldQuestLegion = {
      Title = "Emissaire"
     }
 }
--- core.WorldQuest.Legion = {
---     --idWorldQuest, isActive, completed, timer, icone, tableau monture, région, objectives, nomReput
---    {42420, false, false, 0, "Interface\\Icons\\inv_legioncircle_faction_courtoffarnodis", mountAzsuna, "Aszuna", nil, "Farondis" }, --Aszuna
---    {42421, false, false, 0, "Interface\\Icons\\inv_legion_faction_nightfallen", mountSuramar, "Suramar", nil, "Souffrenuit" }, -- Suramar
---    {42233, false, false, 0, "Interface\\Icons\\inv_fish_highmountainsalmonred", mountHautRoc, "Haut-Roc", nil, "Tribus de Haut-Roc"}, -- HautRoc
---    {42170, false, false, 0, "Interface\\Icons\\inv_legion_faction_dreamweavers" , mountValSharah, "Val'Sharah", nil, "Tisse-rêve"}, -- ValSharah
---    {42234, false, false, 0, "Interface\\Icons\\inv_legion_faction_valarjar" , mountTornheim, "Tornheim", nil, "Valarjar"}, -- Tornheim
---    {48639, false, false, 0, "Interface\\Icons\\inv_legion_faction_armyofthelight" , mountArmeeDeLaLumiere, "Argus", nil, "Armée de la lumière"}, -- Argus armée de la lumiere
---    {48642, false, false, 0, "Interface\\Icons\\inv_legion_faction_argussianreach" , mountFrontArgusseen, "Argus", nil, "Front argusséen"}, -- Argus front argusseen
-   
--- }

@@ -26,16 +26,13 @@ function core.Functions.getInstanceLoked()
                 encounterProgress, 
                 extendDisabled, 
                 instanceId = GetSavedInstanceInfo(i)
+                
                 if locked then
-                    local time
-                    if reset < 86400 then
-                        time = math.floor(reset/3600).."heures"
-                    else 
-                        time = math.floor(reset/86400).."jours "
-                    end
-                    table.insert(lokedInstance, {instanceId, time, name, i, difficultyName})
+                
+                    table.insert(lokedInstance, {instanceId = instanceId, instanceName = name, lockInstancePosition = i, difficultyId = difficultyId})
                 end
         end
+        
         return lokedInstance
 end
 
@@ -68,23 +65,41 @@ function core.Functions.getIconAndCheckIfMountIsAlreadyCollected(liste)
 return result
 end
 
+function core.Functions.getNameDifficulty(instance)
+    local instanceName = ""
+    if tonumber(instance)then
+        local   name, _, _, _, _, _, _ = GetDifficultyInfo(instance)
+        instanceName = name
+    else
+        for i, str in ipairs(instance) do
+            local   name, _, _, _, _, _, _ = GetDifficultyInfo(str)
+            instanceName = instanceName .. name
+            if i < #instance then
+                instanceName = instanceName .. ", "
+            end
+        end    
+    end
+
+    return instanceName
+
+end
 function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLockedInstance, position, difficulty)
     -- local isPalaisSacrenuit = false;
-    
     for _, entry in ipairs(tableauLockedInstance) do
-        local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry[4], position)
-        local lockedInstanceID = entry[1] 
-        if type(difficulty) == "string"then
-            if instance == lockedInstanceID and isKilled  and difficulty == entry[5] then
-                return {true, entry[2]}
+        local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry['lockInstancePosition'], position)
+        local lockedInstanceID = entry["instanceId"] 
+        if tonumber(difficulty) then
+            if instance == lockedInstanceID and isKilled  and difficulty == entry["difficultyId"] then
+                return true
+                
             end
         else
-            if instance == lockedInstanceID and isKilled  and core.Functions.contient(difficulty, entry[5]) then
-                return {true, entry[2]}
+            if instance == lockedInstanceID and isKilled  and core.Functions.contient(difficulty, entry["difficultyId"]) then
+                return true
             end
         end  
     end
-    return {false, 0}
+    return false
 end
 
 function core.Functions.getActiveBFAWorldQuest(zone)
@@ -93,11 +108,11 @@ function core.Functions.getActiveBFAWorldQuest(zone)
     local listWorldQuest = {}
     if factionGroup == "Alliance" and zone == "BFA" then
         core.WorlQuestPersoBFA = {}
-        listWorldQuest = core.WorldQuest.BFA.Alliance
+        listWorldQuest = core.WorldQuestBfaAlliance
     
     elseif factionGroup == "Horde" and zone == "BFA" then
         core.WorlQuestPersoBFA = {}
-        listWorldQuest = core.WorldQuest.BFA.Horde
+        listWorldQuest = core.WorldQuestBfaHorde
     elseif  zone == "legion" then
         core.WorldQuestLegion.Perso = {}
         listWorldQuest = core.WorldQuestLegion
@@ -164,7 +179,6 @@ function core.Functions.getActiveBFAWorldQuest(zone)
             end
         end
     end
-
 end
 
 function core.Functions.getActiveShadowlandWorldQuest()
@@ -219,14 +233,15 @@ function core.Functions.getPersonnalInfoMount(tableauMountDaily)
     local tableau = core.Functions.getIconAndCheckIfMountIsAlreadyCollected(tableauMountDaily)
  
     for _, entry in ipairs(tableau) do
+
+    entry["ModeName"]=core.Functions.getNameDifficulty(entry['Mode'])
      if next(instanceLock) ~= nil then
          local isDone = core.Functions.checkIfMountIsAlreadyDone(entry["MountID"], entry["IdInstance"],instanceLock, entry["BossPosition"], entry["Mode"] )
-         if not isDone[1] then
+         if not isDone then
             table.insert(tableauMountDaily.Perso, entry)
          end
      else
-       entry["IsDone"]= false;
-       entry["TimeBeforeReset"]= 0;
+
        table.insert(tableauMountDaily.Perso, entry)
      end
     end
