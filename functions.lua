@@ -73,6 +73,12 @@ function core.Functions.getNameDifficulty(instance)
     else
         for i, str in ipairs(instance) do
             local   name, _, _, _, _, _, _ = GetDifficultyInfo(str)
+            if string.find(name, "(héroïque)") then
+                name = string.gsub(name, "(héroïque)", "HM")
+            end
+            if string.find(name, "(Heroic)") then
+                name = string.gsub(name, " (Heroic)", "HM")
+            end
             instanceName = instanceName .. name
             if i < #instance then
                 instanceName = instanceName .. ", "

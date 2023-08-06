@@ -1,7 +1,7 @@
 local _,core = ...;
 core.MountsDonjonDaily = {
     {   -- raptor rouge
-        MountID = 410, 
+        MountID = 410,
         MountName = nil,
         IdInstance = 859,
         Icon = nil,
