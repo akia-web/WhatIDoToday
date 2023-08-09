@@ -399,7 +399,7 @@ function core.Frame.createFrameContainer()
   -- LeftPanneau:SetPoint("BOTTOMRIGHT", -32, 30)
   local backgroundTextureLeftPanneau = LeftPanneau:CreateTexture(nil, "BACKGROUND")
   backgroundTextureLeftPanneau:SetAllPoints(LeftPanneau)
-  backgroundTextureLeftPanneau:SetColorTexture(0.5, 1, 0.5, 0.5) 
+  backgroundTextureLeftPanneau:SetColorTexture(core.barres.barreGauche.r, core.barres.barreGauche.g, core.barres.barreGauche.b, 0.5) 
 
 
 

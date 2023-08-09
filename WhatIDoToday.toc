@@ -4,10 +4,12 @@
 ## Notes: what you do today
 ## OptionalDeps: LibSharedMedia-3.0, LibDataBroker-1.1, LibDBIcon-1.0, Ace3
 ## Version: 1.1.1
-
+## SavedVariables: WIDTDB
 
 
 gnia.lua
+data\initialization.lua
+options.lua
 data\donjon-daily.lua
 data\emissaire-shadowland.lua
 data\emissaire-legion.lua
@@ -22,7 +24,7 @@ data.lua
 functions.lua
 frame.lua
 MinimapButton.lua
-libs\LibStub\LibStub.lua
+libs\Ace3\LibStub\LibStub.lua
 libs\Ace3\CallbackHandler-1.0\CallbackHandler-1.0.xml
 libs\Ace3\AceAddon-3.0\AceAddon-3.0.xml
 libs\Ace3\AceEvent-3.0\AceEvent-3.0.xml
