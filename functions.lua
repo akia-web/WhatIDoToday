@@ -325,13 +325,9 @@ function core.Functions.getEventDay()
     local currentDate = date("*t")
     local day = currentDate.day
     local numDayEvents =  C_Calendar.GetNumDayEvents(0, day)
-  
-    for i = 1, 6 do
+    for i = 1, numDayEvents do
         local ligne = {}
-        -- local event = C_Calendar.GetDayEvent(0, day, i)
-    --    local event =  C_Calendar.GetHolidayInfo
         local event = C_Calendar.GetHolidayInfo(0, day, i)
-        -- ligne['id'] = event['eventID']
         if event then           
             ligne['title'] = event['name']
             ligne['description'] = event['description']
@@ -345,15 +341,16 @@ function core.Functions.getEventDay()
             if event["startTime"] then
                 ligne['start'] = event["startTime"] 
                 if ligne['start']['monthDay'] ~= day then
-
-                    local startevent = C_Calendar.GetHolidayInfo(0, ligne['start']['monthDay'], i)
-                    if startevent then
-                        ligne['icon'] = startevent['texture']
+                    local numDayEvents2 =  C_Calendar.GetNumDayEvents(0, ligne['start']['monthDay'])
+                    for j = 1, numDayEvents2 do
+                       local newCalandar =  C_Calendar.GetHolidayInfo(0, ligne['start']['monthDay'], j)
+                        if newCalandar and ligne['title'] == newCalandar["name"] then
+                            ligne['icon'] = newCalandar['texture']
+                        end
                     end
                 end
             end
                 table.insert(result, ligne) 
-
         end
     end
     return result

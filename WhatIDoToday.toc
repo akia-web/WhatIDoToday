@@ -4,7 +4,8 @@
 ## Notes: what you do today
 ## OptionalDeps: LibSharedMedia-3.0, LibDataBroker-1.1, LibDBIcon-1.0, Ace3
 ## Version: 1.1.1
-## SavedVariables: WIDTDB
+## SavedVariables: WIDTDB, WIDTMMDB
+
 
 
 gnia.lua
