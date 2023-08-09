@@ -16,7 +16,6 @@ local WIDT_LDB = LibStub("LibDataBroker-1.1"):NewDataObject("WIDT!", {
             end
         else
             if button == "RightButton" then
-                print('click droit')
                 InterfaceOptionsFrame_OpenToCategory(core.optionFrame);
             end
         end           

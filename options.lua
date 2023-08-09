@@ -274,7 +274,6 @@ function WIDT:resetColor(_,button)
 
 	if button == "LeftButton" then
 		for key, value in pairs(WIDT.db.profile) do
-			print("Key:", key)
 			WIDT.db.profile[key] = defaults.profile[key]
 			core.barres[key] = WIDT.db.profile[key]
 		end
