@@ -1,5 +1,4 @@
 local _,core = ...;
-
 local WIDT_MM = LibStub("AceAddon-3.0"):NewAddon("WIDT_MM ", "AceConsole-3.0")
 local WIDT_LDB = LibStub("LibDataBroker-1.1"):NewDataObject("WIDT!", {
 	type = "data source",
@@ -7,12 +6,19 @@ local WIDT_LDB = LibStub("LibDataBroker-1.1"):NewDataObject("WIDT!", {
 	icon = "Interface\\Icons\\achievement_boss_algalon_01",
 	OnClick = function(_, button) 
 		-- core.Main:Toggle() 
-        if core.FrameAddon then
-            core.FrameAddon:Hide()
-            core.FrameAddon = nil
+        if button == "LeftButton" then
+            if core.FrameAddon then
+                core.FrameAddon:Hide()
+                core.FrameAddon = nil
+            else
+                core.Frame.createFrameContainer()
+                
+            end
         else
-            core.Frame.createFrameContainer()
-            
+            if button == "RightButton" then
+                print('click droit')
+                InterfaceOptionsFrame_OpenToCategory(core.optionFrame);
+            end
         end           
 	end,
     OnTooltipShow = function (tooltip)

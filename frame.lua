@@ -19,7 +19,7 @@ local function CreateIconTexture(parent, iconName, isDown, typeIcone, idMount)
 return button
 end
 
-local function createDetailEventFrame( title, text, endDate, icone, type)
+local function createDetailEventFrame( title, text, endDate, icone, type, color)
   local detailFrame = CreateFrame("Frame", "StranglethorndetailFrame",UIParent )
         detailFrame:SetSize(500, 300)
         detailFrame:SetPoint("CENTER")
@@ -33,7 +33,7 @@ local function createDetailEventFrame( title, text, endDate, icone, type)
         detailFrame:SetFrameStrata("DIALOG")
         local detailTexture = detailFrame:CreateTexture(nil, "BACKGROUND")
         detailTexture:SetAllPoints(detailFrame)
-        detailTexture:SetColorTexture(0.5, 0.5, 0.5, 1)
+        detailTexture:SetColorTexture(color.r, color.g, color.b, 1)
         detailFrame.closeButton = CreateFrame("Button", nil, detailFrame, "UIPanelCloseButton")
         detailFrame.closeButton:SetPoint("TOPRIGHT", -8, -8)
         
@@ -102,7 +102,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     
     backgroundTextureEtiquette:SetAllPoints()
    
-    backgroundTextureEtiquette:SetColorTexture(0.53, 0.81, 0.92, 0.4)
+    backgroundTextureEtiquette:SetColorTexture(color.r, color.g, color.b, 0.4)
    
     local button
    
@@ -160,7 +160,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
         -- createDetailEventFrame(item["description"], item["icon"], "events")
         -- core.detailEventFrame:Show()
       end
-      createDetailEventFrame(item["title"],item["description"],item["dateFin"], item["icon"], "events")
+      createDetailEventFrame(item["title"],item["description"],item["dateFin"], item["icon"], "events", core.barres.eventsPopup)
       core.detailEventFrame:Show()
      
 
@@ -176,14 +176,14 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
 end
 
 
-local function createCadre(nameContainer, parent, heightContainer, containerTiltleText, setPointHeight)
+local function createCadre(nameContainer, parent, heightContainer, containerTiltleText, setPointHeight, color)
   local container = CreateFrame("frame", nameContainer, parent);
   container:SetPoint("TOP", parent, "TOP",0, setPointHeight)
   container:SetSize(1100,heightContainer)
 
   local backgroundContainer = container:CreateTexture(nil, "BACKGROUND")
   backgroundContainer:SetAllPoints(container)
-  backgroundContainer:SetColorTexture(0.9, 0.9, 0.9, 0.2)
+  backgroundContainer:SetColorTexture(color.r,color.g, color.b, 0.2)
 
   local containerTitle = container:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med2")
   containerTitle:SetPoint("TOP", container, "TOP",0 , -10)
@@ -192,7 +192,7 @@ local function createCadre(nameContainer, parent, heightContainer, containerTilt
   return container
 end
 
-local function createDataCadre(nameContainer, heightContainer, elementBottom, tableau, etiquetteL, etiquetteH, type)
+local function createDataCadre(nameContainer, heightContainer, elementBottom, tableau, etiquetteL, etiquetteH, type, color)
   local rowIndex, colIndex = 0, 0
   local textOffsetX = 5
 
@@ -203,7 +203,7 @@ local function createDataCadre(nameContainer, heightContainer, elementBottom, ta
   data:SetHeight(heightContainer)
   
   for _, item in ipairs(tableau) do
-    createEtiquette(item, data ,etiquetteL, etiquetteH,textOffsetX , "color", rowIndex, colIndex, type )
+    createEtiquette(item, data ,etiquetteL, etiquetteH,textOffsetX , color, rowIndex, colIndex, type )
     colIndex = colIndex + 1
     if colIndex >= 3 then
       colIndex = 0
@@ -228,8 +228,8 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
     local heightDonjonWeeks = numRowsWeeks * (etiquetteH);
     local heightContainerDonjonWeeks = heightDonjonWeeks+50+ numRowsWeeks*20 - 20
 
-    local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "Donjons", 0)
-    local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.MountsDonjonWeeks.Perso, etiquetteL, etiquetteH, "donjon")
+    local donjonWeeks = createCadre("donjonWeeks", parent, heightContainerDonjonWeeks, "Donjons", 0, {["r"]=0.9,["g"]=0.9,["b"]=0.9})
+    local allWeeksDJ = createDataCadre("containerDJ", heightDonjonWeeks, donjonWeeks, core.MountsDonjonWeeks.Perso, etiquetteL, etiquetteH, "donjon", {["r"]=0.9,["g"]=0.9,["b"]=0.9})
     
     totalHeight = totalHeight + heightContainerDonjonWeeks ;
  
@@ -241,10 +241,10 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
     local heightWorldBoss =  numRowWoldBoss * (etiquetteH)
     local heightContainerWorldBoss = heightWorldBoss+50 + numRowWoldBoss*20 - 20
   
-    local containerWorldBoss = createCadre("containerWorldBoss", parent,heightContainerWorldBoss, "WorldBoss", -(totalHeight+20) )
+    local containerWorldBoss = createCadre("containerWorldBoss", parent,heightContainerWorldBoss, "WorldBoss", -(totalHeight+20), {["r"]=0.9,["g"]=0.9,["b"]=0.9} )
     heightContainerWorldBoss = heightContainerWorldBoss + 20
     
-    local allWorldBoss = createDataCadre("containerDataWorldBoss", heightWorldBoss, containerWorldBoss, core.WorldBoss.Perso, etiquetteL, etiquetteH, "worldboss")
+    local allWorldBoss = createDataCadre("containerDataWorldBoss", heightWorldBoss, containerWorldBoss, core.WorldBoss.Perso, etiquetteL, etiquetteH, "worldboss", {["r"]=0.9,["g"]=0.9,["b"]=0.9})
       
     totalHeight = totalHeight + heightContainerWorldBoss
    end
@@ -254,9 +254,9 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
       local heightRaid =  numRowRaid * (etiquetteH)
       local heightContainerRaid = heightRaid+50 + numRowRaid*20 - 20
     
-      local containerWorldBoss = createCadre("containerRaid", parent,heightContainerRaid, "Raid", -(totalHeight+20) )
+      local containerWorldBoss = createCadre("containerRaid", parent,heightContainerRaid, "Raid", -(totalHeight+20), {["r"]=0.9,["g"]=0.9,["b"]=0.9} )
       heightContainerRaid = heightContainerRaid + 20
-      local allRaid = createDataCadre("containerDataRaid", heightRaid, containerWorldBoss, core.MountsRaidWeekly.Perso, etiquetteL, etiquetteH, "donjon")
+      local allRaid = createDataCadre("containerDataRaid", heightRaid, containerWorldBoss, core.MountsRaidWeekly.Perso, etiquetteL, etiquetteH, "donjon",{["r"]=0.9,["g"]=0.9,["b"]=0.9})
         
       totalHeight = totalHeight + heightContainerRaid
 
@@ -290,8 +290,8 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   local heightEvents = numRowsEvents * (etiquetteH);
   local heightContainerEvent = heightEvents+50 + numRowsEvents*20 - 20
   
-  local eventsDay = createCadre("eventsDaily", parent, heightContainerEvent, "Evenements en cours", 0)
-  local allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events")
+  local eventsDay = createCadre("eventsDaily", parent, heightContainerEvent, "Evenements en cours", 0, core.barres.eventsFond)
+  local allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events", core.barres.eventsEtiquettes)
   totalHeight = totalHeight + heightContainerEvent ;
   --------------------------CADRE DONJON DAILY ------------------
 
@@ -300,9 +300,9 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
     local heightDonjonDaily = numRowsDaily * (etiquetteH);
     local heightContainerDonjonDaily = heightDonjonDaily+50 + numRowsDaily*20 - 20
 
-    local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", -(totalHeight+20))
+    local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", -(totalHeight+20), core.barres.donjonJourFond)
     heightContainerDonjonDaily = heightContainerDonjonDaily + 20
-    local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjon")
+    local allDailyDJ = createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjon", core.barres.donjonJourEtiquettes)
     totalHeight = totalHeight + heightContainerDonjonDaily ;
   end
 
@@ -314,10 +314,10 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
     local heightContainerBFA = heightBFAContainer+50+ numRowBFA*20 - 20
 
 
-    local containerQuestBFA = createCadre("containerQuestBFA", parent,heightContainerBFA, "Emissaires BFA", -(totalHeight+20) )
+    local containerQuestBFA = createCadre("containerQuestBFA", parent,heightContainerBFA, "Emissaires BFA", -(totalHeight+20), core.barres.bfaFond )
     heightContainerBFA = heightContainerBFA + 20
     
-    local allQuestBFA = createDataCadre("containerQuest", heightBFAContainer, containerQuestBFA, core.WorlQuestPersoBFA, etiquetteL, etiquetteH, "emissaire-4-quest")
+    local allQuestBFA = createDataCadre("containerQuest", heightBFAContainer, containerQuestBFA, core.WorlQuestPersoBFA, etiquetteL, etiquetteH, "emissaire-4-quest", core.barres.bfaEtiquettes)
     
     totalHeight = totalHeight + heightContainerBFA
    end
@@ -327,9 +327,9 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   local heightLegionExpe =  numRowLegion * (etiquetteH)
   local heightContainerLegion = heightLegionExpe+50 + numRowLegion*20 - 20
 
-  local containerQuestLegion = createCadre("containerQuestLegion", parent, heightContainerLegion, "Emissaire Legion",-(totalHeight+20) )
+  local containerQuestLegion = createCadre("containerQuestLegion", parent, heightContainerLegion, "Emissaire Legion",-(totalHeight+20), core.barres.legionFond )
   heightContainerLegion = heightContainerLegion + 20
-  local allQuestLegion = createDataCadre("containerLegionQuest", heightLegionExpe, containerQuestLegion,core.WorldQuestLegion.Perso, etiquetteL, etiquetteH, "emissaire-4-quest" )
+  local allQuestLegion = createDataCadre("containerLegionQuest", heightLegionExpe, containerQuestLegion,core.WorldQuestLegion.Perso, etiquetteL, etiquetteH, "emissaire-4-quest", core.barres.legionEtiquettes )
   totalHeight = totalHeight + heightContainerLegion
 
   
@@ -340,10 +340,10 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
     local numRowShadowLand = math.ceil(#core.worldQuestShadowLand.Perso  / numColumns)
     local heightShadowLandExpe =  numRowShadowLand * (etiquetteH)
     local heightContainerShadowLand = heightShadowLandExpe+50 + numRowShadowLand*20 - 20
-    local containerQuestLegion = createCadre("containerQuestShadowLand", parent, heightContainerShadowLand, "Emissaire ShadowLand",-(totalHeight+20) )
+    local containerQuestLegion = createCadre("containerQuestShadowLand", parent, heightContainerShadowLand, "Emissaire ShadowLand",-(totalHeight+20), core.barres.shadowlandFond )
     heightContainerShadowLand = heightContainerShadowLand + 20
   
-    local allQuestLegion = createDataCadre("containerShadowlandQuest", heightShadowLandExpe, containerQuestLegion,core.worldQuestShadowLand.Perso, etiquetteL, etiquetteH, "emissaire" )
+    local allQuestLegion = createDataCadre("containerShadowlandQuest", heightShadowLandExpe, containerQuestLegion,core.worldQuestShadowLand.Perso, etiquetteL, etiquetteH, "emissaire", core.barres.shadowlandEtiquettes )
    
     totalHeight = totalHeight + heightContainerShadowLand
   
@@ -365,7 +365,7 @@ function core.Frame.createFrameContainer()
   
   frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
   frame.title:SetPoint("TOPLEFT", 16, -10)
-  frame.title:SetText("Ce que je dois faire blabla")
+  frame.title:SetText("Ce que je dois faire")
   frame:SetFrameStrata("HIGH")
   frame.closeButton = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
   frame.closeButton:SetPoint("TOPRIGHT", -8, -8)
