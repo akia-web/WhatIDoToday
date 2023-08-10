@@ -5,7 +5,6 @@ local WIDT_LDB = LibStub("LibDataBroker-1.1"):NewDataObject("WIDT!", {
 	text = "WIDT!",
 	icon = "Interface\\Icons\\achievement_boss_algalon_01",
 	OnClick = function(_, button) 
-		-- core.Main:Toggle() 
         if button == "LeftButton" then
             if core.FrameAddon then
                 core.FrameAddon:Hide()
@@ -25,6 +24,6 @@ local WIDT_LDB = LibStub("LibDataBroker-1.1"):NewDataObject("WIDT!", {
     end,
 })
 local icon = LibStub("LibDBIcon-1.0")
-function WIDT_MM:OnInitialize() -- Obviously you'll need a ## SavedVariables: BunniesDB line in your TOC, duh!
+function WIDT_MM:OnInitialize()
 	self.db = LibStub("AceDB-3.0"):New("WIDTMMDB", { profile = { minimap = { hide = false, }, }, }) icon:Register("WIDT!", WIDT_LDB, self.db.profile.minimap)
 end

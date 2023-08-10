@@ -291,7 +291,24 @@ local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumn
   local heightContainerEvent = heightEvents+50 + numRowsEvents*20 - 20
   
   local eventsDay = createCadre("eventsDaily", parent, heightContainerEvent, "Evenements en cours", 0, core.barres.eventsFond)
-  local allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events", core.barres.eventsEtiquettes)
+  core.allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events", core.barres.eventsEtiquettes)
+  -- local buttonEvents = CreateFrame("Button", nil, eventsDay)
+  -- buttonEvents:SetSize(20, 20)
+  -- buttonEvents.texture = buttonEvents:CreateTexture(nil, "ARTWORK")
+  -- buttonEvents.texture:SetAllPoints()
+  -- buttonEvents:SetNormalTexture("Interface\\Icons\\achievement_boss_algalon_01")
+  -- buttonEvents:SetPoint("TOPRIGHT",-60, -10)
+
+  -- buttonEvents:SetScript("OnClick", function()
+  --   eventsDay:Hide()
+  --   eventsDay = createCadre("eventsDaily", parent, 30, "Evenements en cours", 0, core.barres.eventsFond)
+  --   core.allEvents:Hide()
+    
+
+  --   print('cliquer')
+  -- end)
+
+  
   totalHeight = totalHeight + heightContainerEvent ;
   --------------------------CADRE DONJON DAILY ------------------
 
