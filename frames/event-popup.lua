@@ -2,7 +2,6 @@ local _,core = ...;
 core.PopupEvent = {};
 
 function core.PopupEvent.CreatePopup(color)
-    print('ke suis dans createPopup')
     local detailFrame = CreateFrame("Frame", "StranglethorndetailFrame",UIParent )
     detailFrame:SetSize(500, 300)
     detailFrame:SetPoint("CENTER")
