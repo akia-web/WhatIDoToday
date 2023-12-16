@@ -22,8 +22,14 @@ data\raid.lua
 data\perso.lua
 data.lua
 
+
+
+icones.lua
+text.lua
 functions.lua
+frames\event-popup.lua
 frame.lua
+
 MinimapButton.lua
 libs\Ace3\LibStub\LibStub.lua
 libs\Ace3\CallbackHandler-1.0\CallbackHandler-1.0.xml

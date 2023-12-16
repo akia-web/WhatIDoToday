@@ -331,7 +331,7 @@ function core.Functions.getEventDay()
         if event then           
             ligne['title'] = event['name']
             ligne['description'] = event['description']
-            ligne['icon'] = event['texture']
+            ligne['Icon'] = event['texture']
             if event["endTime"] then
                 ligne['dateFin']=event["endTime"]["monthDay"].."/"..event["endTime"]["month"] 
             else
@@ -345,7 +345,7 @@ function core.Functions.getEventDay()
                     for j = 1, numDayEvents2 do
                        local newCalandar =  C_Calendar.GetHolidayInfo(0, ligne['start']['monthDay'], j)
                         if newCalandar and ligne['title'] == newCalandar["name"] then
-                            ligne['icon'] = newCalandar['texture']
+                            ligne['Icon'] = newCalandar['texture']
                         end
                     end
                 end
@@ -354,4 +354,54 @@ function core.Functions.getEventDay()
         end
     end
     return result
+end
+
+function core.Functions.getArathiRars()
+    local factionGroup = UnitFactionGroup("player")
+    local listRarsQuest = {}
+    if factionGroup == "Alliance" then
+        core.warfrontArathiPerso = {}
+        listRarsQuest = core.warfrontArathiAlly
+    end
+
+    if factionGroup == "Horde" then
+        core.warfrontArathiPerso = {}
+        listRarsQuest = core.warfrontArathHorde
+    end
+
+    for index, entry in ipairs(listRarsQuest) do
+        local questHasTemps =  C_TaskQuest.GetQuestTimeLeftSeconds(entry["IdQuest"])
+        local mountTableau = {}
+
+        if questHasTemps  then
+            
+            local name,
+            spellID,
+            icon,
+            isActive,
+            isUsable,
+            sourceType,
+            isFavorite,
+            isFactionSpecific,
+            faction,
+            shouldHideOnChar,
+            isCollected,
+            mountID= C_MountJournal.GetMountInfoByID(entry['mount']['mountId'])
+
+            if not isCollected then
+                table.insert(mountTableau, entry)
+            end
+            
+            local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry["IdQuest"])
+
+            if isCompleted then
+                entry["IsCompleted"]= true
+            end
+            if not isCompleted and #entry["TableauMount"] > 0 then
+                table.insert(core.warfrontArathiPerso, entry)
+            end
+           
+        end
+    end
+
 end

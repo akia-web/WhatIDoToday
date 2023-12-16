@@ -246,6 +246,7 @@ function WIDT:OnInitialize()
     core.barres.barreGauche = self.db.profile.barreGauche
 	core.barres.donjonJourFond = self.db.profile.donjonJourFond
 	core.barres.donjonJourEtiquettes = self.db.profile.donjonJourEtiquettes
+	core.barres.warfrontEtiquettes = self.db.profile.warfrontEtiquettes
 	core.barres.eventsFond = self.db.profile.eventsFond
 	core.barres.eventsEtiquettes = self.db.profile.eventsEtiquettes
 	core.barres.eventsPopup = self.db.profile.eventsPopup
