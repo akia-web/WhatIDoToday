@@ -7,7 +7,6 @@ local function getIcone(iconName, isSpell)
         return iconName
     else
         if tonumber(iconName) then
-          print('coucou')
             return  GetSpellTexture(iconName)
         else
             return iconName
