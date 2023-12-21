@@ -20,12 +20,15 @@ data\donjon-weekly.lua
 data\worlBoss.lua
 data\raid.lua
 data\perso.lua
+data\warfront-arathi.lua
 data.lua
+data\saisonnalEvent.lua
 
 
 
 icones.lua
 text.lua
+formatDate.lua
 functions.lua
 frames\event-popup.lua
 frame.lua

@@ -244,17 +244,23 @@ function WIDT:OnInitialize()
 	self.optionsFrame = ACD:AddToBlizOptions("WIDT_options", "WIDT")
 	core.optionFrame = self.optionsFrame
     core.barres.barreGauche = self.db.profile.barreGauche
+	-------fond---------------
+	core.barres.eventsFond = self.db.profile.eventsFond
+	core.barres.eventsPopup = self.db.profile.eventsPopup
+	core.barres.eventWinter = self.db.profile.eventWinter
 	core.barres.donjonJourFond = self.db.profile.donjonJourFond
+	core.barres.bfaFond = self.db.profile.bfaFond
+	core.barres.arathieFond = self.db.profile.arathieFond
+	core.barres.legionFond = self.db.profile.legionFond
+	core.barres.shadowlandFond = self.db.profile.shadowlandFond
+	
+	
+	-------Etiquettes---------------
+	core.barres.eventsEtiquettes = self.db.profile.eventsEtiquettes
 	core.barres.donjonJourEtiquettes = self.db.profile.donjonJourEtiquettes
 	core.barres.warfrontEtiquettes = self.db.profile.warfrontEtiquettes
-	core.barres.eventsFond = self.db.profile.eventsFond
-	core.barres.eventsEtiquettes = self.db.profile.eventsEtiquettes
-	core.barres.eventsPopup = self.db.profile.eventsPopup
-	core.barres.legionFond = self.db.profile.legionFond
 	core.barres.legionEtiquettes = self.db.profile.legionEtiquettes
-	core.barres.bfaFond = self.db.profile.bfaFond
 	core.barres.bfaEtiquettes = self.db.profile.bfaEtiquettes
-	core.barres.shadowlandFond = self.db.profile.shadowlandFond
 	core.barres.shadowlandEtiquettes = self.db.profile.shadowlandEtiquettes
 end
 

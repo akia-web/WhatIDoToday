@@ -320,7 +320,6 @@ function core.Functions.getEventDay()
             table.insert(lokedInstance, name)
     end
 
-
     local result = {}
     local currentDate = date("*t")
     local day = currentDate.day
@@ -333,7 +332,7 @@ function core.Functions.getEventDay()
             ligne['description'] = event['description']
             ligne['Icon'] = event['texture']
             if event["endTime"] then
-                ligne['dateFin']=event["endTime"]["monthDay"].."/"..event["endTime"]["month"] 
+                ligne['dateFin']= core.DateFormat.format(event)
             else
                 ligne['dateFin'] = "Seulement aujourd'hui"
             end
@@ -354,54 +353,106 @@ function core.Functions.getEventDay()
         end
     end
     return result
+end 
+
+local function rareIsDown(listRarsQuest)
+    local result = {}
+       for index, entry in ipairs(listRarsQuest) do
+        local mountTableau = {}
+        local name,
+        spellID,
+        icon,
+        isActive,
+        isUsable,
+        sourceType,
+        isFavorite,
+        isFactionSpecific,
+        faction,
+        shouldHideOnChar,
+        isCollected,
+        mountID= C_MountJournal.GetMountInfoByID(entry['MountID'])
+        
+        
+        
+        local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry["IdQuest"])
+        if not isCompleted and not isCollected then
+            entry['MountName'] = name
+            entry['Icon'] = spellID
+            table.insert(result, entry)
+        end
+    end
+    return result
+
 end
 
-function core.Functions.getArathiRars()
+function core.Functions.getWarfrontRares()
+    print('getArathiRars')
     local factionGroup = UnitFactionGroup("player")
-    local listRarsQuest = {}
     if factionGroup == "Alliance" then
         core.warfrontArathiPerso = {}
-        listRarsQuest = core.warfrontArathiAlly
+        core.warfrontDarkshorePerso = {}
+        core.warfrontArathiPerso = rareIsDown(core.warfrontArathiAlly)
+        core.warfrontDarkshorePerso = rareIsDown(core.warfrontDarkshoreAlly)
     end
 
     if factionGroup == "Horde" then
         core.warfrontArathiPerso = {}
-        listRarsQuest = core.warfrontArathHorde
+        core.warfrontDarkshorePerso = core.warfrontDarkshorePerso
+        core.warfrontArathiPerso = rareIsDown(core.warfrontArathHorde)
+        core.warfrontDarkshorePerso = rareIsDown(core.warfrontDarkshoreHorde)
     end
 
-    for index, entry in ipairs(listRarsQuest) do
-        local questHasTemps =  C_TaskQuest.GetQuestTimeLeftSeconds(entry["IdQuest"])
-        local mountTableau = {}
+ 
+end
 
-        if questHasTemps  then
-            
-            local name,
-            spellID,
-            icon,
-            isActive,
-            isUsable,
-            sourceType,
-            isFavorite,
-            isFactionSpecific,
-            faction,
-            shouldHideOnChar,
-            isCollected,
-            mountID= C_MountJournal.GetMountInfoByID(entry['mount']['mountId'])
+local function allQuestAreCompleted(tableau)
+    for i = 1, #tableau do
+    --  local quest = C_QuestLog.IsQuestFlaggedCompleted(tableau[i])
+        if not C_QuestLog.IsQuestFlaggedCompleted(tableau[i])then
+           return false
+        end
+    end
+    return true
+end
 
-            if not isCollected then
-                table.insert(mountTableau, entry)
-            end
-            
-            local isCompleted = C_QuestLog.IsQuestFlaggedCompleted(entry["IdQuest"])
-
-            if isCompleted then
-                entry["IsCompleted"]= true
-            end
-            if not isCompleted and #entry["TableauMount"] > 0 then
-                table.insert(core.warfrontArathiPerso, entry)
-            end
-           
+function core.Functions.getSaisonnalEvent()
+    core.saisonnalEvent.Perso = {}
+    local currentDate = date("*t")
+    local day = currentDate.day
+    C_Calendar.OpenCalendar()
+    local numDayEvents =  C_Calendar.GetNumDayEvents(0, day)
+    local isThereWinterEvent = false
+    local questCompleted = false
+    
+    for i = 1, numDayEvents do
+        local event = C_Calendar.GetHolidayInfo(0, day, i)
+        if event and (event['name'] == 'Feast of Winter Veil' or event['name'] == "Voile d'hiver") then
+            isThereWinterEvent = true
         end
     end
 
-end
+    if not isThereWinterEvent then
+        return
+    end
+
+    questCompleted = allQuestAreCompleted(core.saisonnalEvent[1]['IdQuest'])
+
+    local name,
+    spellID,
+    icon,
+    isActive,
+    isUsable,
+    sourceType,
+    isFavorite,
+    isFactionSpecific,
+    faction,
+    shouldHideOnChar,
+    isCollected,
+    mountID= C_MountJournal.GetMountInfoByID(core.saisonnalEvent[1]['MountID'])
+    core.saisonnalEvent[1]['MountName'] = name
+    core.saisonnalEvent[1]['Icon'] = spellID
+
+    if isThereWinterEvent and not isCollected and not questCompleted  then
+        core.saisonnalEvent.Perso = core.saisonnalEvent
+    end
+end 

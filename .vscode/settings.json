@@ -11,6 +11,7 @@
         "resultMountInstance",
         "createFrameContainer",
         "allMountByPerso",
-        "lala"
+        "lala",
+        "questHasTemps"
     ]
 }

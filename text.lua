@@ -1,5 +1,8 @@
 local _,core = ...;
 core.Text = {};
+local function yelloColor(text)
+    return '|cFFFFFF00'..text..'|r : '
+end
 
 local function getTextDonjonRaid(item)
     return {
@@ -22,10 +25,17 @@ local function getTextWorlboss(item)
     }
 end
 
+local function getTextWarfront(item)
+    return {
+        title = item["MountName"],
+        description = ''
+    }
+end
+
 local function getTextEvent(item)
     return {
         title = item["title"],
-        description = ''
+        description = "\n\n\n  |cFFFFFF00Fin|r : "..item['dateFin']
     }
 end
 
@@ -33,6 +43,17 @@ local function getTextPopupEvent(item)
     return {
         title = item["title"],
         description = item["description"].."\n\n |cFFFFFF00date de fin|r : "..item["dateFin"]
+    }
+end
+
+local function getTextPopupEventWinter(item)
+    return {
+        title = item["MountName"],
+        description = "\n\n" .. yelloColor('Continent').. item["Continent"] .. 
+        "\n" .. yelloColor('Région')..item["Country"] .. 
+        "\n" .. yelloColor('Pré-requis') .. item["Requirement"]..
+        "\n".. yelloColor('Monnaie')..item["Monnaie"] ..
+        "\n" ..yelloColor('Achat PNJ').. item["Consigne"]
     }
 end
 
@@ -49,6 +70,10 @@ function core.Text.GetText(type, item)
     
     elseif type == 'event-popup' then
         return getTextPopupEvent(item)
+    elseif type== 'warfront' then
+        return getTextWarfront(item)
+    elseif type=='saisonnalEvent' then
+       return getTextPopupEventWinter(item)
     end
 
 
