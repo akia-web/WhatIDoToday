@@ -352,7 +352,7 @@ function core.Functions.getEventDay()
                 table.insert(result, ligne) 
         end
     end
-    return result
+    core.Calendar = result
 end 
 
 local function rareIsDown(listRarsQuest)
@@ -386,7 +386,6 @@ local function rareIsDown(listRarsQuest)
 end
 
 function core.Functions.getWarfrontRares()
-    print('getArathiRars')
     local factionGroup = UnitFactionGroup("player")
     if factionGroup == "Alliance" then
         core.warfrontArathiPerso = {}

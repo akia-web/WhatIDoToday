@@ -4,7 +4,6 @@ core.PopupEvent = {}
 local function getIcone(iconName, isSpell) 
 
     if not isSpell then
-      print('not spell')
         return iconName
     else
         if tonumber(iconName) then

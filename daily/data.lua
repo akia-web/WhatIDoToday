@@ -1,0 +1,117 @@
+local _,core = ...;
+
+core.activityDaily = {
+    events = {
+        active = false,
+        data = core.Calendar,
+        etiquetteH = 100,
+        etiquetteL = 300,
+        colorEtiquette = core.barres.eventsEtiquettes,
+        etiquetteByLine = 3,
+        containerName = 'eventsDaily',
+        containerEtiquetteName = 'containerEvents',
+        name = 'Évenements en cours',
+        typeEtiquettes = 'events',
+        colorCadre = core.fondColor,
+        sizeButton = 70
+    },
+    saisonnalEvent = {
+        active = false,
+        data = core.saisonnalEvent.Perso,
+        etiquetteH = 100,
+        etiquetteL = 300,
+        colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
+        etiquetteByLine = 3,
+        containerName = 'SaisonnalEvent',
+        containerEtiquetteName = 'containerSaisonnalEvent',
+        name = 'Évenement saisonnier',
+        typeEtiquettes = 'saisonnalEvent',
+        colorCadre = core.fondColor,
+        sizeButton = 50
+    },
+    donjonJour={
+        active = false,
+        data = core.MountsDonjonDaily.Perso,
+        etiquetteH = 100,
+        etiquetteL = 300,
+        colorEtiquette = core.barres.donjonJourEtiquettes,
+        etiquetteByLine = 3,
+        containerName = 'donjonDaily',
+        containerEtiquetteName = 'containerDonjonDaily',
+        name = 'Donjons',
+        typeEtiquettes = 'donjon',
+        colorCadre = core.fondColor,
+        sizeButton = 50
+    },
+    legion = {
+        active = false,
+        data = core.WorldQuestLegion.Perso,
+        etiquetteH = 100,
+        etiquetteL = 300,
+        colorEtiquette = core.barres.legionEtiquettes,
+        etiquetteByLine = 3,
+        containerName = 'Legion',
+        containerEtiquetteName = 'containerLegion',
+        name = 'Émissaire Legion',
+        typeEtiquettes = 'emissaire-4-quest',
+        colorCadre = core.fondColor,
+        sizeButton = 50
+    },
+    BFA = {
+        active = false,
+        data = core.WorlQuestPersoBFA,
+        etiquetteH = 100,
+        etiquetteL = 300,
+        colorEtiquette = core.barres.bfaEtiquettes,
+        etiquetteByLine = 3,
+        containerName = 'BFA',
+        containerEtiquetteName = 'containerBFA',
+        name = 'Émissaires BFA',
+        typeEtiquettes = 'emissaire-4-quest',
+        colorCadre = core.fondColor,
+        sizeButton = 50
+    },
+    arathie = {
+        active = false,
+        data = core.warfrontArathiPerso,
+        etiquetteH = 100,
+        etiquetteL = 300,
+        colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
+        etiquetteByLine = 3,
+        containerName = 'containerArathie',
+        containerEtiquetteName = 'containerQuestArathie',
+        name = 'Warfront Arathies',
+        typeEtiquettes = 'warfront',
+        colorCadre = core.fondColor,
+        sizeButton = 50
+    },
+    darshore = {
+        active = false,
+        data = core.warfrontDarkshorePerso,
+        etiquetteH = 100,
+        etiquetteL = 300,
+        colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
+        etiquetteByLine = 3,
+        containerName = 'containerDarkshore',
+        containerEtiquetteName = 'containerQuestDarkshore',
+        name = 'Warfront Sombrerivage',
+        typeEtiquettes = 'warfront',
+        colorCadre = core.fondColor,
+        sizeButton = 50
+    },
+    shadowland = {
+        active = false,
+        data = core.worldQuestShadowLand.Perso,
+        etiquetteH = 100,
+        etiquetteL = 300,
+        colorEtiquette = core.barres.shadowlandEtiquettes,
+        etiquetteByLine = 3,
+        containerName = 'containerQuestShadowLand',
+        containerEtiquetteName = 'containerShadowlandQuest',
+        name = 'Émissaire ShadowLand',
+        typeEtiquettes = 'emissaire',
+        colorCadre = core.fondColor,
+        sizeButton = 50
+    }
+
+}

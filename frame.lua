@@ -16,7 +16,6 @@ local function createDetailEventFrame( item, typePopup, color , size)
 end
 
 local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,color,rowIndex, colIndex, typeEtiquette, size )
-  print('create Etiquete')
   local etiquette = CreateFrame("frame", "etiquette", parent)
   local margeHauteur = 20
     if rowIndex == 0 then
@@ -30,9 +29,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH, textOffsetX,
     backgroundTextureEtiquette:SetAllPoints()
     backgroundTextureEtiquette:SetColorTexture(color.r, color.g, color.b, 0.4)
     local mountId = item["MountID"] ~= nil and item["MountID"] or nil
-    print(mountId)
     local button = core.Icones.CreateIconTexture(etiquette, item["Icon"],size, mountId) 
-    print('create texture')
     button:SetPoint("TOPLEFT",10, -15)
 
     ---- Create Text
@@ -149,122 +146,48 @@ local function populateWeeklyActivities(parent, etiquetteL, etiquetteH, numColum
 
 end
 
-local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumns)
 
-  core.Functions.getActiveBFAWorldQuest("BFA")
-  core.Functions.getActiveBFAWorldQuest("legion")
-  core.Functions.getPersonnalInfoMount(core.MountsDonjonDaily)
-  core.Functions.getActiveShadowlandWorldQuest()
-  core.Functions.getWarfrontRares()
-  core.Functions.getSaisonnalEvent()
-  local events = core.Functions.getEventDay()
-  local totalHeight = 0;
+local function getContainer(categorie, index, parent, totalHeight)
+  if next(categorie['data']) ~= nil then
+    local numRows = math.ceil(#categorie['data'] /categorie['etiquetteByLine'])
+    local height = numRows * (categorie['etiquetteH']);
+    local heightContainer = height+50 + numRows*20 - 20
+    local pointHeight
 
-  ------------------------- Cadre Events ------------------------
-  local numRowsEvents = math.ceil(#events / numColumns)
-
-  local heightEvents = numRowsEvents * (etiquetteH);
-  local heightContainerEvent = heightEvents+50 + numRowsEvents*20 - 20
-  
-  local eventsDay = createCadre("eventsDaily", parent, heightContainerEvent, "Evenements en cours", 0, core.barres.eventsFond)
-  core.allEvents = createDataCadre("containerDJ", heightEvents, eventsDay, events, etiquetteL, etiquetteH, "events", core.barres.eventsEtiquettes, 70)
-  
-  totalHeight = totalHeight + heightContainerEvent ;
-
-  --------------------------CADRE Winter Events ------------------
-  if next(core.saisonnalEvent.Perso) ~= nil then
-    local numRowsSaisonnalEvent = math.ceil(#core.saisonnalEvent.Perso / numColumns)
-    local heightSaisonnalEvent = numRowsSaisonnalEvent * (etiquetteH);
-    local heightContainerSaisonnalEvent = heightSaisonnalEvent+50 + numRowsSaisonnalEvent*20 - 20
-
-    local saisonnalEvent = createCadre("SaisonnalEvent", parent, heightContainerSaisonnalEvent, "Évenement saisonnier", -(totalHeight+20), {["r"]=0.9,["g"]=0.9,["b"]=0.9})
-    heightContainerSaisonnalEvent = heightContainerSaisonnalEvent + 20
-    createDataCadre("containerSaisonnalEvent", heightSaisonnalEvent, saisonnalEvent, core.saisonnalEvent.Perso, etiquetteL, etiquetteH, "saisonnalEvent", {["r"]=0.9,["g"]=0.9,["b"]=0.9}, 50)
-    totalHeight = totalHeight + heightContainerSaisonnalEvent ;
-  end
-
-  --------------------------CADRE DONJON DAILY ------------------
-
-  if next(core.MountsDonjonDaily.Perso) ~= nil then
-    local numRowsDaily = math.ceil(#core.MountsDonjonDaily.Perso / numColumns)
-    local heightDonjonDaily = numRowsDaily * (etiquetteH);
-    local heightContainerDonjonDaily = heightDonjonDaily+50 + numRowsDaily*20 - 20
-
-    local donjonDaily = createCadre("donjonDaily", parent, heightContainerDonjonDaily, "Donjons", -(totalHeight+20), core.barres.donjonJourFond)
-    heightContainerDonjonDaily = heightContainerDonjonDaily + 20
-    createDataCadre("containerDJ", heightDonjonDaily, donjonDaily, core.MountsDonjonDaily.Perso, etiquetteL, etiquetteH, "donjon", core.barres.donjonJourEtiquettes, 50)
-    totalHeight = totalHeight + heightContainerDonjonDaily ;
-  end
-
-  ----------------------------CADRE EXPE BFA ------------------
-  if next(core.WorlQuestPersoBFA) ~= nil then
-    
-    local numRowBFA = math.ceil(#core.WorlQuestPersoBFA / numColumns)
-    local heightBFAContainer =  numRowBFA * (etiquetteH)
-    local heightContainerBFA = heightBFAContainer+50+ numRowBFA*20 - 20
-
-
-    local containerQuestBFA = createCadre("containerQuestBFA", parent,heightContainerBFA, "Emissaires BFA", -(totalHeight+20), core.barres.bfaFond )
-    heightContainerBFA = heightContainerBFA + 20
-    
-    createDataCadre("containerQuest", heightBFAContainer, containerQuestBFA, core.WorlQuestPersoBFA, etiquetteL, etiquetteH, "emissaire-4-quest", core.barres.bfaEtiquettes, 50)
-    
-    totalHeight = totalHeight + heightContainerBFA
-   end
-
-  ----------------------------CADRE Warfront Arathie ------------------
-  if next(core.warfrontArathiPerso) ~= nil then
-    local numRowArathie = math.ceil(#core.warfrontArathiPerso / numColumns)
-    local heightArathieContainer =  numRowArathie * (etiquetteH)
-    local heightContainerArathie = heightArathieContainer+50+ numRowArathie*20 - 20
-    
-    local containerArathie = createCadre("containerArathie", parent,heightContainerArathie, "Warfront Arathies", -(totalHeight+20), core.barres.bfaFond )
-    heightContainerArathie = heightContainerArathie + 20
-    createDataCadre("containerQuestArathie", heightContainerArathie, containerArathie, core.warfrontArathiPerso, etiquetteL, etiquetteH, "warfront", {["r"]=0.9,["g"]=0.9,["b"]=0.9}, 50)
-
-    totalHeight = totalHeight + heightContainerArathie
-  end
-
-    ----------------------------CADRE Warfront Sombrivage ------------------
-    if next(core.warfrontDarkshorePerso) ~= nil then
-      local numRowDarkshore = math.ceil(#core.warfrontDarkshorePerso / numColumns)
-      local heightDarkshoreContainer =  numRowDarkshore * (etiquetteH)
-      local heightContainerDarkshore = heightDarkshoreContainer+50+ numRowDarkshore*20 - 20
-      
-      local containerDarkshore = createCadre("containerDarkshore", parent,heightContainerDarkshore, "Warfront Sombrerivage", -(totalHeight+20), core.barres.bfaFond )
-      heightContainerDarkshore = heightContainerDarkshore + 20
-      createDataCadre("containerQuestDarkshore", heightContainerDarkshore, containerDarkshore, core.warfrontDarkshorePerso, etiquetteL, etiquetteH, "warfront", {["r"]=0.9,["g"]=0.9,["b"]=0.9}, 50)
-  
-      totalHeight = totalHeight + heightContainerDarkshore
+    if index == 1 then
+      pointHeight = 0
+    else
+      pointHeight = -(totalHeight+20)
     end
 
-  -- ----------------------------CADRE EXPE Legion ------------------
-  if next(core.WorldQuestLegion.Perso) ~= nil then
-  local numRowLegion = math.ceil(#core.WorldQuestLegion.Perso / numColumns)
-  local heightLegionExpe =  numRowLegion * (etiquetteH)
-  local heightContainerLegion = heightLegionExpe+50 + numRowLegion*20 - 20
+    local container = createCadre(categorie['containerName'], parent, heightContainer, categorie['name'], pointHeight, categorie['colorCadre'])
 
-  local containerQuestLegion = createCadre("containerQuestLegion", parent, heightContainerLegion, "Emissaire Legion",-(totalHeight+20), core.barres.legionFond )
-  heightContainerLegion = heightContainerLegion + 20
-  createDataCadre("containerLegionQuest", heightLegionExpe, containerQuestLegion,core.WorldQuestLegion.Perso, etiquetteL, etiquetteH, "emissaire-4-quest", core.barres.legionEtiquettes, 50 )
-  totalHeight = totalHeight + heightContainerLegion
+    if index == 1 then
+    else
+      heightContainer = heightContainer + 20
+    end
 
-  
+    createDataCadre(categorie['containerEtiquetteName'], height, container, categorie['data'], categorie['etiquetteL'], categorie['etiquetteH'], categorie['typeEtiquettes'],categorie['colorEtiquette'], categorie['sizeButton'])
+
+    return heightContainer
+  else
+  return totalHeight
   end
+  
+end
 
-  ------------------- Cadre expe ShadowLand --------------------------------
-  if next(core.worldQuestShadowLand.Perso ) ~= nil then
-    local numRowShadowLand = math.ceil(#core.worldQuestShadowLand.Perso  / numColumns)
-    local heightShadowLandExpe =  numRowShadowLand * (etiquetteH)
-    local heightContainerShadowLand = heightShadowLandExpe+50 + numRowShadowLand*20 - 20
-    local containerQuestLegion = createCadre("containerQuestShadowLand", parent, heightContainerShadowLand, "Emissaire ShadowLand",-(totalHeight+20), core.barres.shadowlandFond )
-    heightContainerShadowLand = heightContainerShadowLand + 20
-  
-    createDataCadre("containerShadowlandQuest", heightShadowLandExpe, containerQuestLegion,core.worldQuestShadowLand.Perso, etiquetteL, etiquetteH, "emissaire", core.barres.shadowlandEtiquettes, 50 )
-   
-    totalHeight = totalHeight + heightContainerShadowLand
-  
+local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumns)
+
+  core.GetDataDaily()
+  local totalHeight = 0;
+  local index = 0
+	for key, value in pairs(core.activityDaily) do
+    if core.activityDaily[key]['active'] and next(core.activityDaily[key]['data'])~= nil then
+      index = index +1
+      totalHeight = totalHeight + getContainer(core.activityDaily[key], index, parent, totalHeight)
+    end
   end
+  
   parent:SetHeight(totalHeight)
 end
 
