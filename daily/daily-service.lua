@@ -9,6 +9,7 @@ function core.GetDataDaily()
     core.activityDaily.saisonnalEvent.data = {}
     core.activityDaily.arathie.data =  {}
     core.activityDaily.darshore.data =  {}
+    
     if core.daily.active.events then
         core.Functions.getEventDay()
         core.activityDaily.events.data = core.Calendar

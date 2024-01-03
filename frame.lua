@@ -176,12 +176,13 @@ local function getContainer(categorie, index, parent, totalHeight)
   
 end
 
-local function PopulateDailyActivities(parent, etiquetteL, etiquetteH, numColumns)
+local function PopulateDailyActivities(parent)
 
   core.GetDataDaily()
   local totalHeight = 0;
   local index = 0
 	for key, value in pairs(core.activityDaily) do
+    print(key)
     if core.activityDaily[key]['active'] and next(core.activityDaily[key]['data'])~= nil then
       index = index +1
       totalHeight = totalHeight + getContainer(core.activityDaily[key], index, parent, totalHeight)
@@ -270,7 +271,7 @@ function core.Frame.createFrameContainer()
   buttonDaily:SetScript("OnClick", function()
     containerFrame:Hide()
     containerFrame = core.Functions.getContainerScrollFrame(scrollFrame)
-    PopulateDailyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
+    PopulateDailyActivities(containerFrame)
   end)
   
 ----------BOUTTON WEEKLY --------------------
@@ -289,7 +290,7 @@ function core.Frame.createFrameContainer()
    --------------DONNEES DE DEPART---------------
 
  
-  PopulateDailyActivities(containerFrame, etiquetteL,etiquetteH,  numColumns)
+  PopulateDailyActivities(containerFrame)
 
 
   core.FrameAddon = frame

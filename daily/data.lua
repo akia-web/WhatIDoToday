@@ -6,7 +6,7 @@ core.activityDaily = {
         data = core.Calendar,
         etiquetteH = 100,
         etiquetteL = 300,
-        colorEtiquette = core.barres.eventsEtiquettes,
+        colorEtiquette = {},
         etiquetteByLine = 3,
         containerName = 'eventsDaily',
         containerEtiquetteName = 'containerEvents',
@@ -17,7 +17,7 @@ core.activityDaily = {
     },
     saisonnalEvent = {
         active = false,
-        data = core.saisonnalEvent.Perso,
+        data = {},
         etiquetteH = 100,
         etiquetteL = 300,
         colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
@@ -31,7 +31,7 @@ core.activityDaily = {
     },
     donjonJour={
         active = false,
-        data = core.MountsDonjonDaily.Perso,
+        data = {},
         etiquetteH = 100,
         etiquetteL = 300,
         colorEtiquette = core.barres.donjonJourEtiquettes,
@@ -45,7 +45,7 @@ core.activityDaily = {
     },
     legion = {
         active = false,
-        data = core.WorldQuestLegion.Perso,
+        data = {},
         etiquetteH = 100,
         etiquetteL = 300,
         colorEtiquette = core.barres.legionEtiquettes,
@@ -59,7 +59,7 @@ core.activityDaily = {
     },
     BFA = {
         active = false,
-        data = core.WorlQuestPersoBFA,
+        data = {},
         etiquetteH = 100,
         etiquetteL = 300,
         colorEtiquette = core.barres.bfaEtiquettes,
@@ -73,7 +73,7 @@ core.activityDaily = {
     },
     arathie = {
         active = false,
-        data = core.warfrontArathiPerso,
+        data = {},
         etiquetteH = 100,
         etiquetteL = 300,
         colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
@@ -87,7 +87,7 @@ core.activityDaily = {
     },
     darshore = {
         active = false,
-        data = core.warfrontDarkshorePerso,
+        data = {},
         etiquetteH = 100,
         etiquetteL = 300,
         colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
@@ -101,7 +101,7 @@ core.activityDaily = {
     },
     shadowland = {
         active = false,
-        data = core.worldQuestShadowLand.Perso,
+        data = {},
         etiquetteH = 100,
         etiquetteL = 300,
         colorEtiquette = core.barres.shadowlandEtiquettes,
