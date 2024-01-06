@@ -20,6 +20,7 @@ libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
 data\initialization.lua
 
 options\daily.lua
+options\weekly.lua
 options\options.lua
 MinimapButton.lua
 
@@ -36,16 +37,22 @@ data\warfront-arathi.lua
 data.lua
 data\saisonnalEvent.lua
 
-daily\data.lua
-daily\daily-service.lua
+frames\daily\data.lua
+frames\daily\daily-service.lua
+
+frames\weekly\data.lua
+frames\weekly\weekly-service.lua
 
 icones.lua
 text.lua
 functions.lua
-weekly\weekly-service.lua
+
 formatDate.lua
 
+frames\frames-service.lua
 frames\event-popup.lua
-frame.lua
+frames\main-container\left-buttons.lua
+frames\main-container\main-container.lua
+
 
 

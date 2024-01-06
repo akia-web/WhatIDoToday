@@ -9,10 +9,10 @@ local ACD = LibStub("AceConfigDialog-3.0")
 local defaults = {
 	profile = {
 		daily={
-			barreGauche = {
-				["r"] = 0.9,
-				["g"] = 0.9,
-				["b"] = 0.9,
+			activeButton = {
+				["r"] = 0.53,
+				["g"] = 0.81,
+				["b"] = 0.98,
 			},
 			eventsEtiquettes = {
 				["r"] = 0.9,
@@ -52,6 +52,26 @@ local defaults = {
 			isArathie = true,
 			isDarkshore = true,
 			isHollidayEvent = true
+		},
+		weekly={
+			donjonsEtiquettes = {
+				["r"] = 0.9,
+				["g"] = 0.9,
+				["b"] = 0.9,
+			},
+			raidsEtiquettes = {
+				["r"] = 0.9,
+				["g"] = 0.9,
+				["b"] = 0.9,
+			},
+			worldBossEtiquettes = {
+				["r"] = 0.9,
+				["g"] = 0.9,
+				["b"] = 0.9,
+			},
+			isDonjon = true,
+			isRaid = true,
+			isWorldBoss = true
 		}
 		
 	}
@@ -64,27 +84,8 @@ local options = {
 	childGroups = 'tree',
 	args={
 		option1= core.getOption1(WIDT),
-		option2 = {
-			name = "PlayerFrame",
-			desc = "PlayerFrame Options.",
-			type = "group",
-			order = 2,
-			args = {
-				colorBarreGauche={
-					order = 1,
-					type="color",
-					name="Barre de gauche",
-					get = function() return WIDT.db.profile.daily.barreGauche.r, WIDT.db.profile.daily.barreGauche.g, WIDT.db.profile.daily.barreGauche.b; end,
-					set = function(info, r, g, b) WIDT.db.profile.barreGauche.r = r; WIDT.db.profile.barreGauche.g = g; WIDT.db.profile.barreGauche.b = b; core.barres.barreGauche = WIDT.db.profile.barreGauche; end,
-				},
-			}
-		}
+		option2 = core.getOption2(WIDT)
 	},
-
-
-	
-	
-
 }
 
 function WIDT:OnInitialize()
@@ -92,7 +93,7 @@ function WIDT:OnInitialize()
 	AC:RegisterOptionsTable("WIDT_options", options)
 	self.optionsFrame = ACD:AddToBlizOptions("WIDT_options", "WIDT")
 	core.optionFrame = self.optionsFrame
-    core.barres.barreGauche = self.db.profile.daily.barreGauche
+    core.activeButton = self.db.profile.daily.activeButton
 	
 	-------Daily---------------
 	core.barres.eventsEtiquettes = self.db.profile.daily.eventsEtiquettes
@@ -112,6 +113,15 @@ function WIDT:OnInitialize()
 	core.daily.active.Arathie = self.db.profile.daily.isArathie
 	core.daily.active.Darkshore = self.db.profile.daily.isDarkshore
 	core.daily.active.HollidayEvent = self.db.profile.daily.isHollidayEvent
+
+	-------Weekly ---------------
+	core.barres.donjonsWeeklyEtiquettes = self.db.profile.weekly.donjonsEtiquettes
+	core.barres.raidsEtiquettes = self.db.profile.weekly.raidsEtiquettes
+	core.barres.worldBossEtiquettes = self.db.profile.weekly.worldBossEtiquettes
+	-------Weekly active---------------
+	core.weekly.active.isDonjon = self.db.profile.weekly.isDonjon
+	core.weekly.active.isRaid = self.db.profile.weekly.isRaid
+	core.weekly.active.isWorldBoss = self.db.profile.weekly.isWorldBoss
 	
 end
 
@@ -126,6 +136,16 @@ function WIDT:resetColorDaily(_,button)
 	end
 end
 
+function WIDT:resetColorWeekly(_,button)
+
+	if button == "LeftButton" then
+		for key, value in pairs(WIDT.db.profile.weekly) do
+			print(key)
+			WIDT.db.profile.weekly[key] = defaults.profile.weekly[key]
+			core.barres[key] = WIDT.db.profile.weekly[key]
+		end
+	end
+end
 
 
 
