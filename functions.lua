@@ -1,5 +1,11 @@
 local _,core = ...;
 core.Functions = {};
+local levelMaxEvent = 60
+
+function core.Functions.capitalizeFirstLetter(str)
+    return str:gsub("^%l", string.upper)
+end
+
 function core.Functions.contient(tableau, element)
     for _, valeur in ipairs(tableau) do
         if valeur == element then
@@ -300,6 +306,7 @@ end
 
 function core.Functions.getEventDay()
     C_Calendar.OpenCalendar()
+   
     local numberInstance = GetNumSavedInstances()
     local lokedInstance = {}
     for i = 1, numberInstance do        
@@ -414,6 +421,52 @@ local function allQuestAreCompleted(tableau)
     return true
 end
 
+
+
+local function getWinterEvent(isEventUp)
+    local questCompleted = false
+    questCompleted = allQuestAreCompleted(core.saisonnalEvent['noel']['IdQuest'])
+
+    local name,
+    spellID,
+    _,_,_,_,_,_,_,_,
+    isCollected,
+    _= C_MountJournal.GetMountInfoByID(core.saisonnalEvent['noel']['MountID'])
+    core.saisonnalEvent['noel']['MountName'] = name
+    core.saisonnalEvent['noel']['Icon'] = spellID
+
+
+    if isEventUp and not isCollected and not questCompleted  then
+        table.insert(core.saisonnalEvent.Perso, core.saisonnalEvent['noel'])
+    end
+end
+
+local function getLoveEvent(isEventUp)
+
+
+    for i = 1, #core.saisonnalEvent["loveInAir"] do
+        local isDonjonMount = false
+        local donjonComplete = false
+
+        if core.saisonnalEvent["loveInAir"][i]['MountID'] == 352 then
+         isDonjonMount = true
+         donjonComplete =  GetLFGDungeonRewards(288)       
+        end
+
+        local name,
+        spellID,
+        _,_,_,_,_,_,_,_,
+        isCollected,
+        _= C_MountJournal.GetMountInfoByID(core.saisonnalEvent['loveInAir'][i]['MountID'])
+        core.saisonnalEvent['loveInAir'][i]['MountName'] = name
+        core.saisonnalEvent['loveInAir'][i]['Icon'] = spellID
+
+        if isEventUp and not isCollected and (not isDonjonMount  or (isDonjonMount and not donjonComplete and UnitLevel("player") >= levelMaxEvent )) then
+            table.insert(core.saisonnalEvent.Perso, core.saisonnalEvent['loveInAir'][i])
+        end
+    end
+end
+
 function core.Functions.getSaisonnalEvent()
     core.saisonnalEvent.Perso = {}
     local currentDate = date("*t")
@@ -421,37 +474,25 @@ function core.Functions.getSaisonnalEvent()
     C_Calendar.OpenCalendar()
     local numDayEvents =  C_Calendar.GetNumDayEvents(0, day)
     local isThereWinterEvent = false
-    local questCompleted = false
+    local isLoveInAirEvent = false
+
     
     for i = 1, numDayEvents do
-        local event = C_Calendar.GetHolidayInfo(0, day, i)
-        if event and (event['name'] == 'Feast of Winter Veil' or event['name'] == "Voile d'hiver") then
+        local event = C_Calendar.GetDayEvent(0, day, i)
+
+        if event and (event['eventID'] == 141) then
             isThereWinterEvent = true
+        end
+
+        if event and (event['eventID'] == 423) then
+            isLoveInAirEvent = true
         end
     end
 
-    if not isThereWinterEvent then
+    if not isThereWinterEvent and not isLoveInAirEvent then
         return
     end
 
-    questCompleted = allQuestAreCompleted(core.saisonnalEvent[1]['IdQuest'])
-
-    local name,
-    spellID,
-    icon,
-    isActive,
-    isUsable,
-    sourceType,
-    isFavorite,
-    isFactionSpecific,
-    faction,
-    shouldHideOnChar,
-    isCollected,
-    mountID= C_MountJournal.GetMountInfoByID(core.saisonnalEvent[1]['MountID'])
-    core.saisonnalEvent[1]['MountName'] = name
-    core.saisonnalEvent[1]['Icon'] = spellID
-
-    if isThereWinterEvent and not isCollected and not questCompleted  then
-        core.saisonnalEvent.Perso = core.saisonnalEvent
-    end
+   getWinterEvent(isThereWinterEvent)
+   getLoveEvent(isLoveInAirEvent)
 end 

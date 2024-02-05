@@ -17,8 +17,10 @@ libs\Ace3\AceConfig-3.0\AceConfig-3.0.xml
 libs\LibDBIcon-1.0\LibDBIcon-1.0.lua
 libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
 
-data\initialization.lua
+lang\fr.lua
+lang\en.lua
 
+data\initialization.lua
 options\daily.lua
 options\weekly.lua
 options\options.lua
@@ -42,10 +44,10 @@ frames\daily\daily-service.lua
 
 frames\weekly\data.lua
 frames\weekly\weekly-service.lua
-
+functions.lua
 icones.lua
 text.lua
-functions.lua
+
 
 formatDate.lua
 

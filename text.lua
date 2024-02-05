@@ -47,13 +47,24 @@ local function getTextPopupEvent(item)
 end
 
 local function getTextPopupEventWinter(item)
+
+    local continent =  item["Continent"] and "\n\n" .. yelloColor('Continent').. item["Continent"] or ""
+    local country = item["Country"] and "\n" .. yelloColor('Région')..item["Country"] or ""
+    local requirement = item["Requirement"] and "\n" .. yelloColor('Pré-requis') .. item["Requirement"] or ""
+    local money = item["Monnaie"] and "\n".. yelloColor('Monnaie')..item["Monnaie"] or ""
+    local consigne = item["Consigne"] and  "\n" ..yelloColor('Achat PNJ').. item["Consigne"] or ""
+    local donjon = item["Donjon"] and  "\n" ..yelloColor(core.Functions.capitalizeFirstLetter(core.L["donjon"])).. item["Donjon"] or ""
+    -- return {
+    --     title = item["MountName"],
+    --     description = "\n\n" .. yelloColor('Continent').. item["Continent"] .. 
+    --     "\n" .. yelloColor('Région')..item["Country"] .. 
+    --     "\n" .. yelloColor('Pré-requis') .. item["Requirement"]..
+    --     "\n".. yelloColor('Monnaie')..item["Monnaie"] ..
+    --     "\n" ..yelloColor('Achat PNJ').. item["Consigne"]
+    -- }
     return {
         title = item["MountName"],
-        description = "\n\n" .. yelloColor('Continent').. item["Continent"] .. 
-        "\n" .. yelloColor('Région')..item["Country"] .. 
-        "\n" .. yelloColor('Pré-requis') .. item["Requirement"]..
-        "\n".. yelloColor('Monnaie')..item["Monnaie"] ..
-        "\n" ..yelloColor('Achat PNJ').. item["Consigne"]
+        description = continent .. country .. requirement .. money .. consigne .. donjon
     }
 end
 
