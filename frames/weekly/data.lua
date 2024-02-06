@@ -3,7 +3,7 @@ core.activityWeekly = {
     donjons = {
         active = false,
         data = {},
-        etiquetteH = 100,
+        etiquetteH = 120,
         etiquetteL = 300,
         colorEtiquette = {},
         etiquetteByLine = 3,
@@ -12,7 +12,7 @@ core.activityWeekly = {
         name = 'Donjons',
         typeEtiquettes = 'donjon',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     raid = {
         active = false,
@@ -26,7 +26,7 @@ core.activityWeekly = {
         name = 'Raids',
         typeEtiquettes = 'donjon',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     worldBoss={
         active = false,
@@ -40,7 +40,7 @@ core.activityWeekly = {
         name = 'WorldBoss',
         typeEtiquettes = 'worldboss',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     
 }

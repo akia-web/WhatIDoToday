@@ -13,7 +13,7 @@ core.activityDaily = {
         name = 'Évenements en cours',
         typeEtiquettes = 'events',
         colorCadre = core.fondColor,
-        sizeButton = 70
+        sizeButton = 40
     },
     saisonnalEvent = {
         active = false,
@@ -27,12 +27,12 @@ core.activityDaily = {
         name = 'Évenement saisonnier',
         typeEtiquettes = 'saisonnalEvent',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     donjonJour={
         active = false,
         data = {},
-        etiquetteH = 100,
+        etiquetteH = 120,
         etiquetteL = 300,
         colorEtiquette = core.barres.donjonJourEtiquettes,
         etiquetteByLine = 3,
@@ -41,7 +41,7 @@ core.activityDaily = {
         name = 'Donjons',
         typeEtiquettes = 'donjon',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     legion = {
         active = false,
@@ -55,7 +55,7 @@ core.activityDaily = {
         name = 'Émissaire Legion',
         typeEtiquettes = 'emissaire-4-quest',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     BFA = {
         active = false,
@@ -69,7 +69,7 @@ core.activityDaily = {
         name = 'Émissaires BFA',
         typeEtiquettes = 'emissaire-4-quest',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     arathie = {
         active = false,
@@ -83,7 +83,7 @@ core.activityDaily = {
         name = 'Warfront Arathies',
         typeEtiquettes = 'warfront',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     darshore = {
         active = false,
@@ -97,7 +97,7 @@ core.activityDaily = {
         name = 'Warfront Sombrerivage',
         typeEtiquettes = 'warfront',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     },
     shadowland = {
         active = false,
@@ -111,7 +111,7 @@ core.activityDaily = {
         name = 'Émissaire ShadowLand',
         typeEtiquettes = 'emissaire',
         colorCadre = core.fondColor,
-        sizeButton = 50
+        sizeButton = 40
     }
 
 }

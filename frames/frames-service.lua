@@ -7,9 +7,9 @@ local function createDetailEventFrame( item, typePopup, color , size)
   button:SetPoint("TOPLEFT",10, -15)
 
   local textPopup = core.Text.GetText(typePopup, item)
-  local texteTitle = core.Text.CreateText(detailFrame, "SystemFont_Shadow_Med2", "LEFT", 300, 30, -10)
+  local texteTitle = core.Text.CreateText(detailFrame, "SystemFont_Shadow_Med2", "CENTER","TOP", 300, 0, -30, nil)
   texteTitle:SetText(textPopup['title'])
-  local textDescription = core.Text.CreateText(detailFrame, "SystemFont_Shadow_Med1", "LEFT", 300, 30, -50)
+  local textDescription = core.Text.CreateText(detailFrame, "SystemFont_Shadow_Med1", "CENTER" ,"CENTER", 300, 0, 0, "LEFT")
   textDescription:SetText(textPopup['description'])
 
   core.detailEventFrame = detailFrame
@@ -29,20 +29,31 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH,color,rowInde
     backgroundTextureEtiquette:SetAllPoints()
     backgroundTextureEtiquette:SetColorTexture(color.r, color.g, color.b, 0.4)
 
+
+
+    local frameTextTitle = CreateFrame("frame", "etiquette", etiquette)
+    frameTextTitle:SetPoint("TOPLEFT", etiquette, "TOPLEFT", 0, 0)
+    frameTextTitle:SetWidth(etiquette:GetWidth()) -- Définir la largeur égale à celle de etiquette
+    frameTextTitle:SetHeight(30) -- Définir la hauteur à 30 pixels
+
     local mountId = item["MountID"] ~= nil and item["MountID"] or nil
     local button = core.Icones.CreateIconTexture(etiquette, item["Icon"],size, mountId) 
-    button:SetPoint("TOPLEFT",10, -15)
+    button:SetPoint("LEFT",10, -15)
+
+    local backgroundTitle = frameTextTitle:CreateTexture(nil, "BACKGROUND")
+    backgroundTitle:SetAllPoints()
+    backgroundTitle:SetColorTexture(0, 0, 0, 1)
 
     ---- Create Text
     local textEtiquette = core.Text.GetText(typeEtiquette, item)
-    local textTitre = core.Text.CreateText(etiquette, "SystemFont_Shadow_Med2", "LEFT", 230, 30, -5)
+    local textTitre = core.Text.CreateText(frameTextTitle, "SystemFont_Shadow_Med2", "CENTER", "CENTER", 230, 0, 0, nil)
     textTitre:SetText(textEtiquette['title'])
-    local text = core.Text.CreateText(etiquette, "SystemFont_Shadow_Med1", "LEFT", 230, 30, -5)
+    local text = core.Text.CreateText(etiquette, "SystemFont_Shadow_Med1", "LEFT" ,"LEFT", 230, 60, -5, "LEFT")
     text:SetText(textEtiquette['description'])
 
     if typeEtiquette == 'events'then
       local actionButton =  core.Icones.CreateIconTexture(button, "Interface\\Icons\\inv_letter_13", 25, nil)
-      actionButton:SetPoint("BOTTOMRIGHT",button, "BOTTOMRIGHT", 10 , 0)
+      actionButton:SetPoint("CENTER",frameTextTitle, "RIGHT", -13 , 0)
     
       -- Fonction de gestionnaire d'événements pour le clic du bouton
       actionButton:SetScript("OnClick", function()

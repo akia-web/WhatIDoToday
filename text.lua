@@ -90,10 +90,12 @@ function core.Text.GetText(type, item)
 
 end
 
-function core.Text.CreateText(parent, font, justify, textWidth, decalageX, decalageY)
+function core.Text.CreateText(parent, font, ancrageY, ancrageX, textWidth, decalageX, decalageY, justify)
     local text = parent:CreateFontString(nil, "OVERLAY", font)
-    text:SetJustifyH(justify)
-    text:SetPoint("TOP", parent, "TOP", decalageX, decalageY)
+    if justify ~= nil then
+        text:SetJustifyH(justify)
+    end
+    text:SetPoint(ancrageY, parent, ancrageX, decalageX, decalageY)
     text:SetNonSpaceWrap(true)
     text:SetWidth(textWidth)
     return text
