@@ -96,7 +96,6 @@ function core.Functions.getNameDifficulty(instance)
 
 end
 function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLockedInstance, position, difficulty)
-    -- local isPalaisSacrenuit = false;
     for _, entry in ipairs(tableauLockedInstance) do
         local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry['lockInstancePosition'], position)
         local lockedInstanceID = entry["instanceId"] 
@@ -304,6 +303,26 @@ function core.Functions.getWorldBossLocked()
     
 end
 
+local function getEventIcone(event, eventInfo, newCalandar)
+    if eventInfo and (eventInfo['eventID'] == 423) then 
+        return 'Interface\\Addons\\WhatIDoToday\\UI\\events\\amour.png'
+    elseif eventInfo and (eventInfo['eventID'] == 327) then
+        return 'Interface\\Addons\\WhatIDoToday\\UI\\events\\lunaire.png'
+    elseif eventInfo and (eventInfo['eventID'] == 479) then
+        return 'Interface\\Addons\\WhatIDoToday\\UI\\events\\foire-sombrelune.png'
+    elseif eventInfo and (eventInfo['eventID'] == 602) then
+        return 'Interface\\Addons\\WhatIDoToday\\UI\\events\\bonus-champ-bataille.png'
+    elseif eventInfo and (eventInfo['eventID'] == 599) then
+        return 'Interface\\Addons\\WhatIDoToday\\UI\\events\\battle-pet-bonus.png'
+    elseif newCalandar ~= nil then
+        return newCalandar['texture']
+    else
+       return event['texture']
+    end
+
+ 
+end
+
 function core.Functions.getEventDay()
     C_Calendar.OpenCalendar()
    
@@ -332,17 +351,21 @@ function core.Functions.getEventDay()
     local day = currentDate.day
     local numDayEvents =  C_Calendar.GetNumDayEvents(0, day)
     for i = 1, numDayEvents do
+        local infoEvent = C_Calendar.GetDayEvent(0, day, i)
         local ligne = {}
         local event = C_Calendar.GetHolidayInfo(0, day, i)
         if event then           
             ligne['title'] = event['name']
+            print(ligne['title'])
+            print(infoEvent['eventID'])
             ligne['description'] = event['description']
-            ligne['Icon'] = event['texture']
+            -- ligne['Icon'] = event['texture']
             if event["endTime"] then
                 ligne['dateFin']= core.DateFormat.format(event)
             else
                 ligne['dateFin'] = "Seulement aujourd'hui"
             end
+            -- ligne['Icon']= 'Interface\\Addons\\WhatIDoToday\\UI\\amour.png'
             
             if event["startTime"] then
                 ligne['start'] = event["startTime"] 
@@ -351,10 +374,14 @@ function core.Functions.getEventDay()
                     for j = 1, numDayEvents2 do
                        local newCalandar =  C_Calendar.GetHolidayInfo(0, ligne['start']['monthDay'], j)
                         if newCalandar and ligne['title'] == newCalandar["name"] then
-                            ligne['Icon'] = newCalandar['texture']
+                            ligne['Icon'] = getEventIcone(event, infoEvent, newCalandar)
                         end
                     end
                 end
+            end
+
+            if ligne['Icon'] == nil then
+                ligne['Icon'] =  getEventIcone(event, infoEvent, nil)
             end
                 table.insert(result, ligne) 
         end

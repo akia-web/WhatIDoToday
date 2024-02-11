@@ -5,9 +5,17 @@ local function yelloColor(text)
 end
 
 local function getTextDonjonRaid(item)
+    local donjonOrRaid = item["DonjonName"] and core.L['donjon'] or 'Raid'
+    local name = item["DonjonName"] and item["DonjonName"] or item['RaidName']
+    local donjon =  "\n\n" .. yelloColor(core.Functions.capitalizeFirstLetter(donjonOrRaid)).. name
+    local difficulty =  "\n" .. yelloColor(core.L['difficulty'])..item["ModeName"]
+    local boss = "\n" .. yelloColor('Boss') .. item["BossName"]
+    local continent = "\n".. yelloColor('Continent')..item["Continent"] 
+    local region = "\n" ..yelloColor(core.L['pays']).. item["Country"] 
     return {
+        
         title = item['MountName'],
-        description = "\n\n|cFFFFFF00Donjon|r : " .. item["DonjonName"] .. "\n|cFFFFFF00Difficulté|r : " .. item["ModeName"] .. "\n|cFFFFFF00Boss|r : " .. item["BossName"].."\n|cFFFFFF00Continent|r : ".. item["Continent"] .. "\n|cFFFFFF00Région|r : " .. item["Country"]
+        description  = donjon .. difficulty .. boss .. continent .. region
     }
 end
 
@@ -54,14 +62,6 @@ local function getTextPopupEventWinter(item)
     local money = item["Monnaie"] and "\n".. yelloColor('Monnaie')..item["Monnaie"] or ""
     local consigne = item["Consigne"] and  "\n" ..yelloColor('Achat PNJ').. item["Consigne"] or ""
     local donjon = item["Donjon"] and  "\n" ..yelloColor(core.Functions.capitalizeFirstLetter(core.L["donjon"])).. item["Donjon"] or ""
-    -- return {
-    --     title = item["MountName"],
-    --     description = "\n\n" .. yelloColor('Continent').. item["Continent"] .. 
-    --     "\n" .. yelloColor('Région')..item["Country"] .. 
-    --     "\n" .. yelloColor('Pré-requis') .. item["Requirement"]..
-    --     "\n".. yelloColor('Monnaie')..item["Monnaie"] ..
-    --     "\n" ..yelloColor('Achat PNJ').. item["Consigne"]
-    -- }
     return {
         title = item["MountName"],
         description = continent .. country .. requirement .. money .. consigne .. donjon

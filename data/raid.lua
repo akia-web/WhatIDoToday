@@ -13,11 +13,11 @@ core.MountsRaidWeekly =
         BossPosition = 16,
         Mode = 14,
         ModeName=nil,
-        DonjonName = "Ulduar",
+        RaidName = "Ulduar",
         BossName = nil,
         IdDonjon =244,
-        Continent = "Norfendre",
-        Country = "Pics Foudroyés"
+        Continent =  core.L['Norfendre'],
+        Country = core.L['picsFoudroyes']
     },
     {-- Noyaux des flammes dévorantes
         MountID = 633,
@@ -29,10 +29,10 @@ core.MountsRaidWeekly =
         BossPosition = 10,
         Mode = 16,
         ModeName=nil,
-        DonjonName = "Palais Sacrenuit",
+        RaidName = core.L['PalaisSacrenuit'],
         BossName = nil,
         IdDonjon =1351,
-        Continent = "Iles brisés",
+        Continent = core.L['IlesBrisees'],
         Country = "Suramar"
     },
     {-- Noyaux de brasier infernal
@@ -45,7 +45,7 @@ core.MountsRaidWeekly =
         BossPosition = 10,
         Mode = {14,15,16},
         ModeName=nil,
-        DonjonName = "Palais Sacrenuit",
+        RaidName = "Palais Sacrenuit",
         BossName = nil, 
         IdDonjon =1351,
         Continent = "Iles brisés",
@@ -60,11 +60,11 @@ core.MountsRaidWeekly =
         TimeBeforeReset = nil,
         BossPosition = 1,
         Mode = 3,
-        DonjonName = "Kharazan",
+        RaidName = "Kharazan",
         BossName = nil,
         IdDonjon =175,
-        Continent = "Royaume de l'est",
-        Country = "Defile de Deuillevent"
+        Continent = core.L['RoyaumeEst'],
+        Country = core.L['defileDeuillevent']
     },
     {-- Mastodonte kor'kron
        MountID = 559,
@@ -76,11 +76,11 @@ core.MountsRaidWeekly =
        BossPosition = 14,
        Mode = 16,
        ModeName=nil,
-       DonjonName = "Siège d'Orgrimmar",
+       RaidName = core.L['SiegeOrgrimmar'],
        BossName = nil,
        IdDonjon =766,
-       Continent = "Pandarie",
-       Country = "Val de l'éternel printemps"
+       Continent =core.L['Pandarie'],
+       Country = core.L['ValEtenerlPrintemps']
    },
     {-- Suivante de la Lieuse-de-Vie
        MountID = 444,
@@ -92,11 +92,11 @@ core.MountsRaidWeekly =
        BossPosition = 8,
        Mode = {5,6},
        ModeName=nil,
-       DonjonName = "L'âme des dragons",
+       RaidName = core.L['ameDesDragons'],
        BossName = nil,
        IdDonjon =447,
        Continent = "Kalimdor",
-       Country = "Tannaris - Grottes du temps"
+       Country = "Tanaris - "..core.L['grotteDuTemps']
     },
     {-- Suivante de la Lieuse-de-Vie
        MountID = 442,
@@ -108,11 +108,11 @@ core.MountsRaidWeekly =
        BossPosition = 8,
        Mode = {3,4,5,6},
        ModeName=nil,
-       DonjonName = "L'âme des dragons",
+       RaidName = core.L['ameDesDragons'],
        BossName = nil,
        IdDonjon =447,
        Continent = "Kalimdor",
-       Country = "Tannaris - Grottes du temps"
+       Country = "Tanaris - "..core.L['grotteDuTemps']
     },
     {-- Drake flamboyant
        MountID = 445,
@@ -124,11 +124,28 @@ core.MountsRaidWeekly =
        BossPosition = 5,
        Mode = {5,6},
        ModeName=nil,
-       DonjonName = "L'âme des dragons",
+       RaidName = core.L['ameDesDragons'],
        BossName = nil,
        IdDonjon =447,
        Continent = "Kalimdor",
-       Country = "Tannaris - Grottes du temps"
+       Country = "Tanaris - "..core.L['grotteDuTemps']
+    },
+
+    {-- Invincible
+        MountID = 363,
+        MountName = nil,
+        IdInstance = 631,
+        Icon = nil,
+        IsDone = nil,
+        TimeBeforeReset = nil,
+        BossPosition = 12,
+        Mode = 6,
+        ModeName=nil,
+        RaidName = core.L['ICC'],
+        BossName = nil,
+        IdDonjon =280,
+        Continent = core.L['Norfendre'],
+        Country = core.L['Courrone de glace']
     },
 }
 
