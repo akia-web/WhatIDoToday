@@ -3,7 +3,7 @@ core.activityWeekly = {
     donjons = {
         active = false,
         data = {},
-        etiquetteH = 120,
+        etiquetteH = 140,
         etiquetteL = 300,
         colorEtiquette = {},
         etiquetteByLine = 3,
@@ -17,7 +17,7 @@ core.activityWeekly = {
     raid = {
         active = false,
         data = {},
-        etiquetteH = 120,
+        etiquetteH = 140,
         etiquetteL = 300,
         colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
         etiquetteByLine = 3,

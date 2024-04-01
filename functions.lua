@@ -356,8 +356,8 @@ function core.Functions.getEventDay()
         local event = C_Calendar.GetHolidayInfo(0, day, i)
         if event then           
             ligne['title'] = event['name']
-            print(ligne['title'])
-            print(infoEvent['eventID'])
+            -- print(ligne['title'])
+            -- print(infoEvent['eventID'])
             ligne['description'] = event['description']
             -- ligne['Icon'] = event['texture']
             if event["endTime"] then

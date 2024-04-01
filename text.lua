@@ -4,6 +4,11 @@ local function yelloColor(text)
     return '|cFFFFFF00'..text..'|r : '
 end
 
+local function green(text)
+    return '|cFF00FF00'..text..'|r '
+end
+
+
 local function getTextDonjonRaid(item)
     local donjonOrRaid = item["DonjonName"] and core.L['donjon'] or 'Raid'
     local name = item["DonjonName"] and item["DonjonName"] or item['RaidName']
@@ -11,7 +16,9 @@ local function getTextDonjonRaid(item)
     local difficulty =  "\n" .. yelloColor(core.L['difficulty'])..item["ModeName"]
     local boss = "\n" .. yelloColor('Boss') .. item["BossName"]
     local continent = "\n".. yelloColor('Continent')..item["Continent"] 
-    local region = "\n" ..yelloColor(core.L['pays']).. item["Country"] 
+    local region = "\n" ..yelloColor(core.L['pays']).. item["Country"]
+
+ 
     return {
         
         title = item['MountName'],
@@ -68,6 +75,37 @@ local function getTextPopupEventWinter(item)
     }
 end
 
+local function getTextPopupHF(item)
+    local criteriatext =''
+    local totalQuantity = ''
+    if item.criteria ~= nil and #item.criteria > 0 then
+        for index, entry in ipairs(item.criteria) do
+            local text = entry.name
+
+            if entry.doRequirement then
+               text = green(text)
+            end
+
+            if entry.totalQuantityMob > 1 then
+                totalQuantity = '-> total : '.. entry.totalQuantityMob 
+            end
+            criteriatext = criteriatext ..  '- '..text.. totalQuantity..'\n'
+        end
+    end
+    return {
+        title = item["nameHf"],
+        description = item["description"]..'\n'..criteriatext
+    }
+end
+
+local function getTextHF(item)
+    local nameHF = yelloColor(item["title"])
+    return {
+        title = item["MountName"],
+        description = "\n\n"..nameHF.. "\n\n"..item['description']
+    }
+end
+
 function core.Text.GetText(type, item)
     if type == 'donjon' then
         return getTextDonjonRaid(item)
@@ -85,6 +123,10 @@ function core.Text.GetText(type, item)
         return getTextWarfront(item)
     elseif type=='saisonnalEvent' then
        return getTextPopupEventWinter(item)
+    elseif type=='HF' then
+        return getTextHF(item)
+    elseif type == 'popupHF' then
+        return getTextPopupHF(item)
     end
 
 

@@ -53,7 +53,8 @@ function core.Frame.createFrameContainer()
   
   ----------LetfButton --------------------
     core.todayButton = core.leftButton(LeftPanneau, "Aujourd'hui", 0, 'Daily') 
-    core.leftButton(LeftPanneau, "Cette semaine", -50, 'Weekly') 
+    core.leftButton(LeftPanneau, "Cette semaine", -50, 'Weekly')
+    core.leftButton(LeftPanneau, "Haut faits", -100, 'HF')  
 
      --------------DONNEES DE DEPART---------------
     core.PopulateActivities(core.containerFrame, 'Daily')

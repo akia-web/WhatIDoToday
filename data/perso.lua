@@ -6,3 +6,4 @@ core.WorldBoss.Perso = {}
 core.MountsRaidWeekly.Perso = {}
 core.WorldQuestLegion.Perso = {}
 core.WorlQuestPersoBFA = {}
+core.core.hautFaitDragonFlyght.Perso = {}

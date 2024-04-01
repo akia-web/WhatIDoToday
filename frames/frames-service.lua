@@ -1,10 +1,18 @@
 local _,core = ...;
 
 
-local function createDetailEventFrame( item, typePopup, color , size)
+function core.createDetailEventFrame( item, typePopup, color , size)
+  local title = 'title'
+  if typePopup == 'popupHF' then
+    title = 'nameHF'
+  end
   local detailFrame = core.PopupEvent.CreatePopup(color)
-  local button = core.Icones.CreateIconTexture(detailFrame, item["Icon"], size, nil)
-  button:SetPoint("TOPLEFT",10, -15)
+
+  if item["Icon"] then
+    local button = core.Icones.CreateIconTexture(detailFrame, item["Icon"], size, nil)
+    button:SetPoint("TOPLEFT",10, -15)
+  end
+
 
   local textPopup = core.Text.GetText(typePopup, item)
   local texteTitle = core.Text.CreateText(detailFrame, "SystemFont_Shadow_Med2", "CENTER","TOP", 300, 0, -30, nil)
@@ -37,8 +45,8 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH,color,rowInde
     frameTextTitle:SetHeight(30) -- Définir la hauteur à 30 pixels
 
     local mountId = item["MountID"] ~= nil and item["MountID"] or nil
-    local button = core.Icones.CreateIconTexture(etiquette, item["Icon"],size, mountId) 
-    button:SetPoint("LEFT",10, -15)
+    local button = core.Icones.CreateIconTexture(frameTextTitle, item["Icon"],size, mountId) 
+    button:SetPoint("LEFT",10, -60)
 
     local backgroundTitle = frameTextTitle:CreateTexture(nil, "BACKGROUND")
     backgroundTitle:SetAllPoints()
@@ -46,9 +54,15 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH,color,rowInde
 
     ---- Create Text
     local textEtiquette = core.Text.GetText(typeEtiquette, item)
-    local textTitre = core.Text.CreateText(frameTextTitle, "SystemFont_Shadow_Med2", "CENTER", "CENTER", 230, 0, 0, nil)
+    local textTitre = core.Text.CreateText(frameTextTitle, "SystemFont_Shadow_Med2", 'CENTER', 'CENTER', 230, 0, 0, nil)
     textTitre:SetText(textEtiquette['title'])
-    local text = core.Text.CreateText(etiquette, "SystemFont_Shadow_Med1", "LEFT" ,"LEFT", 230, 60, -5, "LEFT")
+
+    local frameTextDescription = CreateFrame("frame", "description", frameTextTitle)
+    frameTextDescription:SetPoint("TOP", frameTextTitle, "BOTTOM", 0, 0)
+    frameTextDescription:SetWidth(230) -- Définir la largeur égale à celle de etiquette
+    frameTextDescription:SetHeight(140) -- Définir la hauteur à 30 pixels
+
+    local text = core.Text.CreateText(frameTextTitle, "SystemFont_Shadow_Med1", "TOP" ,"BOTTOM",230, 30, -5, "LEFT")
     text:SetText(textEtiquette['description'])
 
     if typeEtiquette == 'events'then
@@ -61,11 +75,15 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH,color,rowInde
           core.detailEventFrame:Hide()
         end
 
-        createDetailEventFrame(item, "event-popup", core.barres.eventsPopup, 100)
+        core.createDetailEventFrame(item, "event-popup", core.barres.eventsPopup, 100)
         core.detailEventFrame:Show()
      
-    end)
+      end)
     
+    end
+
+    if typeEtiquette == 'HF' then
+      local frameHF = core.listHF.CreateListHF(item, frameTextDescription)
     end
 end
 
@@ -108,52 +126,57 @@ end
 
 function core.getContainer(categorie, index, parent, totalHeight)
     if next(categorie['data']) ~= nil then
-    local numRows = math.ceil(#categorie['data'] /categorie['etiquetteByLine'])
-    local height = numRows * (categorie['etiquetteH']);
-    local heightContainer = height+50 + numRows*20 - 20
-    local pointHeight
+      local numRows = math.ceil(#categorie['data'] /categorie['etiquetteByLine'])
+      local height = numRows * (categorie['etiquetteH']);
+      if categorie['data'][1]['dependsHF'] then
+        height = numRows * (categorie['etiquetteH'])
+      end
+      local heightContainer = height+50 + numRows*20 - 20
+      local pointHeight
 
-    if index == 1 then
-        pointHeight = 0
+      if index == 1 then
+          pointHeight = 0
+      else
+          pointHeight = -(totalHeight+20)
+      end
+
+      local container = createCadre(categorie['containerName'], parent, heightContainer, categorie['name'], pointHeight, categorie['colorCadre'])
+      if index == 1 then
+      else
+          heightContainer = heightContainer + 20
+      end
+
+        createDataCadre(categorie['containerEtiquetteName'], height, container, categorie['data'], categorie['etiquetteL'], categorie['etiquetteH'], categorie['typeEtiquettes'],categorie['colorEtiquette'], categorie['sizeButton'])
+        return heightContainer
     else
-        pointHeight = -(totalHeight+20)
-    end
-
-    local container = createCadre(categorie['containerName'], parent, heightContainer, categorie['name'], pointHeight, categorie['colorCadre'])
-
-    if index == 1 then
-    else
-        heightContainer = heightContainer + 20
-    end
-
-    createDataCadre(categorie['containerEtiquetteName'], height, container, categorie['data'], categorie['etiquetteL'], categorie['etiquetteH'], categorie['typeEtiquettes'],categorie['colorEtiquette'], categorie['sizeButton'])
-
-    return heightContainer
-    else
-    return totalHeight
+      return totalHeight
     end
 end
 
 function core.PopulateActivities(parent, option)
   local selectedTable = nil
-if option == 'Daily' then
-  core.GetDataDaily()
-  selectedTable = core.activityDaily
-elseif option == 'Weekly' then
-  selectedTable = core.activityWeekly
-  core.GetDataWeekly()
-end
+  if option == 'Daily' then
+    core.GetDataDaily()
+    selectedTable = core.activityDaily
+  elseif option == 'Weekly' then
+    selectedTable = core.activityWeekly
+    core.GetDataWeekly()
+  elseif option == 'HF' then
+    selectedTable = core.activityHF
+    core.GetHautFait()
 
-local totalHeight = 0;
-local index = 0
-if selectedTable then
-  for key, value in pairs(selectedTable) do
-    if selectedTable[key]['active'] and next(selectedTable[key]['data'])~= nil then
-      index = index +1
-      totalHeight = totalHeight + core.getContainer(selectedTable[key], index, parent, totalHeight)
+  end
+
+  local totalHeight = 0;
+  local index = 0
+  if selectedTable then
+    for key, value in pairs(selectedTable) do
+      if selectedTable[key]['active'] and next(selectedTable[key]['data'])~= nil then
+        index = index +1
+        totalHeight = totalHeight + core.getContainer(selectedTable[key], index, parent, totalHeight)
+      end
     end
   end
-end
-parent:SetHeight(totalHeight)
+  parent:SetHeight(totalHeight)
 end
   

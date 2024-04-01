@@ -129,7 +129,6 @@ function WIDT:resetColorDaily(_,button)
 
 	if button == "LeftButton" then
 		for key, value in pairs(WIDT.db.profile.daily) do
-			print(key)
 			WIDT.db.profile.daily[key] = defaults.profile.daily[key]
 			core.barres[key] = WIDT.db.profile.daily[key]
 		end
@@ -140,7 +139,6 @@ function WIDT:resetColorWeekly(_,button)
 
 	if button == "LeftButton" then
 		for key, value in pairs(WIDT.db.profile.weekly) do
-			print(key)
 			WIDT.db.profile.weekly[key] = defaults.profile.weekly[key]
 			core.barres[key] = WIDT.db.profile.weekly[key]
 		end

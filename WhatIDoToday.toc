@@ -1,9 +1,9 @@
-## Interface: 100205
+## Interface: 100206
 ## Title: WhatIdoToday
 ## Author: Charline
 ## Notes: what you do today
 ## OptionalDeps: LibSharedMedia-3.0, LibDataBroker-1.1, LibDBIcon-1.0, Ace3
-## Version: 1.1.2
+## Version: 1.1.3
 ## SavedVariables: WIDTDB, WIDTMMDB
 libs\Ace3\LibStub\LibStub.lua
 libs\Ace3\CallbackHandler-1.0\CallbackHandler-1.0.xml
@@ -38,13 +38,22 @@ data\perso.lua
 data\warfront-arathi.lua
 data.lua
 data\saisonnalEvent.lua
+data\haut-fait.lua
+
 
 frames\daily\data.lua
 frames\daily\daily-service.lua
 
 frames\weekly\data.lua
 frames\weekly\weekly-service.lua
+
+frames\haut-fait\data.lua
+frames\haut-fait\hf-service.lua
+
+
 functions.lua
+functions\hf-functions.lua
+
 icones.lua
 text.lua
 
@@ -53,8 +62,10 @@ formatDate.lua
 
 frames\frames-service.lua
 frames\event-popup.lua
+frames\hf-list.lua
 frames\main-container\left-buttons.lua
 frames\main-container\main-container.lua
+
 
 
 
