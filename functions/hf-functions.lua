@@ -7,6 +7,7 @@ function core.Functions.getHF()
       entry['title'] = name
       entry['description'] = description
 
+
       local nameMount,
       spellID,
       iconMount,
@@ -32,6 +33,7 @@ function core.Functions.getHF()
          entry2['nameHf'] = nameRequirement
          entry2['description'] = descriptionRequirement
          entry2['doHF'] = completedRequirement
+         entry2['Icon'] = iconRequirement
 
          local numCriteria = GetAchievementNumCriteria(entry2['id'])
          local criterias = {}
@@ -41,7 +43,7 @@ function core.Functions.getHF()
              local criteriaString, criteriaType, criteriacompleted, quantity, reqQuantity, charName, criteriaflags, assetID, quantityString, criteriaID, eligible
              = GetAchievementCriteriaInfo(entry2['id'], i )
  
-             table.insert(criterias, {name = criteriaString, doRequirement = criteriacompleted,totalQuantityMob = quantity})
+             table.insert(criterias, {name = criteriaString, doRequirement = criteriacompleted,totalQuantityMob = quantity, reqQuantity = reqQuantity, quantityString = quantityString})
  
            end
          end
@@ -55,7 +57,11 @@ function core.Functions.getHF()
          end
       end
       entry.dependsHF = requirements
-      table.insert(core.hautFaitDragonFlyght.Perso, entry)
+
+      if not completed then
+        table.insert(core.hautFaitDragonFlyght.Perso, entry)
+      end
+   
       
     end
 end

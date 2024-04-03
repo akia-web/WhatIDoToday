@@ -15,7 +15,7 @@ local function createButtonHf(parent, text, width, height, item)
     buttonTitle:SetText('- '..text)
     buttonTitle:SetJustifyH('LEFT')
     buttonTitle:SetNonSpaceWrap(true)
-    buttonTitle:SetWidth(240)
+    buttonTitle:SetWidth(width + 10)
 
     buttonLink:SetScript("OnEnter", function()
         buttonLinkBackground:SetColorTexture(core.activeButton.r, core.activeButton.g, core.activeButton.b, 0.8)
@@ -31,7 +31,7 @@ local function createButtonHf(parent, text, width, height, item)
           core.detailEventFrame:Hide()
         end
 
-        core.createDetailEventFrame(item, "popupHF", core.barres.eventsPopup, 100)
+        core.createDetailEventFrame(item, "popupHF", core.barres.eventsPopup, 50)
         core.detailEventFrame:Show()
      
       end)
@@ -42,10 +42,10 @@ end
 function core.listHF.CreateListHF(item, parent)
 
     local frameHF = CreateFrame("Frame", "MonCadre", parent)
-    frameHF:SetSize(240, (30 * (#item.dependsHF)) + (30*5)) 
-    frameHF:SetPoint("TOP", parent, "BOTTOM", 30, 0)
+    local buttonWidth = 260
+    frameHF:SetWidth(buttonWidth) 
+    frameHF:SetPoint("TOP", parent, "BOTTOM", 0, 0)
 
-    local buttonWidth = 240
     local buttonHeight = 30
     local buttonSpacingY = 5
     local buttons = {}
@@ -54,11 +54,11 @@ function core.listHF.CreateListHF(item, parent)
     for index, entry in ipairs(item.dependsHF) do
         local button2 = createButtonHf(frameHF, entry['nameHf'], buttonWidth, buttonHeight, entry)
         table.insert(buttons, button2)
-
         local yOffset = -((index - 1) * (buttonHeight + buttonSpacingY))
-
         button2:SetPoint("TOPLEFT", frameHF, "TOPLEFT",  0, yOffset)
     end 
+
+    frameHF:SetHeight(35* #item.dependsHF)
     return frameHF   
 
 end

@@ -14,6 +14,7 @@ function core.Functions.contient(tableau, element)
     end
     return false
 end
+
 function core.Functions.getInstanceLoked()
         local numberInstance = GetNumSavedInstances()
         local lokedInstance = {}
@@ -95,6 +96,7 @@ function core.Functions.getNameDifficulty(instance)
     return instanceName
 
 end
+
 function core.Functions.checkIfMountIsAlreadyDone(mountId, instance, tableauLockedInstance, position, difficulty)
     for _, entry in ipairs(tableauLockedInstance) do
         local bossName, fileDataID, isKilled, unknown4 = GetSavedInstanceEncounterInfo(entry['lockInstancePosition'], position)
@@ -447,8 +449,6 @@ local function allQuestAreCompleted(tableau)
     end
     return true
 end
-
-
 
 local function getWinterEvent(isEventUp)
     local questCompleted = false

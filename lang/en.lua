@@ -6,6 +6,7 @@ if GetLocale() ~= "frFR" then
     L["donjon"] = "dungeon"
     L['difficulty'] = 'Difficulty'
     L['pays'] = 'Region'
+    L['critere']='Criteria'
 
     --raids 
     L["ICC"] = 'Icecrown Citadel'

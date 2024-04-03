@@ -20,9 +20,9 @@ local defaults = {
 				["b"] = 0.9,
 			},
 			eventsPopup = {
-				["r"] = 0.9,
-				["g"] = 0.9,
-				["b"] = 0.9,
+				["r"] = 0,
+				["g"] = 0,
+				["b"] = 0,
 			},
 			donjonJourEtiquettes = {
 				["r"] = 0.9,

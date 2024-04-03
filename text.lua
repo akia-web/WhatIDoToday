@@ -43,7 +43,7 @@ end
 local function getTextWarfront(item)
     return {
         title = item["MountName"],
-        description = ''
+        description = nil
     }
 end
 
@@ -76,25 +76,27 @@ local function getTextPopupEventWinter(item)
 end
 
 local function getTextPopupHF(item)
-    local criteriatext =''
-    local totalQuantity = ''
+    local criteriatext =core.L['critere']..' : \n'
     if item.criteria ~= nil and #item.criteria > 0 then
+       
         for index, entry in ipairs(item.criteria) do
             local text = entry.name
+            local transformNumberQuantityString = tonumber(entry.quantityString)
 
             if entry.doRequirement then
                text = green(text)
             end
 
-            if entry.totalQuantityMob > 1 then
-                totalQuantity = '-> total : '.. entry.totalQuantityMob 
+            if #item.criteria == 1 and transformNumberQuantityString == nil then
+                    criteriatext = criteriatext .. entry.quantityString ..'\n'
+            else
+                criteriatext = criteriatext ..  '- '..text..'\n'
             end
-            criteriatext = criteriatext ..  '- '..text.. totalQuantity..'\n'
         end
     end
     return {
         title = item["nameHf"],
-        description = item["description"]..'\n'..criteriatext
+        description = item["description"]..'\n\n'..criteriatext
     }
 end
 

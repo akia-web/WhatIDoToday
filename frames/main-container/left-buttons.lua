@@ -3,7 +3,7 @@ local _,core = ...;
 local function removeActiveOtherButton(option)
     for key, value in pairs(core.actionButton) do
         if not (core.actionButton[key] == option)  then
-            core.actionButton[key]:SetColorTexture(core.fondColor.r,core.fondColor.g, core.fondColor.b, 0.2)
+            core.actionButton[key]:SetColorTexture(0,0, 0, 0)
         end
       end
 end
@@ -15,7 +15,7 @@ function core.leftButton(parent, title, y, option)
   
     core.actionButton[option] = button:CreateTexture(nil, "BACKGROUND")
     core.actionButton[option]:SetAllPoints(button)
-    core.actionButton[option]:SetColorTexture(core.fondColor.r,core.fondColor.g, core.fondColor.b, 0.2)
+    core.actionButton[option]:SetColorTexture(0,0, 0, 0.2)
   
     local buttonTitle = button:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med2")
     buttonTitle:SetPoint("CENTER", button, "CENTER", 0, 0)
@@ -40,7 +40,7 @@ function core.leftButton(parent, title, y, option)
 
     -- OnLeave: Retour à la couleur d'origine lorsque la souris quitte le bouton
     button:SetScript("OnLeave", function()
-        core.actionButton[option]:SetColorTexture(core.fondColor.r, core.fondColor.g, core.fondColor.b, 0.2)
+        core.actionButton[option]:SetColorTexture(0, 0, 0, 0)
         core.actionButton[core.buttonActive]:SetColorTexture(core.activeButton.r, core.activeButton.g, core.activeButton.b, 1)
     end)
 

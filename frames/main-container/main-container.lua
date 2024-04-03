@@ -36,14 +36,14 @@ function core.Frame.createFrameContainer()
   
     local backgroundTextureFrame = frame:CreateTexture(nil, "BACKGROUND")
     backgroundTextureFrame:SetAllPoints(frame)
-    backgroundTextureFrame:SetColorTexture(0, 0, 0, 0.7) 
+    backgroundTextureFrame:SetColorTexture(0, 0, 0, 0.9) 
   
     local LeftPanneau = CreateFrame("Frame", "IconSelectorScrollChild", frame)
     LeftPanneau:SetSize(200, 720)
     LeftPanneau:SetPoint("TOPLEFT", 10, -50)
     local backgroundTextureLeftPanneau = LeftPanneau:CreateTexture(nil, "BACKGROUND")
     backgroundTextureLeftPanneau:SetAllPoints(LeftPanneau)
-    backgroundTextureLeftPanneau:SetColorTexture(core.fondColor.r, core.fondColor.g, core.fondColor.b, 0.5) 
+    backgroundTextureLeftPanneau:SetColorTexture(0, 0, 0, 0) 
     
     core.scrollFrame = CreateFrame("ScrollFrame", "IconSelectorScrollFrame", frame, "UIPanelScrollFrameTemplate")
     core.scrollFrame:SetPoint("TOPLEFT", LeftPanneau,"TOPRIGHT",16, 0)
