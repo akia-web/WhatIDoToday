@@ -26,5 +26,10 @@ if GetLocale() ~= "frFR" then
     L['ValEtenerlPrintemps']= 'Val of Eternal Blossoms'
     L['defileDeuillevent']= 'Deadwind Pass'
     L['picsFoudroyes'] = 'The Storm Peaks'
+
+    L['Today'] = 'Today'
+    L['ThisWeek'] = 'This Week'
+    L['Hf']= 'Achievements'
+    L['AddonName']="What I Do today"
     core.L = L
  end

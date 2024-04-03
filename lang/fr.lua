@@ -27,5 +27,10 @@ if GetLocale() == "frFR" then
     L['ValEtenerlPrintemps']= "Val de l'éternel printemps"
     L['defileDeuillevent']= 'Défilé de Deuillevent'
     L['picsFoudroyes'] = 'Les Pics Foudroyés'
+
+    L['Today'] = "Aujourd'hui"
+    L['ThisWeek'] = 'Cette semaine'
+    L['Hf']= 'Hauts-faits'
+    L['AddonName']="Ce que je dois faire aujoud'hui"
     core.L = L
  end

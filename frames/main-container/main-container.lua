@@ -14,7 +14,7 @@ function core.Frame.createFrameContainer()
     
     frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
     frame.title:SetPoint("TOPLEFT", 16, -10)
-    frame.title:SetText("Ce que je dois faire")
+    frame.title:SetText(core.L['AddonName'])
     frame:SetFrameStrata("HIGH")
     frame.closeButton = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
     frame.closeButton:SetPoint("TOPRIGHT", -8, -8)
@@ -52,9 +52,9 @@ function core.Frame.createFrameContainer()
     core.containerFrame = core.Functions.getContainerScrollFrame(core.scrollFrame) 
   
   ----------LetfButton --------------------
-    core.todayButton = core.leftButton(LeftPanneau, "Aujourd'hui", 0, 'Daily') 
-    core.leftButton(LeftPanneau, "Cette semaine", -50, 'Weekly')
-    core.leftButton(LeftPanneau, "Haut faits", -100, 'HF')  
+    core.todayButton = core.leftButton(LeftPanneau, core.L['Today'], 0, 'Daily') 
+    core.leftButton(LeftPanneau,core.L['ThisWeek'] , -50, 'Weekly')
+    core.leftButton(LeftPanneau, core.L['Hf'], -100, 'HF')  
 
      --------------DONNEES DE DEPART---------------
     core.PopulateActivities(core.containerFrame, 'Daily')
