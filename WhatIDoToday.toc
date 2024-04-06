@@ -3,7 +3,7 @@
 ## Author: Charline
 ## Notes: what you do today
 ## OptionalDeps: LibSharedMedia-3.0, LibDataBroker-1.1, LibDBIcon-1.0, Ace3
-## Version: 1.1.5
+## Version: 1.1.6
 ## SavedVariables: WIDTDB, WIDTMMDB
 libs\Ace3\LibStub\LibStub.lua
 libs\Ace3\CallbackHandler-1.0\CallbackHandler-1.0.xml
@@ -34,11 +34,11 @@ data\emissaire-bfa-horde.lua
 data\donjon-weekly.lua
 data\worlBoss.lua
 data\raid.lua
-data\perso.lua
 data\warfront-arathi.lua
 data.lua
 data\saisonnalEvent.lua
 data\haut-fait.lua
+data\perso.lua
 
 
 frames\daily\data.lua
