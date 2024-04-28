@@ -76,9 +76,10 @@ local function getTextPopupEventWinter(item)
 end
 
 local function getTextPopupHF(item)
-    local criteriatext =core.L['critere']..' : \n'
+    local criteriatext = ''
     if item.criteria ~= nil and #item.criteria > 0 then
-       
+        local isMetaHF = item['metaHf'] and 'meta HF' or core.L['critere']
+       criteriatext = isMetaHF..' : \n\n'
         for index, entry in ipairs(item.criteria) do
             local text = entry.name
             local transformNumberQuantityString = tonumber(entry.quantityString)

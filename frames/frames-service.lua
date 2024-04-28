@@ -1,5 +1,12 @@
 local _,core = ...;
 
+local function getTotalHeight(tableau)
+  local result = 0
+  for _, valeur in ipairs(tableau) do
+    result = result + valeur
+  end
+  return result
+end
 
 function core.createDetailEventFrame( item, typePopup, color , size)
   local minHeight = 300
@@ -35,6 +42,30 @@ function core.createDetailEventFrame( item, typePopup, color , size)
   local textDescription = core.Text.CreateText(frameDescription, "SystemFont_Shadow_Med1", "CENTER" ,"CENTER", 300, 0, 0, "LEFT")
   textDescription:SetText(textPopup['description'])
   frameDescription:SetHeight(textDescription:GetStringHeight())
+
+  if item['link'] then
+    detailFrame:SetHeight(minHeight + 80)
+    local buttonLink =  CreateFrame("Button", "NomDuBouton", detailFrame, "UIPanelButtonTemplate")
+    buttonLink:SetPoint("BOTTOM", detailFrame, "BOTTOM", 0, 40)
+    buttonLink:SetSize(200, 30)
+    buttonLink:SetText(core.L['buttonLink'])
+    
+    local hasAlreadyLink = false
+
+    buttonLink:SetScript("OnClick", function(self, button, down)
+      if not hasAlreadyLink then
+        local monInput = CreateFrame("EditBox", "inputLink", detailFrame, "InputBoxTemplate")
+        monInput:SetPoint("TOP", buttonLink, "BOTTOM", 0, -10) -- Positionnez le champ de saisie sous le bouton
+        monInput:SetWidth(400)
+        monInput:SetHeight(30)
+        monInput:SetText(item['link'])
+        monInput:SetCursorPosition(0)
+        hasAlreadyLink = true
+      end
+  
+  end)
+  end
+
   core.detailEventFrame = detailFrame
 end
 
@@ -46,13 +77,11 @@ function core.createBackground( color, parent, opacity)
   return background
 end
 
-local function createEtiquette(item, parent,etiquetteL, etiquetteH,color,rowIndex, colIndex, typeEtiquette, size, lastHeight )
+local function createEtiquette(item, parent,etiquetteL,color, colIndex, typeEtiquette, size )
   local etiquette = CreateFrame("frame", "etiquette", parent)
-  local margeHauteur = 20
   local titleHeight = 30
   etiquette:SetWidth(etiquetteL)
-  lastHeight = lastHeight == 0 and 0 or lastHeight + margeHauteur
-  etiquette:SetPoint("TOPLEFT", parent,"TOPLEFT",colIndex * (etiquetteL+30)+10,-rowIndex * lastHeight)
+  etiquette:SetPoint("TOPLEFT", parent,"TOPLEFT",colIndex * (etiquetteL+30)+10, 0)
   core.createBackground(color, etiquette, 0.4) --background etiquette
 
   local frameTextTitle = CreateFrame("frame", "etiquette", etiquette)
@@ -110,6 +139,7 @@ local function createEtiquette(item, parent,etiquetteL, etiquetteH,color,rowInde
     end)
   
   end
+
   local frameHF = nil
   local hightHF = 0
   if typeEtiquette == 'HF' then
@@ -137,7 +167,7 @@ local function createCadre(nameContainer, parent, containerTiltleText, color, in
   return container
 end
 
-local function createDataCadre(nameContainer, elementBottom, tableau, etiquetteL, etiquetteH, type, color, size)
+local function createDataCadre(nameContainer, elementBottom, tableau, etiquetteL, type, color, size)
   local rowIndex, colIndex =0, 0
 
   local containerData= CreateFrame("frame", nameContainer, elementBottom)
@@ -147,10 +177,15 @@ local function createDataCadre(nameContainer, elementBottom, tableau, etiquetteL
 
   local hightEtiquette=0
   local lineTableauEtiquette = {}
+  local totalHeight = 0
+  local ecartBetweenLines = 20
   local biggestEtiquette = 0
-  local previousLineSize = 0
-  for _, item in ipairs(tableau) do
-    local etiquette = createEtiquette(item, containerData ,etiquetteL, etiquetteH , color, rowIndex, colIndex, type, size, hightEtiquette )
+  for index, item in ipairs(tableau) do
+    local etiquette = createEtiquette(item, containerData ,etiquetteL , color, colIndex, type, size )
+    local aEtiquette, bEtiquette, cEtiquette, xEtiquette, yEtiquette = etiquette:GetPoint()
+    yEtiquette = totalHeight
+    etiquette:SetPoint(aEtiquette, bEtiquette, cEtiquette, xEtiquette, yEtiquette)
+
     hightEtiquette = etiquette:GetHeight()
     table.insert(lineTableauEtiquette, etiquette)
     biggestEtiquette = biggestEtiquette < hightEtiquette and hightEtiquette or biggestEtiquette
@@ -159,31 +194,40 @@ local function createDataCadre(nameContainer, elementBottom, tableau, etiquetteL
     if colIndex >= 3 then
       colIndex = 0
       rowIndex = rowIndex + 1
-
+     
       for _, item2 in ipairs(lineTableauEtiquette) do
         local a, b, c, x, y = item2:GetPoint()
-        local height = y == -0 and -0 or -(previousLineSize + 20)*(rowIndex-1)
+        local height = y == -0 and -0 or -(totalHeight)
         item2:SetPoint(a, b, c, x, height)
         item2:SetHeight(biggestEtiquette)
       end
+      totalHeight = totalHeight + biggestEtiquette + ecartBetweenLines
 
-      previousLineSize = biggestEtiquette
       lineTableauEtiquette = {}
       biggestEtiquette = 0
+
+    -- pour la derniere ligne du tableau si elle n'est pas complete  
+    elseif index == (#tableau) then
+  
+      for _, item2 in ipairs(lineTableauEtiquette) do
+        local a, b, c, x, y = item2:GetPoint()
+        local height = y == -0 and -0 or -totalHeight
+        item2:SetPoint(a, b, c, x, height)
+        item2:SetHeight(biggestEtiquette)
+      end
+      totalHeight = totalHeight + biggestEtiquette + 20
     end
   end
 
-  local nbligne = colIndex == 0 and rowIndex or rowIndex+1
-  local ecart = (rowIndex == 1 and colIndex == 0) and 0 or rowIndex* 20
-  containerData:SetHeight(((hightEtiquette * nbligne) + ecart ))
+  containerData:SetHeight(totalHeight)
   return containerData
 end
 
 function core.getContainer(categorie, index, parent, lastContainer)
     if next(categorie['data']) ~= nil then
       local container = createCadre(categorie['containerName'], parent, categorie['name'], categorie['colorCadre'], index, lastContainer)
-      local dataCadre = createDataCadre(categorie['containerEtiquetteName'], container, categorie['data'], categorie['etiquetteL'], categorie['etiquetteH'], categorie['typeEtiquettes'],categorie['colorEtiquette'], categorie['sizeButton'])
-      container:SetHeight(dataCadre:GetHeight()+40)
+      local dataCadre = createDataCadre(categorie['containerEtiquetteName'], container, categorie['data'], categorie['etiquetteL'], categorie['typeEtiquettes'],categorie['colorEtiquette'], categorie['sizeButton'])
+      container:SetHeight(dataCadre:GetHeight()+80)
       return container
     end
 end
@@ -218,4 +262,3 @@ function core.PopulateActivities(parent, option)
     parent:SetHeight(totalHeight)
   end
 end
-  

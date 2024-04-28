@@ -32,5 +32,6 @@ if GetLocale() == "frFR" then
     L['ThisWeek'] = 'Cette semaine'
     L['Hf']= 'Hauts-faits'
     L['AddonName']="Ce que je dois faire aujoud'hui"
+    L['buttonLink']="Lien vers Wowhead"
     core.L = L
  end
