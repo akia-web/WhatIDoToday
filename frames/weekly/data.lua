@@ -1,4 +1,4 @@
-local _,core = ...;
+local _, core = ...;
 core.activityWeekly = {
     donjons = {
         active = false,
@@ -19,7 +19,7 @@ core.activityWeekly = {
         data = {},
         etiquetteH = 140,
         etiquetteL = 300,
-        colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
+        colorEtiquette = { ["r"] = 0.9, ["g"] = 0.9, ["b"] = 0.9 },
         etiquetteByLine = 3,
         containerName = 'containerRaid',
         containerEtiquetteName = 'containerDataRaid',
@@ -28,7 +28,7 @@ core.activityWeekly = {
         colorCadre = core.fondColor,
         sizeButton = 40
     },
-    worldBoss={
+    worldBoss = {
         active = false,
         data = {},
         etiquetteH = 100,
@@ -42,5 +42,5 @@ core.activityWeekly = {
         colorCadre = core.fondColor,
         sizeButton = 40
     },
-    
+
 }

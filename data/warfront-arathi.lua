@@ -1,4 +1,4 @@
-local _,core = ...;
+local _, core = ...;
 
 core.warfrontArathiAlly = {
     {   -- raptor rouge
@@ -95,8 +95,6 @@ core.warfrontDarkshoreAlly = {
     },
 
 }
-
-
 
 core.warfrontArathHorde = {
     {   -- raptor rouge

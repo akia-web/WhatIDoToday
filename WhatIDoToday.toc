@@ -1,9 +1,9 @@
-## Interface: 100206
+## Interface: 110000
 ## Title: WhatIdoToday
 ## Author: Charline
 ## Notes: what you do today
 ## OptionalDeps: LibSharedMedia-3.0, LibDataBroker-1.1, LibDBIcon-1.0, Ace3
-## Version: 1.1.7
+## Version: 1.1.8
 ## SavedVariables: WIDTDB, WIDTMMDB
 libs\Ace3\LibStub\LibStub.lua
 libs\Ace3\CallbackHandler-1.0\CallbackHandler-1.0.xml

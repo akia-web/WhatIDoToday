@@ -1,4 +1,4 @@
-local _,core = ...;
+local _, core = ...;
 
 core.MountsDonjonWeeks = {
     {-- Jacasse
@@ -10,7 +10,7 @@ core.MountsDonjonWeeks = {
         TimeBeforeReset = nil,
         BossPosition = 4,
         Mode = 23,
-        ModeName=nil,
+        ModeName = nil,
         DonjonName = "Port-Liberté",
         BossName = nil,
         IdDonjon = 1704,
@@ -26,7 +26,7 @@ core.MountsDonjonWeeks = {
         TimeBeforeReset = nil,
         BossPosition = 4,
         Mode = 23,
-        ModeName=nil,
+        ModeName = nil,
         DonjonName = "Tréfond putrides",
         BossName = nil,
         IdDonjon = 1711,
@@ -42,10 +42,10 @@ core.MountsDonjonWeeks = {
         TimeBeforeReset = nil,
         BossPosition = 4,
         Mode = 23,
-        ModeName=nil,
+        ModeName = nil,
         DonjonName = "Repos des rois",
         BossName = nil,
-        IdDonjon =1785,
+        IdDonjon = 1785,
         Continent = "Zandalar",
         Country = "ZulDazar"
     },
@@ -58,10 +58,10 @@ core.MountsDonjonWeeks = {
         TimeBeforeReset = nil,
         BossPosition = 4,
         Mode = 23,
-        ModeName=nil,
+        ModeName = nil,
         DonjonName = "Opération Mécagone",
         BossName = nil,
-        IdDonjon =2006,
+        IdDonjon = 2006,
         Continent = "Kul tiras",
         Country = "Mécagone"
     },
@@ -74,10 +74,10 @@ core.MountsDonjonWeeks = {
         TimeBeforeReset = nil,
         BossPosition = 4,
         Mode = 23,
-        ModeName=nil,
+        ModeName = nil,
         DonjonName = "Opération Mécagone",
         BossName = nil,
-        IdDonjon =2006,
+        IdDonjon = 2006,
         Continent = "Kul tiras",
         Country = "Mécagone mode Hard"
     },
@@ -90,10 +90,10 @@ core.MountsDonjonWeeks = {
         TimeBeforeReset = nil,
         BossPosition = 4,
         Mode = 23,
-        ModeName=nil,
+        ModeName = nil,
         DonjonName = "Kharazan",
         BossName = nil,
-        IdDonjon =1475,
+        IdDonjon = 1475,
         Continent = "Royaume de l'est",
         Country = "Defile de Deuillevent"
     }

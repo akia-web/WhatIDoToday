@@ -1,4 +1,4 @@
-local _,core = ...;
+local _, core = ...;
 
 function core.GetHautFait()
     core.Functions.getHF()

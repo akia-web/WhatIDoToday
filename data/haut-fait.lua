@@ -1,4 +1,4 @@
-local _,core = ...;
+local _, core = ...;
 
 core.hautFaitDragonFlyght = {
     {
@@ -16,12 +16,7 @@ core.hautFaitDragonFlyght = {
                 doHF = false,
                 metaHf = true,
                 link = 'https://www.wowhead.com/achievement=19479/wake-me-up#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19482,
@@ -30,12 +25,7 @@ core.hautFaitDragonFlyght = {
                 doHF = false,
                 metaHf = true,
                 link = 'https://www.wowhead.com/achievement=19482/army-of-the-fed#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19485,
@@ -44,12 +34,7 @@ core.hautFaitDragonFlyght = {
                 doHF = false,
                 metaHf = true,
                 link = 'https://www.wowhead.com/achievement=19485/closing-time#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18209,
@@ -57,12 +42,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18209/nothing-stops-the-research#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19008,
@@ -70,12 +50,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19008/dream-shaper#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19481,
@@ -84,12 +59,7 @@ core.hautFaitDragonFlyght = {
                 doHF = false,
                 metaHf = true,
                 link = 'https://www.wowhead.com/achievement=19481/centaur-of-attention#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19483,
@@ -98,12 +68,7 @@ core.hautFaitDragonFlyght = {
                 doHF = false,
                 metaHf = true,
                 link = 'https://www.wowhead.com/achievement=19483/flight-club#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16492,
@@ -112,12 +77,7 @@ core.hautFaitDragonFlyght = {
                 doHF = false,
                 metaHf = true,
                 link = 'https://www.wowhead.com/achievement=16492/into-the-storm#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18867,
@@ -125,14 +85,8 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18867/through-the-ashes-and-flames#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
-           
         }
     },
     {
@@ -149,12 +103,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16570/a-legendary-album#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16587,
@@ -162,12 +111,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16587/lead-climber#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 15890,
@@ -175,12 +119,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=15890/dragonscale-expedition-the-highest-peaks#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16676,
@@ -188,12 +127,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16676/adventurer-of-the-waking-shores#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16568,
@@ -201,12 +135,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16568/great-shots-galore#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16588,
@@ -214,12 +143,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16588/how-did-these-get-here#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16571,
@@ -227,12 +151,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16571/well-supplied#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16297,
@@ -240,14 +159,8 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16297/treasures-of-the-waking-shores#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
-                 
         }
     },
     {
@@ -264,12 +177,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16540/hunt-master#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16545,
@@ -277,12 +185,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16545/the-best-at-what-i-do#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16543,
@@ -290,12 +193,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16543/tetrachromancer#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16677,
@@ -303,12 +201,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16677/adventurer-of-the-ohnahran-plains#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16541,
@@ -316,12 +209,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16541/longhunter#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16542,
@@ -329,12 +217,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16542/the-disgruntled-hunter#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16424,
@@ -342,12 +225,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16424/whos-a-good-bakar',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16299,
@@ -355,14 +233,8 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16299/treasures-of-the-ohnahran-plains#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
-           
         }
     },
     {
@@ -379,12 +251,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16443/soupervisor#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16317,
@@ -392,12 +259,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16317/secret-fishing-spots#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16563,
@@ -405,12 +267,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16563/were-going-to-need-a-bigger-harpoon#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16678,
@@ -418,12 +275,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16678/adventurer-of-the-azure-span#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16444,
@@ -431,12 +283,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16444/leftovers-revenge#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16553,
@@ -444,12 +291,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16553/taking-from-nature#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16580,
@@ -457,12 +299,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16580/lend-a-helping-span#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16300,
@@ -470,17 +307,10 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16300/treasures-of-the-azure-span#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
-           
         }
     },
-
     {
         MountID = 1651, -- Loutrèke d’avant-garde conférée
         MountName = nil,
@@ -495,12 +325,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16411/siege-on-dragonbane-keep-home-sweet-home#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16412,
@@ -508,12 +333,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16412/siege-on-dragonbane-keep-chiseled-record#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16495,
@@ -521,12 +341,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://wowhead.com/achievement=16495/obsidian-keymaster#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18384,
@@ -534,12 +349,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18384/whelp-there-it-is#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18383,
@@ -547,12 +357,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18383/hey-nanny-nanny#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16301,
@@ -560,12 +365,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16301/treasures-of-thaldraszus#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16410,
@@ -573,12 +373,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16410/siege-on-dragonbane-keep-snack-attack#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16497,
@@ -586,12 +381,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16497/im-playing-all-sides#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16496,
@@ -599,12 +389,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16496/obsidian-champion#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17782,
@@ -612,12 +397,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17782/daycare-derby#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16679,
@@ -625,12 +405,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16679/adventurer-of-thaldraszus#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
         }
     },
@@ -648,12 +423,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17342/the-future-we-make#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18637,
@@ -661,12 +431,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18637/chronograde-connoisseur#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18638,
@@ -674,12 +439,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18638/minute-menagerie#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18640,
@@ -687,12 +447,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18640/lock-and-load#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18703,
@@ -700,12 +455,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18703/dawn-of-the-infinite-galakronds-fall#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18635,
@@ -713,12 +463,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18635/verified-rifter#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18636,
@@ -726,12 +471,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18636/just-following-chronological-orders#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18639,
@@ -739,12 +479,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18639/collapsed-reality#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18641,
@@ -752,12 +487,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18641/to-all-the-squirrels-ive-been-before#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18704,
@@ -765,12 +495,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18704/dawn-of-the-infinite-murozonds-rise#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
         }
     },
@@ -789,12 +514,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16468/chasing-storms-in-the-waking-shores#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16484,
@@ -802,12 +522,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16484/chasing-storms-in-the-azure-span#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16476,
@@ -815,12 +530,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16476/chasing-storms-in-the-ohnahran-plains#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16489,
@@ -828,12 +538,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16489/chasing-storms-in-thaldraszus#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16500,
@@ -841,12 +546,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16500/elemental-overload#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16461,
@@ -854,12 +554,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16461/stormed-off#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16502,
@@ -867,12 +562,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16502/storming-the-runway#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
         }
     },
@@ -890,12 +580,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16343/vault-of-the-incarnates#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19331,
@@ -903,12 +588,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19331/amirdrassil-the-dreams-hope#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16334,
@@ -916,12 +596,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16334/waking-hope#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 15394,
@@ -929,12 +604,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=15394/ohnaroll#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16336,
@@ -942,12 +612,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16336/azure-spanner#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16363,
@@ -955,12 +620,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16363/just-dont-ask-me-to-spell-it#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16401,
@@ -968,12 +628,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16401/sojourner-of-the-waking-shores#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16405,
@@ -981,12 +636,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16405/sojourner-of-ohnahran-plains#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16428,
@@ -994,12 +644,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16428/sojourner-of-azure-span#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16398,
@@ -1007,12 +652,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16398/sojourner-of-thaldraszus#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17773,
@@ -1020,12 +660,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17773/a-blue-dawn#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18958,
@@ -1033,12 +668,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18958/of-the-tyrs-guard#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16683,
@@ -1046,12 +676,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16683/in-tyrs-footsteps#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17734,
@@ -1059,12 +684,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17734/active-listening-skills#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17546,
@@ -1072,12 +692,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17546/a-new-beginning#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19507,
@@ -1085,12 +700,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19507/fringe-benefits#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16334,
@@ -1098,12 +708,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16334/waking-hope#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16336,
@@ -1111,12 +716,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16336/azure-spanner#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17739,
@@ -1124,12 +724,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17739/embers-of-neltharion#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17766,
@@ -1137,12 +732,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17766/explore-zaralek-cavern#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 15394,
@@ -1150,12 +740,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=15394/ohnaroll#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16363,
@@ -1163,12 +748,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16363/just-dont-ask-me-to-spell-it#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16761,
@@ -1176,12 +756,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16761/dragon-isles-explorer#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19309,
@@ -1189,12 +764,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19309/explore-the-emerald-dream#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17534,
@@ -1202,12 +772,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17534/explore-the-forbidden-reach#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17528,
@@ -1215,12 +780,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17528/hoarder-of-the-forbidden-reach#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17529,
@@ -1228,12 +788,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17529/forbidden-spoils#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17532,
@@ -1241,12 +796,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17532/scroll-hunter#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17413,
@@ -1254,12 +804,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17413/door-buster#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17315,
@@ -1267,12 +812,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17315/while-we-were-sleeping#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17526,
@@ -1280,12 +820,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17526/treasures-of-the-forbidden-reach#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17525,
@@ -1293,12 +828,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17525/champion-of-the-forbidden-reach#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17530,
@@ -1306,12 +836,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17530/librarian-of-the-reach#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17540,
@@ -1319,12 +844,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17540/under-the-weather#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17509,
@@ -1332,12 +852,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17509/every-door-everywhere-all-at-once#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19026,
@@ -1345,12 +860,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19026/defenders-of-the-dream#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19317,
@@ -1358,12 +868,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19317/treasures-of-the-emerald-dream#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19309,
@@ -1371,12 +876,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19309/explore-the-emerald-dream#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19316,
@@ -1384,12 +884,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19316/adventurer-of-the-emerald-dream#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19013,
@@ -1397,12 +892,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19013/i-dream-of-seeds#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19312,
@@ -1410,12 +900,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19312/super-duper-bloom#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18160,
@@ -1423,12 +908,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18160/aberrus-the-shadowed-crucible#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16339,
@@ -1436,12 +916,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16339/myths-of-the-dragonflight-dungeons#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16808,
@@ -1449,12 +924,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16808/friend-of-the-dragon-isles#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16522,
@@ -1462,12 +932,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16522/a-true-explorer#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16529,
@@ -1475,12 +940,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16529/joining-the-community#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17763,
@@ -1488,12 +948,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17763/theres-no-place-like-loamm#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 18615,
@@ -1501,12 +956,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=18615/legend-of-the-multiverse#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16760,
@@ -1514,12 +964,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16760/the-obsidian-bloodline#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16537,
@@ -1527,12 +972,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16537/maximum-power#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16528,
@@ -1540,12 +980,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16528/joining-the-khansguard#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16530,
@@ -1553,12 +988,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16530/ally-of-the-flights#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19235,
@@ -1566,12 +996,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19235/warden-of-the-dream#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16494,
@@ -1579,12 +1004,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16494/loyalty-to-the-prince#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 16539,
@@ -1592,12 +1012,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=16539/in-high-esteem#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17427,
@@ -1605,12 +1020,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17427/winterpelt-conversationalist#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19486,
@@ -1619,12 +1029,7 @@ core.hautFaitDragonFlyght = {
                 doHF = false,
                 metaHf = true,
                 link = 'https://www.wowhead.com/achievement=19486/across-the-isles#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17739,
@@ -1632,12 +1037,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17739/embers-of-neltharion#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17781,
@@ -1645,12 +1045,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17781/the-smell-of-money#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17781,
@@ -1658,12 +1053,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17781/the-smell-of-money#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17832,
@@ -1671,12 +1061,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17832/sniffen-around#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17783,
@@ -1684,12 +1069,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17783/adventurer-of-zaralek-cavern#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17786,
@@ -1697,12 +1077,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17786/treasures-of-zaralek-cavern#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 17830,
@@ -1710,12 +1085,7 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=17830/stones-cant-fly#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
             {
                 id = 19478,
@@ -1723,18 +1093,8 @@ core.hautFaitDragonFlyght = {
                 nameHf = nil,
                 doHF = false,
                 link = 'https://www.wowhead.com/achievement=19478/now-this-is-dragon-racing#comments',
-                criteria = {
-                    name=nil,
-                    completed= false,
-                    quantity = nil,
-                    reqQuantity = nil,
-                }
+                criteria = {}
             },
-
-
-
         }
     },
-    
-
 }

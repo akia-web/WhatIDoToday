@@ -1,4 +1,4 @@
-local _,core = ...;
+local _, core = ...;
 
 core.activityDaily = {
     events = {
@@ -20,7 +20,7 @@ core.activityDaily = {
         data = {},
         etiquetteH = 100,
         etiquetteL = 300,
-        colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
+        colorEtiquette = { ["r"] = 0.9, ["g"] = 0.9, ["b"] = 0.9 },
         etiquetteByLine = 3,
         containerName = 'SaisonnalEvent',
         containerEtiquetteName = 'containerSaisonnalEvent',
@@ -29,7 +29,7 @@ core.activityDaily = {
         colorCadre = core.fondColor,
         sizeButton = 40
     },
-    donjonJour={
+    donjonJour = {
         active = false,
         data = {},
         etiquetteH = 130,
@@ -76,7 +76,7 @@ core.activityDaily = {
         data = {},
         etiquetteH = 100,
         etiquetteL = 300,
-        colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
+        colorEtiquette = { ["r"] = 0.9, ["g"] = 0.9, ["b"] = 0.9 },
         etiquetteByLine = 3,
         containerName = 'containerArathie',
         containerEtiquetteName = 'containerQuestArathie',
@@ -90,7 +90,7 @@ core.activityDaily = {
         data = {},
         etiquetteH = 100,
         etiquetteL = 300,
-        colorEtiquette = {["r"]=0.9,["g"]=0.9,["b"]=0.9},
+        colorEtiquette = { ["r"] = 0.9, ["g"] = 0.9, ["b"] = 0.9 },
         etiquetteByLine = 3,
         containerName = 'containerDarkshore',
         containerEtiquetteName = 'containerQuestDarkshore',

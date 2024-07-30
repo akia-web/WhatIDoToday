@@ -1,8 +1,8 @@
-local _,core = ...;
+local _, core = ...;
 core.PopupEvent = {};
 
 function core.PopupEvent.CreatePopup(color)
-    local detailFrame = CreateFrame("Frame", "StranglethorndetailFrame",UIParent )
+    local detailFrame = CreateFrame("Frame", "StranglethorndetailFrame", UIParent)
     detailFrame:SetWidth(500)
     detailFrame:SetPoint("CENTER")
     detailFrame:SetFrameStrata("DIALOG")
@@ -11,7 +11,6 @@ function core.PopupEvent.CreatePopup(color)
     detailTexture:SetColorTexture(color.r, color.g, color.b, 1)
     detailFrame.closeButton = CreateFrame("Button", nil, detailFrame, "UIPanelCloseButton")
     detailFrame.closeButton:SetPoint("TOPRIGHT", -8, -8)
-
 
     detailFrame:SetMovable(true)
     detailFrame:EnableMouse(true)
@@ -25,10 +24,9 @@ function core.PopupEvent.CreatePopup(color)
         self:StopMovingOrSizing()
     end)
 
-
     detailFrame.closeButton:SetScript("OnClick", function()
         core.detailEventFrame = nil
         detailFrame:Hide()
-      end) 
+    end)
     return detailFrame
 end
