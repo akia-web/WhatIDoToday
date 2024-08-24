@@ -7,7 +7,8 @@ local function getIcone(iconName, isSpell)
         return iconName
     else
         if tonumber(iconName) then
-            return GetSpellTexture(iconName)
+            iconID, originalIconID = C_Spell.GetSpellTexture(iconName)
+            return iconID
         else
             return iconName
         end
