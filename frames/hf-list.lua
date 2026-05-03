@@ -9,12 +9,15 @@ local function createButtonHf(parent, text, width, height, item)
     buttonLinkBackground:SetAllPoints()
     buttonLinkBackground:SetColorTexture(0, 0, 0, 0)
 
-    local buttonTitle = buttonLink:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med1")
-    buttonTitle:SetPoint("LEFT", buttonLink, "LEFT", 10, 0)
-    buttonTitle:SetText('- ' .. text)
-    buttonTitle:SetJustifyH('LEFT')
-    buttonTitle:SetNonSpaceWrap(true)
-    buttonTitle:SetWidth(width + 10)
+    if text ~= nil then
+        local buttonTitle = buttonLink:CreateFontString(nil, "OVERLAY", "SystemFont_Shadow_Med1")
+        buttonTitle:SetPoint("LEFT", buttonLink, "LEFT", 10, 0)
+        buttonTitle:SetText('- ' .. text)
+        buttonTitle:SetJustifyH('LEFT')
+        buttonTitle:SetNonSpaceWrap(true)
+        buttonTitle:SetWidth(width + 10)
+    end
+
 
     buttonLink:SetScript("OnEnter", function()
         buttonLinkBackground:SetColorTexture(core.activeButton.r, core.activeButton.g, core.activeButton.b, 0.8)

@@ -2,7 +2,7 @@ local _, core = ...;
 
 function core.Frame.createFrameContainer()
     local frame = CreateFrame("Frame", "IconSelectorFrame", UIParent)
-    frame:SetSize(1300, 800)
+    frame:SetSize(1700, 800)
     frame:SetPoint("CENTER")
     frame:SetClampedToScreen(true)
     frame:SetMovable(true)

@@ -9,18 +9,27 @@ local function green(text)
 end
 
 local function getTextDonjonRaid(item)
-    local donjonOrRaid = item["DonjonName"] and core.L['donjon'] or 'Raid'
-    local name = item["DonjonName"] and item["DonjonName"] or item['RaidName']
-    local donjon = "\n\n" .. yelloColor(core.Functions.capitalizeFirstLetter(donjonOrRaid)) .. name
+    --local donjonOrRaid = item["DonjonName"] and core.L['donjon'] or 'Raid'
+    local instance = C_Map.GetMapInfo(item['ZoneUiMapID'])
+    local region = C_Map.GetMapInfo(instance.parentMapID)
+
+    -- pour afficher vallee de strangleronce au lieu de strangleronce septentrional
+    if region.mapID == 50 then
+    region = C_Map.GetMapInfo(region.parentMapID)
+    end
+
+    local continent =  C_Map.GetMapInfo(region.parentMapID)
+    local nextMap = C_Map.GetMapInfo(continent.parentMapID)
+    local donjonText = "\n\n" .. yelloColor(core.L['lieu']) .. instance.name
     local difficulty = "\n" .. yelloColor(core.L['difficulty']) .. item["ModeName"]
     local boss = "\n" .. yelloColor('Boss') .. item["BossName"]
-    local continent = "\n" .. yelloColor('Continent') .. item["Continent"]
-    local region = "\n" .. yelloColor(core.L['pays']) .. item["Country"]
+    local continentText = "\n" .. yelloColor('Continent') .. continent.name
+    local regionText = "\n" .. yelloColor(core.L['pays']) .. region.name
 
     return {
 
         title = item['MountName'],
-        description = donjon .. difficulty .. boss .. continent .. region
+        description = donjonText .. difficulty .. boss  .. regionText .. continentText
     }
 end
 

@@ -50,8 +50,10 @@ function core.Functions.getHF()
             end
 
             if not completedRequirement then
+                if not core.Functions.includes(requirements, nameRequirement, 'nameHf') then
+                    table.insert(requirements, entry2)
+                end
 
-                table.insert(requirements, entry2)
             end
         end
         entry.dependsHF = requirements

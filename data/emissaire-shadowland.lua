@@ -41,7 +41,7 @@ core.worldQuestShadowLand = {
         ReputName = "Assaut Fae Nocture",
         Title = "Assaut"
     },
-    {-- Aile de l’effroi du moissonneur 
+    {-- Aile de l’effroi du moissonneur
         IdQuest = 63822,
         IsActive = false,
         IsCompleted = false,

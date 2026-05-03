@@ -137,15 +137,27 @@ local function createEtiquette(item, parent, etiquetteL, color, colIndex, typeEt
 
     end
 
+    if typeEtiquette == 'donjon' then
+        local mapButton = core.Icones.CreateIconTexture(button, "Interface\\ICONS\\inv_misc_map09", 25, nil)
+        mapButton:SetPoint("CENTER", frameTextTitle, "RIGHT", -13, 0)
+        mapButton:SetScript("OnClick", function()
+            WorldMapFrame:Hide()
+            ToggleWorldMap()
+            WorldMapFrame:SetMapID(item.ZoneUiMapID)
+
+            WorldMapFrame:Show()
+        end)
+    end
+
     local frameHF = nil
     local hightHF = 0
     if typeEtiquette == 'HF' then
-        frameHF = core.listHF.CreateListHF(item, frameTextDescription)
-        hightHF = frameHF:GetHeight()
+    frameHF = core.listHF.CreateListHF(item, frameTextDescription)
+    hightHF = frameHF:GetHeight()
     end
     etiquette:SetHeight(frameTextTitle:GetHeight() + frameTextDescription:GetHeight() + hightHF)
     return etiquette
-end
+    end
 
 local function createCadre(nameContainer, parent, containerTiltleText, color, index, lastContainer)
     local container = CreateFrame("frame", nameContainer, parent);

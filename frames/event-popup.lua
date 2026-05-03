@@ -30,3 +30,20 @@ function core.PopupEvent.CreatePopup(color)
     end)
     return detailFrame
 end
+
+function core.MapButton.CreatePopup()
+    local btn = CreateFrame("Button", "MyMapButton", UIParent, "BackdropTemplate")
+    btn:SetSize(40, 40)
+    btn:SetPoint("CENTER")
+
+    -- Texture (icône)
+    btn.texture = btn:CreateTexture(nil, "BACKGROUND")
+    btn.texture:SetAllPoints()
+    btn.texture:SetTexture("Interface\\ICONS\\INV_Misc_Map_01") -- icône de carte
+
+    -- Clique
+    btn:SetScript("OnClick", function()
+        WorldMapFrame:SetMapID(574) -- exemple
+        WorldMapFrame:Show()
+    end)
+end

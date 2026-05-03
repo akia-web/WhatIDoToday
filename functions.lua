@@ -356,8 +356,6 @@ function core.Functions.getEventDay()
         local event = C_Calendar.GetHolidayInfo(0, day, i)
         if event then
             ligne['title'] = event['name']
-            -- print(ligne['title'])
-            -- print(infoEvent['eventID'])
             ligne['description'] = event['description']
             -- ligne['Icon'] = event['texture']
             if event["endTime"] then
@@ -516,4 +514,13 @@ function core.Functions.getSaisonnalEvent()
 
     getWinterEvent(isThereWinterEvent)
     getLoveEvent(isLoveInAirEvent)
-end 
+end
+
+function core.Functions.includes(tbl, value, propriety)
+    for _, v in ipairs(tbl) do
+        if v[propriety] == value then
+            return true
+        end
+    end
+    return false
+end

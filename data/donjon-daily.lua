@@ -10,11 +10,9 @@ core.MountsDonjonDaily = {
         BossPosition = 2,
         Mode = 2,
         ModeName = nil,
-        DonjonName = "Zul'Gurub",
+        ZoneUiMapID = 233,
         BossName = nil,
         IdDonjon = 334,
-        Continent = "Royaume de l'est",
-        Country = " Vallée de Strangleronce"
     },
     {   -- proto drake bleu
         MountID = 264,
@@ -26,11 +24,9 @@ core.MountsDonjonDaily = {
         BossPosition = 3,
         Mode = 2,
         ModeName = nil,
-        DonjonName = "Cime d'Utgarde",
+        ZoneUiMapID = 136,
         BossName = nil,
         IdDonjon = 205,
-        Continent = "Norfendre",
-        Country = "Fjord Hurlant"
     },
     {   -- faucon blanc peregrin
         MountID = 213,
@@ -42,10 +38,8 @@ core.MountsDonjonDaily = {
         BossPosition = 4,
         Mode = 2,
         ModeName = nil,
-        DonjonName = "Terrasse des magistères",
+        ZoneUiMapID = 348,
         BossName = nil,
         IdDonjon = 1154,
-        Continent = "Royaume de l'est",
-        Country = " Ile de Quel'Danas"
     },
 }

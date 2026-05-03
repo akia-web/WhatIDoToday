@@ -927,27 +927,27 @@ core.hautFaitDragonFlyght = {
                 criteria = {}
             },
             {
-                id = 16522,
+                id = 41174,
                 description = nil,
                 nameHf = nil,
                 doHF = false,
-                link = 'https://www.wowhead.com/achievement=16522/a-true-explorer#comments',
+                link = 'https://www.wowhead.com/achievement=41174/a-true-explorer#comments',
                 criteria = {}
             },
             {
-                id = 16529,
+                id = 41181,
                 description = nil,
                 nameHf = nil,
                 doHF = false,
-                link = 'https://www.wowhead.com/achievement=16529/joining-the-community#comments',
+                link = 'https://www.wowhead.com/achievement=41181/joining-the-community#comments',
                 criteria = {}
             },
             {
-                id = 17763,
+                id = 41183,
                 description = nil,
                 nameHf = nil,
                 doHF = false,
-                link = 'https://www.wowhead.com/achievement=17763/theres-no-place-like-loamm#comments',
+                link = 'https://www.wowhead.com/achievement=41183/theres-no-place-like-loamm#comments',
                 criteria = {}
             },
             {
@@ -975,27 +975,27 @@ core.hautFaitDragonFlyght = {
                 criteria = {}
             },
             {
-                id = 16528,
+                id = 41180,
                 description = nil,
                 nameHf = nil,
                 doHF = false,
-                link = 'https://www.wowhead.com/achievement=16528/joining-the-khansguard#comments',
+                link = 'https://www.wowhead.com/achievement=41180/joining-the-khansguard#comments',
                 criteria = {}
             },
             {
-                id = 16530,
+                id = 41182,
                 description = nil,
                 nameHf = nil,
                 doHF = false,
-                link = 'https://www.wowhead.com/achievement=16530/ally-of-the-flights#comments',
+                link = 'https://www.wowhead.com/achievement=41182/ally-of-the-flights#comments',
                 criteria = {}
             },
             {
-                id = 19235,
+                id = 41177,
                 description = nil,
                 nameHf = nil,
                 doHF = false,
-                link = 'https://www.wowhead.com/achievement=19235/warden-of-the-dream#comments',
+                link = 'https://www.wowhead.com/achievement=41177/warden-of-the-dream#comments',
                 criteria = {}
             },
             {
