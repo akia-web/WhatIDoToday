@@ -43,7 +43,7 @@ function core.createDetailEventFrame(item, typePopup, color, size)
     textDescription:SetText(textPopup['description'])
     frameDescription:SetHeight(textDescription:GetStringHeight())
 
-    if item['link'] then
+    if typePopup == 'popupHF' then
         detailFrame:SetHeight(minHeight + 80)
         local buttonLink = CreateFrame("Button", "NomDuBouton", detailFrame, "UIPanelButtonTemplate")
         buttonLink:SetPoint("BOTTOM", detailFrame, "BOTTOM", 0, 40)
@@ -58,7 +58,7 @@ function core.createDetailEventFrame(item, typePopup, color, size)
                 monInput:SetPoint("TOP", buttonLink, "BOTTOM", 0, -10) -- Positionnez le champ de saisie sous le bouton
                 monInput:SetWidth(400)
                 monInput:SetHeight(30)
-                monInput:SetText(item['link'])
+                monInput:SetText('https://www.wowhead.com/achievement='..item['id'])
                 monInput:SetCursorPosition(0)
                 hasAlreadyLink = true
             end

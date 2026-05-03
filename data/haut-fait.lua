@@ -1,6 +1,7 @@
 local _, core = ...;
 
 core.hautFaitDragonFlyght = {
+    -- Taïvan
     {
         MountID = 1614, -- brufalon touche par la tempete
         MountName = nil,
@@ -9,84 +10,27 @@ core.hautFaitDragonFlyght = {
         title = '',
         description = '',
         dependsHF = {
-            {
-                id = 19479,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                metaHf = true,
-                link = 'https://www.wowhead.com/achievement=19479/wake-me-up#comments',
-                criteria = {}
-            },
+            { id = 19479 },
             {
                 id = 19482,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
                 metaHf = true,
-                link = 'https://www.wowhead.com/achievement=19482/army-of-the-fed#comments',
-                criteria = {}
             },
             {
                 id = 19485,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
                 metaHf = true,
-                link = 'https://www.wowhead.com/achievement=19485/closing-time#comments',
-                criteria = {}
             },
-            {
-                id = 18209,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18209/nothing-stops-the-research#comments',
-                criteria = {}
-            },
-            {
-                id = 19008,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19008/dream-shaper#comments',
-                criteria = {}
-            },
-            {
-                id = 19481,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                metaHf = true,
-                link = 'https://www.wowhead.com/achievement=19481/centaur-of-attention#comments',
-                criteria = {}
-            },
+            { id = 18209 },
+            { id = 19008 },
+            { id = 19481 },
             {
                 id = 19483,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
                 metaHf = true,
-                link = 'https://www.wowhead.com/achievement=19483/flight-club#comments',
-                criteria = {}
             },
             {
                 id = 16492,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
                 metaHf = true,
-                link = 'https://www.wowhead.com/achievement=16492/into-the-storm#comments',
-                criteria = {}
             },
-            {
-                id = 18867,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18867/through-the-ashes-and-flames#comments',
-                criteria = {}
-            },
+            { id = 18867 },
         }
     },
     {
@@ -97,70 +41,14 @@ core.hautFaitDragonFlyght = {
         title = '',
         description = '',
         dependsHF = {
-            {
-                id = 16570,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16570/a-legendary-album#comments',
-                criteria = {}
-            },
-            {
-                id = 16587,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16587/lead-climber#comments',
-                criteria = {}
-            },
-            {
-                id = 15890,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=15890/dragonscale-expedition-the-highest-peaks#comments',
-                criteria = {}
-            },
-            {
-                id = 16676,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16676/adventurer-of-the-waking-shores#comments',
-                criteria = {}
-            },
-            {
-                id = 16568,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16568/great-shots-galore#comments',
-                criteria = {}
-            },
-            {
-                id = 16588,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16588/how-did-these-get-here#comments',
-                criteria = {}
-            },
-            {
-                id = 16571,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16571/well-supplied#comments',
-                criteria = {}
-            },
-            {
-                id = 16297,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16297/treasures-of-the-waking-shores#comments',
-                criteria = {}
-            },
+            { id = 16570 },
+            { id = 16587 },
+            { id = 15890, },
+            { id = 16676 },
+            { id = 16568 },
+            { id = 16588 },
+            { id = 16571 },
+            { id = 16297 },
         }
     },
     {
@@ -171,70 +59,14 @@ core.hautFaitDragonFlyght = {
         title = '',
         description = '',
         dependsHF = {
-            {
-                id = 16540,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16540/hunt-master#comments',
-                criteria = {}
-            },
-            {
-                id = 16545,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16545/the-best-at-what-i-do#comments',
-                criteria = {}
-            },
-            {
-                id = 16543,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16543/tetrachromancer#comments',
-                criteria = {}
-            },
-            {
-                id = 16677,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16677/adventurer-of-the-ohnahran-plains#comments',
-                criteria = {}
-            },
-            {
-                id = 16541,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16541/longhunter#comments',
-                criteria = {}
-            },
-            {
-                id = 16542,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16542/the-disgruntled-hunter#comments',
-                criteria = {}
-            },
-            {
-                id = 16424,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16424/whos-a-good-bakar',
-                criteria = {}
-            },
-            {
-                id = 16299,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16299/treasures-of-the-ohnahran-plains#comments',
-                criteria = {}
-            },
+            { id = 16540 },
+            { id = 16545 },
+            { id = 16543 },
+            { id = 16677 },
+            { id = 16541 },
+            { id = 16542 },
+            { id = 16424 },
+            { id = 16299 },
         }
     },
     {
@@ -245,70 +77,14 @@ core.hautFaitDragonFlyght = {
         title = '',
         description = '',
         dependsHF = {
-            {
-                id = 16443,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16443/soupervisor#comments',
-                criteria = {}
-            },
-            {
-                id = 16317,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16317/secret-fishing-spots#comments',
-                criteria = {}
-            },
-            {
-                id = 16563,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16563/were-going-to-need-a-bigger-harpoon#comments',
-                criteria = {}
-            },
-            {
-                id = 16678,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16678/adventurer-of-the-azure-span#comments',
-                criteria = {}
-            },
-            {
-                id = 16444,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16444/leftovers-revenge#comments',
-                criteria = {}
-            },
-            {
-                id = 16553,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16553/taking-from-nature#comments',
-                criteria = {}
-            },
-            {
-                id = 16580,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16580/lend-a-helping-span#comments',
-                criteria = {}
-            },
-            {
-                id = 16300,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16300/treasures-of-the-azure-span#comments',
-                criteria = {}
-            },
+            { id = 16443 },
+            { id = 16317 },
+            { id = 16563 },
+            { id = 16678 },
+            { id = 16444 },
+            { id = 16553 },
+            { id = 16580 },
+            { id = 16300 },
         }
     },
     {
@@ -319,94 +95,20 @@ core.hautFaitDragonFlyght = {
         title = '',
         description = '',
         dependsHF = {
-            {
-                id = 16411,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16411/siege-on-dragonbane-keep-home-sweet-home#comments',
-                criteria = {}
-            },
-            {
-                id = 16412,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16412/siege-on-dragonbane-keep-chiseled-record#comments',
-                criteria = {}
-            },
-            {
-                id = 16495,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://wowhead.com/achievement=16495/obsidian-keymaster#comments',
-                criteria = {}
-            },
-            {
-                id = 18384,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18384/whelp-there-it-is#comments',
-                criteria = {}
-            },
-            {
-                id = 18383,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18383/hey-nanny-nanny#comments',
-                criteria = {}
-            },
-            {
-                id = 16301,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16301/treasures-of-thaldraszus#comments',
-                criteria = {}
-            },
-            {
-                id = 16410,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16410/siege-on-dragonbane-keep-snack-attack#comments',
-                criteria = {}
-            },
-            {
-                id = 16497,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16497/im-playing-all-sides#comments',
-                criteria = {}
-            },
-            {
-                id = 16496,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16496/obsidian-champion#comments',
-                criteria = {}
-            },
+            { id = 16411 },
+            { id = 16412 },
+            { id = 16495 },
+            { id = 18384 },
+            { id = 18383 },
+            { id = 16301 },
+            { id = 16410 },
+            { id = 16497 },
+            { id = 16496 },
             {
                 id = 17782,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17782/daycare-derby#comments',
-                criteria = {}
+                metaHf = false,
             },
-            {
-                id = 16679,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16679/adventurer-of-thaldraszus#comments',
-                criteria = {}
-            },
+            { id = 16679 },
         }
     },
     {
@@ -417,89 +119,18 @@ core.hautFaitDragonFlyght = {
         title = '',
         description = '',
         dependsHF = {
-            {
-                id = 17342,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17342/the-future-we-make#comments',
-                criteria = {}
-            },
-            {
-                id = 18637,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18637/chronograde-connoisseur#comments',
-                criteria = {}
-            },
-            {
-                id = 18638,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18638/minute-menagerie#comments',
-                criteria = {}
-            },
-            {
-                id = 18640,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18640/lock-and-load#comments',
-                criteria = {}
-            },
-            {
-                id = 18703,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18703/dawn-of-the-infinite-galakronds-fall#comments',
-                criteria = {}
-            },
-            {
-                id = 18635,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18635/verified-rifter#comments',
-                criteria = {}
-            },
-            {
-                id = 18636,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18636/just-following-chronological-orders#comments',
-                criteria = {}
-            },
-            {
-                id = 18639,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18639/collapsed-reality#comments',
-                criteria = {}
-            },
-            {
-                id = 18641,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18641/to-all-the-squirrels-ive-been-before#comments',
-                criteria = {}
-            },
-            {
-                id = 18704,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18704/dawn-of-the-infinite-murozonds-rise#comments',
-                criteria = {}
-            },
+            { id = 17342 },
+            { id = 18637 },
+            { id = 18638 },
+            { id = 18640 },
+            { id = 18703 },
+            { id = 18635 },
+            { id = 18636 },
+            { id = 18639 },
+            { id = 18641 },
+            { id = 18704 },
         }
     },
-
     {
         MountID = 1621, -- Dracamandre écalorail
         MountName = nil,
@@ -508,62 +139,13 @@ core.hautFaitDragonFlyght = {
         title = '',
         description = '',
         dependsHF = {
-            {
-                id = 16468,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16468/chasing-storms-in-the-waking-shores#comments',
-                criteria = {}
-            },
-            {
-                id = 16484,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16484/chasing-storms-in-the-azure-span#comments',
-                criteria = {}
-            },
-            {
-                id = 16476,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16476/chasing-storms-in-the-ohnahran-plains#comments',
-                criteria = {}
-            },
-            {
-                id = 16489,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16489/chasing-storms-in-thaldraszus#comments',
-                criteria = {}
-            },
-            {
-                id = 16500,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16500/elemental-overload#comments',
-                criteria = {}
-            },
-            {
-                id = 16461,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16461/stormed-off#comments',
-                criteria = {}
-            },
-            {
-                id = 16502,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16502/storming-the-runway#comments',
-                criteria = {}
-            },
+            { id = 16468 },
+            { id = 16484 },
+            { id = 16476 },
+            { id = 16489 },
+            { id = 16500 },
+            { id = 16461 },
+            { id = 16502 },
         }
     },
     {
@@ -574,527 +156,262 @@ core.hautFaitDragonFlyght = {
         title = '',
         description = '',
         dependsHF = {
-            {
-                id = 16343,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16343/vault-of-the-incarnates#comments',
-                criteria = {}
-            },
-            {
-                id = 19331,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19331/amirdrassil-the-dreams-hope#comments',
-                criteria = {}
-            },
-            {
-                id = 16334,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16334/waking-hope#comments',
-                criteria = {}
-            },
-            {
-                id = 15394,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=15394/ohnaroll#comments',
-                criteria = {}
-            },
-            {
-                id = 16336,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16336/azure-spanner#comments',
-                criteria = {}
-            },
-            {
-                id = 16363,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16363/just-dont-ask-me-to-spell-it#comments',
-                criteria = {}
-            },
-            {
-                id = 16401,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16401/sojourner-of-the-waking-shores#comments',
-                criteria = {}
-            },
-            {
-                id = 16405,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16405/sojourner-of-ohnahran-plains#comments',
-                criteria = {}
-            },
-            {
-                id = 16428,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16428/sojourner-of-azure-span#comments',
-                criteria = {}
-            },
-            {
-                id = 16398,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16398/sojourner-of-thaldraszus#comments',
-                criteria = {}
-            },
-            {
-                id = 17773,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17773/a-blue-dawn#comments',
-                criteria = {}
-            },
-            {
-                id = 18958,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18958/of-the-tyrs-guard#comments',
-                criteria = {}
-            },
-            {
-                id = 16683,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16683/in-tyrs-footsteps#comments',
-                criteria = {}
-            },
-            {
-                id = 17734,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17734/active-listening-skills#comments',
-                criteria = {}
-            },
-            {
-                id = 17546,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17546/a-new-beginning#comments',
-                criteria = {}
-            },
-            {
-                id = 19507,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19507/fringe-benefits#comments',
-                criteria = {}
-            },
-            {
-                id = 16334,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16334/waking-hope#comments',
-                criteria = {}
-            },
-            {
-                id = 16336,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16336/azure-spanner#comments',
-                criteria = {}
-            },
-            {
-                id = 17739,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17739/embers-of-neltharion#comments',
-                criteria = {}
-            },
-            {
-                id = 17766,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17766/explore-zaralek-cavern#comments',
-                criteria = {}
-            },
-            {
-                id = 15394,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=15394/ohnaroll#comments',
-                criteria = {}
-            },
-            {
-                id = 16363,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16363/just-dont-ask-me-to-spell-it#comments',
-                criteria = {}
-            },
-            {
-                id = 16761,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16761/dragon-isles-explorer#comments',
-                criteria = {}
-            },
-            {
-                id = 19309,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19309/explore-the-emerald-dream#comments',
-                criteria = {}
-            },
-            {
-                id = 17534,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17534/explore-the-forbidden-reach#comments',
-                criteria = {}
-            },
-            {
-                id = 17528,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17528/hoarder-of-the-forbidden-reach#comments',
-                criteria = {}
-            },
-            {
-                id = 17529,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17529/forbidden-spoils#comments',
-                criteria = {}
-            },
-            {
-                id = 17532,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17532/scroll-hunter#comments',
-                criteria = {}
-            },
-            {
-                id = 17413,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17413/door-buster#comments',
-                criteria = {}
-            },
-            {
-                id = 17315,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17315/while-we-were-sleeping#comments',
-                criteria = {}
-            },
-            {
-                id = 17526,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17526/treasures-of-the-forbidden-reach#comments',
-                criteria = {}
-            },
-            {
-                id = 17525,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17525/champion-of-the-forbidden-reach#comments',
-                criteria = {}
-            },
-            {
-                id = 17530,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17530/librarian-of-the-reach#comments',
-                criteria = {}
-            },
-            {
-                id = 17540,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17540/under-the-weather#comments',
-                criteria = {}
-            },
-            {
-                id = 17509,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17509/every-door-everywhere-all-at-once#comments',
-                criteria = {}
-            },
-            {
-                id = 19026,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19026/defenders-of-the-dream#comments',
-                criteria = {}
-            },
-            {
-                id = 19317,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19317/treasures-of-the-emerald-dream#comments',
-                criteria = {}
-            },
-            {
-                id = 19309,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19309/explore-the-emerald-dream#comments',
-                criteria = {}
-            },
-            {
-                id = 19316,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19316/adventurer-of-the-emerald-dream#comments',
-                criteria = {}
-            },
-            {
-                id = 19013,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19013/i-dream-of-seeds#comments',
-                criteria = {}
-            },
-            {
-                id = 19312,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19312/super-duper-bloom#comments',
-                criteria = {}
-            },
-            {
-                id = 18160,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18160/aberrus-the-shadowed-crucible#comments',
-                criteria = {}
-            },
-            {
-                id = 16339,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16339/myths-of-the-dragonflight-dungeons#comments',
-                criteria = {}
-            },
-            {
-                id = 16808,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16808/friend-of-the-dragon-isles#comments',
-                criteria = {}
-            },
-            {
-                id = 41174,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=41174/a-true-explorer#comments',
-                criteria = {}
-            },
-            {
-                id = 41181,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=41181/joining-the-community#comments',
-                criteria = {}
-            },
-            {
-                id = 41183,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=41183/theres-no-place-like-loamm#comments',
-                criteria = {}
-            },
-            {
-                id = 18615,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=18615/legend-of-the-multiverse#comments',
-                criteria = {}
-            },
-            {
-                id = 16760,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16760/the-obsidian-bloodline#comments',
-                criteria = {}
-            },
-            {
-                id = 16537,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16537/maximum-power#comments',
-                criteria = {}
-            },
-            {
-                id = 41180,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=41180/joining-the-khansguard#comments',
-                criteria = {}
-            },
-            {
-                id = 41182,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=41182/ally-of-the-flights#comments',
-                criteria = {}
-            },
-            {
-                id = 41177,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=41177/warden-of-the-dream#comments',
-                criteria = {}
-            },
-            {
-                id = 16494,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16494/loyalty-to-the-prince#comments',
-                criteria = {}
-            },
-            {
-                id = 16539,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=16539/in-high-esteem#comments',
-                criteria = {}
-            },
-            {
-                id = 17427,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17427/winterpelt-conversationalist#comments',
-                criteria = {}
-            },
+            { id = 16343 },
+            { id = 19331 },
+            { id = 16334 },
+            { id = 15394 },
+            { id = 16336 },
+            { id = 16363 },
+            { id = 16401 },
+            { id = 16405 },
+            { id = 16428 },
+            { id = 16398 },
+            { id = 17773 },
+            { id = 18958 },
+            { id = 16683 },
+            { id = 17734, },
+            { id = 17546 },
+            { id = 19507 },
+            { id = 16334 },
+            { id = 16336 },
+            { id = 17739 },
+            { id = 17766 },
+            { id = 15394 },
+            { id = 16363 },
+            { id = 16761 },
+            { id = 19309 },
+            { id = 17534 },
+            { id = 17528 },
+            { id = 17529 },
+            { id = 17532 },
+            { id = 17413 },
+            { id = 17315 },
+            { id = 17526 },
+            { id = 17525 },
+            { id = 17530 },
+            { id = 17540 },
+            { id = 17509 },
+            { id = 19026 },
+            { id = 19317 },
+            { id = 19309 },
+            { id = 19316 },
+            { id = 19013 },
+            { id = 19312 },
+            { id = 18160 },
+            { id = 16339 },
+            { id = 16808 },
+            { id = 41174 },
+            { id = 41181 },
+            { id = 41183 },
+            { id = 18615 },
+            { id = 16760 },
+            { id = 16537 },
+            { id = 41180 },
+            { id = 41182 },
+            { id = 41177 },
+            { id = 16494 },
+            { id = 16539 },
+            { id = 17427 },
             {
                 id = 19486,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
                 metaHf = true,
-                link = 'https://www.wowhead.com/achievement=19486/across-the-isles#comments',
-                criteria = {}
             },
-            {
-                id = 17739,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17739/embers-of-neltharion#comments',
-                criteria = {}
-            },
-            {
-                id = 17781,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17781/the-smell-of-money#comments',
-                criteria = {}
-            },
-            {
-                id = 17781,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17781/the-smell-of-money#comments',
-                criteria = {}
-            },
-            {
-                id = 17832,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17832/sniffen-around#comments',
-                criteria = {}
-            },
-            {
-                id = 17783,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17783/adventurer-of-zaralek-cavern#comments',
-                criteria = {}
-            },
-            {
-                id = 17786,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17786/treasures-of-zaralek-cavern#comments',
-                criteria = {}
-            },
-            {
-                id = 17830,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=17830/stones-cant-fly#comments',
-                criteria = {}
-            },
-            {
-                id = 19478,
-                description = nil,
-                nameHf = nil,
-                doHF = false,
-                link = 'https://www.wowhead.com/achievement=19478/now-this-is-dragon-racing#comments',
-                criteria = {}
-            },
+            { id = 17739 },
+            { id = 17781 },
+            { id = 17781 },
+            { id = 17832 },
+            { id = 17783 },
+            { id = 17786 },
+            { id = 17830 },
+            { id = 19478 },
         }
     },
+
+    -- JANI
+    {
+        MountID = 1247, -- Clés du modèle W
+        MountName = nil,
+        Icon = 'Interface\\Icons\\inv_mechacycle',
+        idHF = 13541,
+        title = '',
+        description = '',
+        dependsHF = {
+            { horde = 13700, alliance = 13553 },
+            { id = 13556 },
+            { id = 13477 },
+            { id = 13513 },
+            { id = 13791 },
+            { id = 13470 },
+            { id = 13479 },
+            { id = 13474 },
+            { id = 13686 },
+            { id = 13790 },
+
+        }
+    },
+    {
+        MountID = 1277, -- Reine de l'essaim dos-de-miel
+        MountName = nil,
+        Icon = 'Interface\\Icons\\inv_bee_black',
+        idHF = 40956,
+        title = '',
+        description = '',
+        dependsHF = {
+            { id = 12944 },
+            { id = 12614 },
+            { id = 12482 },
+            { id = 13029 },
+            { id = 12851 },
+            { id = 13020 },
+            { id = 13036 },
+            { id = 13038 },
+            { id = 12942 },
+            { id = 13024 },
+            { id = 12588 },
+            { id = 13022 },
+            { id = 12771 },
+            { id = 13023 },
+            { id = 13028 },
+            { id = 13021 },
+            { id = 12943 },
+            { id = 13016 },
+            { id = 13011 },
+            { id = 13017 },
+            { id = 12849 },
+            { id = 13018 },
+            { id = 13009 },
+            { id = 13437 },
+            { id = 11861 },
+            { id = 12478 },
+            { id = 11868 },
+            { id = 12556 },
+            { id = 12558 },
+            { id = 12561 },
+            { id = 12557 },
+            { id = 12559 },
+            { id = 12560 },
+            { id = 12939 },
+            { id = 13050 },
+            { id = 13061 },
+            { id = 13049 },
+            { id = 12852 },
+            { id = 13057 },
+            { id = 13058 },
+            { id = 12940 },
+            { id = 13047 },
+            { id = 13051 },
+            { id = 13062 },
+            { id = 12853 },
+            { id = 13046 },
+            { id = 13045 },
+            { id = 13053 },
+            { id = 12941 },
+            { id = 13087 },
+            { id = 13094 },
+            { id = 12995 },
+            { id = 13064 },
+            { id = 13082 },
+            { id = 12473 },
+            { id = 12496 },
+            { id = 12497 },
+            { id = 13144 },
+        }
+    },
+    {
+        MountID = 2339, -- Pile de rebuts de Jani
+        MountName = nil,
+        Icon = 'Interface\\Icons\\inv_compy_purple',
+        idHF = 40953,
+        title = '',
+        description = '',
+        dependsHF = {
+            { id = 12521 },
+            { id = 12522 },
+            { id = 12523 },
+            { id = 13414 },
+            { id = 14193 },
+            { id = 14194 },
+            { id = 14195 },
+            { id = 14196 },
+            { id = 40956, metaHf = true},
+            { horde = 12873, alliance = 12881 },
+            { horde = 12869, alliance = 12898 },
+            { horde = 13284, alliance = 13283 },
+            { horde = 13296, alliance = 13297 },
+            { horde = 12867, alliance = 12896 },
+            { horde = 12867, alliance = 12896 },
+            { horde = 12870, alliance = 12899 },
+            { id = 12872 },
+            { id = 13541, metaHf = true},
+            { id = 14066 },
+            { id = 14060 },
+            { id = 14067 },
+            { id = 14061 },
+            { id = 41209, metaHf = true },
+            { horde = 13289, alliance = 13286 },
+            { horde = 13291, alliance = 13288 },
+            { horde = 13290, alliance = 13287 },
+            { id = 13718 },
+            { id = 13725 },
+            { id = 13719 },
+            { id = 12505 },
+            { id = 12484 },
+            { id = 12837 },
+            { id = 12841 },
+            { id = 12501 },
+            { id = 12832 },
+            { id = 12825 },
+            { id = 12845 },
+            { id = 12555 },
+            { id = 13517 },
+            { id = 13263 },
+            { id = 12719 },
+            { id = 14157 },
+            { id = 12582 },
+            { id = 12997 },
+            { id = 13251 },
+            { horde = 13700, alliance = 13553 },
+            { horde = 13924, alliance = 13925 },
+            { horde = 13709, alliance = 13710 },
+            { id = 13122 },
+            { id = 13126 },
+            { id = 13124 },
+            { id = 13132 },
+            { id = 13125 },
+            { id = 13127 },
+            { id = 13128 },
+            { id = 12595 },
+            { horde = 13135, alliance = 13133 },
+            { id = 13635 },
+            { id = 13691 },
+            { id = 13711 },
+            { id = 13699 },
+            { id = 13707 },
+            { id = 13764 },
+            { id = 13690 },
+            { id = 13722 },
+            { id = 13713 },
+            { id = 13763 },
+            { id = 13712 },
+            { id = 13765 },
+            { id = 13836 },
+            { horde = 13559, alliance = 13558 },
+            { horde = 13709, alliance = 13710 },
+            { horde = 13761, alliance = 13762 },
+            { id = 14154 },
+            { id = 14156 },
+            { id = 14159 },
+            { id = 14161 },
+            { id = 14153 },
+            { id = 14155 },
+            { id = 14158 },
+            { id = 12918 },
+            { id = 13771 },
+            { id = 13572 },
+            { id = 13777 },
+            { id = 14730 },
+        },
+
+    },
+
 }

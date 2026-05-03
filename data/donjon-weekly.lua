@@ -100,16 +100,16 @@ core.MountsDonjonWeeks = {
     {-- Croc-de-Moelle
         MountID = 1406,
         MountName = nil,
-        IdInstance = 1651,
+        IdInstance = 2286,
         Icon = nil,
         IsDone = nil,
         TimeBeforeReset = nil,
         BossPosition = 4,
         Mode = 23,
         ModeName = nil,
-        ZoneUiMapID = 810,
+        ZoneUiMapID = 1666,
         BossName = nil,
-        IdDonjon = 1475,
+        IdDonjon = 2114,
         Continent = "Royaume de l'est",
         Country = "Defile de Deuillevent"
     }
